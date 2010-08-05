@@ -24,6 +24,7 @@
 	NSInteger _fake;         // Fake page
 	NSInteger _direction;    // Page direction (0: Left 1: Right)
 	NSString *_review;       // Book review
+	BOOL     _oldVersion;    // This flag is true if the book released new version.
 }
 
 @property (nonatomic, retain) NSString *uuid;
@@ -40,6 +41,7 @@
 @property (nonatomic, assign, readonly) NSInteger fake;
 @property (nonatomic, assign) NSInteger direction;
 @property (nonatomic, retain) NSString *review;
+@property (nonatomic, assign) BOOL oldVersion;
 
 - (void)setLength:(NSUInteger)pageLength;
 

@@ -17,14 +17,15 @@
 - (id)init {
 	_outputFilePath = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], XML_DIRECTORY, LIST_FILENAME];
 	_userFilePath = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], XML_DIRECTORY, USER_FILENAME];
+	_savedData = [[NSData alloc] initWithContentsOfFile:_outputFilePath];
 	_data = [[NSMutableData alloc] init];
+	_savedBookCollection = [[BookCollection alloc] init];
 	_bookCollection = [[BookCollection alloc] init];
 	_updateRetryCount = 0;
 	
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 	[notificationCenter addObserver:self selector:@selector(onLoginFinishedAndXMLCheckSelect:) name:LOGIN_FINISHED_AND_XML_CHECK_EVENT object:nil];
-
-
+	
 //	// MD5 test
 //	NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"txt"];
 //	NSString *md5 = [Util getMD5ChecksumOfFile:path];
@@ -105,7 +106,7 @@
 	// Load loacal xml if old xml file exist in the local.
 	if ([Util isExist:_outputFilePath]) {
 		_data = [_data initWithContentsOfFile:_outputFilePath];
-		[self parse:_data];
+		[self parse:_data savedXMLLoad:NO];
 	}
 	
 	// Show alert if old xml file don't exist in the local.
@@ -122,7 +123,41 @@
 	}	
 }
 
-- (void)parse:(NSData *)data {
+- (void)checkVersion {
+	NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+	[inputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ssZZZZ"];
+	BookInfo *info;
+	BookInfo *savedInfo;
+	NSDate* date;
+	NSDate* savedDate;
+	
+	NSInteger length = [_bookCollection count];
+	for (NSInteger i = 0; i < length; i++) {
+		info = [_bookCollection getAt:i];
+		savedInfo = [_savedBookCollection getByKey:info.uuid];
+		
+		date = [inputFormatter dateFromString:info.download];
+		savedDate = [inputFormatter dateFromString:info.download];
+		
+		switch ([date compare:savedDate]){
+			case NSOrderedAscending:
+				NSLog(@"NSOrderedAscending");
+				break;
+			case NSOrderedSame:
+				NSLog(@"NSOrderedSame");
+				break;
+			case NSOrderedDescending:
+				NSLog(@"NSOrderedDescending");
+				break;
+		}
+		
+		info.oldVersion = NO;
+	}
+}
+
+- (void)parse:(NSData *)data savedXMLLoad:(BOOL)savedXMLLoad {
+	_savedXMLLoad = savedXMLLoad;
+	
 	NSXMLParser *parser = [[[NSXMLParser alloc] initWithData:data] autorelease];
 	[parser setDelegate:self];
 	[parser setShouldProcessNamespaces:NO];
@@ -195,7 +230,7 @@
 	if ([_data length] > 0) {
 		_updateRetryCount = 0;
 		[self saveXML];
-		[self parse:_data];
+		[self parse:_data savedXMLLoad:NO];
 	}
 	
 	else {
@@ -289,23 +324,37 @@
 //	NSLog(@"parser didEndElement: %@ namespaceURI: %@ qName: %@", elementName, namespaceURI, qName);
 	
 	if ([elementName isEqualToString:@"book"]) {
-		[_bookCollection addByInfo:_currentBookInfo];
+		if (_savedXMLLoad) {
+			[_savedBookCollection addByInfo:_currentBookInfo];
+		}
+		else {
+			[_bookCollection addByInfo:_currentBookInfo];
+		}
 	}
 	
 	if ([elementName isEqualToString:@"root"]) {
-		NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-		[notificationCenter postNotificationName:PARSE_END_EVENT object:_bookCollection userInfo:nil];
+		if (_savedXMLLoad || !_savedData) {
+			if (_savedData) {
+				[self checkVersion];
+			}
+			NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+			[notificationCenter postNotificationName:PARSE_END_EVENT object:_bookCollection userInfo:nil];
+		}
+		else if (_savedData) {
+			[self parse:_data savedXMLLoad:YES];
+		}
 	}
 	
 	if (_currentNodeType) {
 		[_currentNodeType release];
 		_currentNodeType = nil;
 	}
-}  
+}
 
 - (void)dealloc {
 	[_url release];
 	[_currentBookInfo release];
+	[_savedBookCollection release];
 	[_bookCollection release];
 	[_outputFilePath release];
 	[_userFilePath release];

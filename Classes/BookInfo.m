@@ -24,6 +24,7 @@
 @synthesize fake = _fake;
 @synthesize direction = _direction;
 @synthesize review = _review;
+@synthesize oldVersion = _oldVersion;
 
 - (void)setLength:(NSUInteger)pageLength {
 	_length = (pageLength % 2 == 0) ? pageLength : (pageLength + 1);

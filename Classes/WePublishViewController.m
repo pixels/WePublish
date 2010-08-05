@@ -582,7 +582,7 @@
 
 		bookDir = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], BOOK_DIRECTORY, info.uuid];
 //		NSLog(@"bookDir: %@", bookDir);
-		if ([fm fileExistsAtPath:bookDir]) {
+		if ([fm fileExistsAtPath:bookDir] && !info.oldVersion) {
 			// Update length
 			NSArray * files = [[NSFileManager defaultManager] directoryContentsAtPath:bookDir];
 			[info setLength:[files count]];

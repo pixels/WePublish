@@ -16,16 +16,19 @@
 	NSString* _url;
 	NSString* _userFilePath;
 	NSString* _outputFilePath;
+	NSData* _savedData;
 	NSMutableData* _data;
 	NSString *_currentNodeType;
 	BookInfo *_currentBookInfo;
+	BookCollection *_savedBookCollection;
 	BookCollection *_bookCollection;
+	BOOL _savedXMLLoad;
 }
 
 - (void)update:(NSString*)url;
 - (void)updateContinue;
 - (void)saveXML;
 - (void)alertIfDontExistData:(NSString *)message;
-- (void)parse:(NSData *)data;
+- (void)parse:(NSData *)data savedXMLLoad:(BOOL)savedXMLLoad;
 
 @end
