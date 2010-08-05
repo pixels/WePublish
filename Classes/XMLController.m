@@ -1,0 +1,329 @@
+//
+//  XMLController.m
+//  WePublish
+//
+//  Created by Yusuke Kikkawa on 10/07/13.
+//  Copyright 2010 3di. All rights reserved.
+//
+
+#import "XMLController.h"
+#import "BookCollection.h"
+#import "BookInfo.h"
+#import "Util.h"
+#import "Define.h"
+
+@implementation NSURLRequest(NSHTTPURLRequest)
++ (BOOL)allowsAnyHTTPSCertificateForHost:(NSString *)host {
+	return YES; // Or whatever logic
+}
+
+- (NSInputStream *)HTTPBodyStream { return nil; }
+- (NSData *)HTTPBody { return nil; }
+- (NSString *)valueForHTTPHeaderField:(NSString *)field { return nil; }
+- (NSDictionary *)allHTTPHeaderFields { return nil; }
+- (NSString *)HTTPMethod { return nil; }
+- (BOOL)HTTPShouldHandleCookies { return YES; }
+@end
+
+@implementation XMLController
+
+- (id)init {
+	_outputFilePath = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], XML_DIRECTORY, LIST_FILENAME];
+	_userFilePath = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], XML_DIRECTORY, USER_FILENAME];
+	_data = [[NSMutableData alloc] init];
+	_bookCollection = [[BookCollection alloc] init];
+	_updateRetryCount = 0;
+	
+	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+	[notificationCenter addObserver:self selector:@selector(onLoginFinishedAndXMLCheckSelect:) name:LOGIN_FINISHED_AND_XML_CHECK_EVENT object:nil];
+
+
+//	// MD5 test
+//	NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"txt"];
+//	NSString *md5 = [Util getMD5ChecksumOfFile:path];
+//	NSLog(@"%@", md5);
+	
+	return [super init];
+}
+
+- (void)update:(NSString*)url {
+	
+	[_data setLength:0];
+	[_bookCollection releaseAll];
+	
+	// リトライ回数を超えた
+	if (_updateRetryCount > UPDATE_RETRY_COUNT) {
+		[self alertIfDontExistData:AUTHENTICATION_ERROR_MESSAGE];
+	}
+	
+	// 更新作業
+	else {
+		
+		// First access only.
+		if (!_url) {
+			_url = [url retain];
+		}
+
+		// 初回
+		if (_updateRetryCount == 0 && [Util isExist:_userFilePath]) {
+			[self updateContinue];
+		}
+		else {
+			// 認証
+			NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+			[notificationCenter postNotificationName:AUTHENTICATION_EVENT object:nil userInfo:nil];
+		}
+		
+		_updateRetryCount++;
+	}
+}
+
+- (void)updateContinue {
+	
+	NSDictionary *userInfo = [[NSDictionary alloc] initWithContentsOfFile:_userFilePath];
+	NSString *mode = @"getxml";
+	NSString *user = [userInfo objectForKey:USER_NAME];
+	NSString *pass = [userInfo objectForKey:USER_PASS];
+//	NSLog(@"updateContinue user: %@ pass: %@", user, pass);
+	
+	NSString *params = [[NSString alloc] initWithFormat:@"mode=%@&mypage_login_email=%@&mypage_login_pass=%@", mode, user, pass];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
+									initWithURL:[NSURL URLWithString:_url]
+									cachePolicy:NSURLRequestUseProtocolCachePolicy
+									timeoutInterval:60.0
+									];
+	[request setHTTPMethod:@"POST"];	//メソッドをPOSTに指定します
+	[request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding]];
+	[params release];
+	[userInfo release];
+	
+	// create the connection with the request
+	// and start loading the data
+	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+	if (connection) {
+		[_data setLength:0];
+	}
+	else {
+		// Inform the user that the connection failed.
+	}
+	
+	[request release];
+}
+
+- (void)saveXML {
+	[_data writeToFile:_outputFilePath atomically:YES];
+}
+
+- (void)alertIfDontExistData:(NSString *)message {
+	// Load loacal xml if old xml file exist in the local.
+	if ([Util isExist:_outputFilePath]) {
+		_data = [_data initWithContentsOfFile:_outputFilePath];
+		[self parse:_data];
+	}
+	
+	// Show alert if old xml file don't exist in the local.
+	else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+														message:message
+													   delegate:nil
+											  cancelButtonTitle:@"OK"
+											  otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+		
+		NSLog(@"Don't exits outputFilePath: %@", _outputFilePath);
+	}	
+}
+
+- (void)parse:(NSData *)data {
+	NSXMLParser *parser = [[[NSXMLParser alloc] initWithData:data] autorelease];
+	[parser setDelegate:self];
+	[parser setShouldProcessNamespaces:NO];
+	[parser setShouldReportNamespacePrefixes:NO];
+	[parser setShouldResolveExternalEntities:NO];
+	[parser parse];	
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSLog(@"Connection connection didReceiveResponse");
+    [_data setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+//    NSLog(@"Connection connection didReceiveData");
+    [_data appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    NSLog(@"Connection connection didReceiveAuthenticationChallenge, host: %@", challenge.protectionSpace.host);
+	
+//	if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+//		if ([@"wepublish.jp" isEqualToString:challenge.protectionSpace.host])
+//			[challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
+//		[challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
+//	}
+	
+	if ([challenge proposedCredential]) {
+		[connection cancel];
+	}
+	else {
+		NSURLCredential *credential = [NSURLCredential credentialWithUser:@"wp" password:@"7001" persistence:NSURLCredentialPersistenceNone];
+		[[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+	}
+	
+}
+
+//- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
+//    NSLog(@"Connection connection canAuthenticateAgainstProtectionSpace");
+//	
+//	if([[protectionSpace authenticationMethod] isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+////		if(shouldAllowSelfSignedCert) {
+////			return YES; // Self-signed cert will be accepted
+////		} else {
+////			return NO;  // Self-signed cert will be rejected
+////		}
+//		return YES;
+//	}
+//	
+//	return NO;	
+// }
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSErrorFailingURLStringKey]);
+
+    [connection release];
+	[self alertIfDontExistData:NETWORK_ERROR_LOGO_MESSAGE];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+//	// Debug
+//	NSString* str;
+//	str = [[NSString alloc] initWithData:_data encoding:NSASCIIStringEncoding];
+//	NSLog(@"Connection connectionDidFinishLoading byte len: %d data: %@", [_data length], str);
+//	[str release];
+		
+	[connection release];
+	
+	// 認証がうまくいった場合
+	if ([_data length] > 0) {
+		_updateRetryCount = 0;
+		[self saveXML];
+		[self parse:_data];
+	}
+	
+	else {
+		[self update:_url];
+	}
+
+}
+
+- (void)onLoginFinishedAndXMLCheckSelect:(NSNotification *)notification {
+	[self updateContinue];
+}
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+//	NSLog(@"parser didStartElement: %@ namespaceURI: %@ qName: %@", elementName, namespaceURI, qName);
+	
+	if ([elementName isEqualToString:@"book"]) {
+		if (_currentBookInfo) {
+			[_currentBookInfo release];
+		}
+		_currentBookInfo = [[BookInfo alloc] init];
+	}
+	
+	_currentNodeType = [elementName retain];
+} 
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+	
+	BookInfo *bi = _currentBookInfo;
+	
+	if ([_currentNodeType isEqualToString:@"id"]) {
+		bi.uuid = [string retain];
+	}
+	
+	else if ([_currentNodeType isEqualToString:@"download"]) {
+		bi.download = [string retain];
+	}
+	
+	else if ([_currentNodeType isEqualToString:@"url"]) {
+		bi.url = [string retain];
+	}
+	
+	else if ([_currentNodeType isEqualToString:@"md5"]) {
+		bi.md5 = [string retain];
+	}
+	
+	else if ([_currentNodeType isEqualToString:@"category"]) {
+		bi.category = [string retain];
+	}
+	
+	else if ([_currentNodeType isEqualToString:@"categoryword"]) {
+		bi.categoryword = [string retain];
+	}
+	
+	else if ([_currentNodeType isEqualToString:@"title"]) {
+		bi.title = [string retain];
+	}
+	
+	else if ([_currentNodeType isEqualToString:@"titleword"]) {
+		bi.titleword = [string retain];
+	}
+	
+	else if ([_currentNodeType isEqualToString:@"author"]) {
+		bi.author = [string retain];
+	}
+	
+	else if ([_currentNodeType isEqualToString:@"authorword"]) {
+		//		bi.author = [[NSString alloc] initWithFormat:@"%@", string];
+	}
+	
+	else if ([_currentNodeType isEqualToString:@"length"]) {
+		bi.length = [string intValue];
+	}
+	
+	else if ([_currentNodeType isEqualToString:@"direction"]) {
+		bi.direction = [string intValue];
+	}
+	
+	else if ([_currentNodeType isEqualToString:@"review"]) {
+		if (bi.review) {
+			bi.review = [[NSString alloc] initWithFormat:@"%@%@", bi.review, string];
+		}
+		else {
+			bi.review = [[NSString alloc] initWithFormat:@"%@", string];
+		}
+	}
+	
+//	NSLog(@"foundCharacters currentNodeType: %@ string: %@", _currentNodeType, string);
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName   {  
+//	NSLog(@"parser didEndElement: %@ namespaceURI: %@ qName: %@", elementName, namespaceURI, qName);
+	
+	if ([elementName isEqualToString:@"book"]) {
+		[_bookCollection addByInfo:_currentBookInfo];
+	}
+	
+	if ([elementName isEqualToString:@"root"]) {
+		NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+		[notificationCenter postNotificationName:PARSE_END_EVENT object:_bookCollection userInfo:nil];
+	}
+	
+	if (_currentNodeType) {
+		[_currentNodeType release];
+		_currentNodeType = nil;
+	}
+}  
+
+- (void)dealloc {
+	[_url release];
+	[_currentBookInfo release];
+	[_bookCollection release];
+	[_outputFilePath release];
+	[_userFilePath release];
+	[_data release];
+	[super dealloc];
+}
+
+@end
