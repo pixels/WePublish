@@ -57,7 +57,7 @@
         [connection cancel];
     }
 	else {
-        NSURLCredential *credential = [NSURLCredential credentialWithUser:@"wp" password:@"7001" persistence:NSURLCredentialPersistenceForSession];
+        NSURLCredential *credential = [NSURLCredential credentialWithUser:@"wpauth" password:@"ka08tbj3hZfa" persistence:NSURLCredentialPersistenceForSession];
 		[[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
     }
 }

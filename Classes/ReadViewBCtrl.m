@@ -184,6 +184,7 @@
 //			NSLog(@"path: %@", image_path);
 			if (image) {
 				UIImageViewWithTouch *imageView = [[UIImageViewWithTouch alloc] initWithImage:image];
+				[imageView setContentMode:UIViewContentModeScaleAspectFit];
 				[imageView setUserInteractionEnabled:YES];
 				[imageView setTag:selectPageWithOffset];
 				CGFloat w = (WINDOW_BW / 2) - (PAGE_MARGIN_W * 2);

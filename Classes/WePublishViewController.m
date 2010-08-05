@@ -128,6 +128,8 @@
 			image = [[UIImage alloc] initWithContentsOfFile:image_path];
 			if (image) {
 				btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+				[btn.imageView setContentMode:UIViewContentModeScaleAspectFit];
+				[btn setShowsTouchWhenHighlighted:YES];
 				[btn setFrame:CGRectMake(0, 0, 146, 205)];
 				[btn setTitle:nil forState:UIControlStateNormal];
 				[btn setTag:i];

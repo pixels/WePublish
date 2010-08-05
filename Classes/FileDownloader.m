@@ -10,19 +10,6 @@
 #import "Util.h"
 #import "Define.h"
 
-@implementation NSURLRequest(NSHTTPURLRequest)
-+ (BOOL)allowsAnyHTTPSCertificateForHost:(NSString *)host {
-	return YES; // Or whatever logic
-}
-
-- (NSInputStream *)HTTPBodyStream { return nil; }
-- (NSData *)HTTPBody { return nil; }
-- (NSString *)valueForHTTPHeaderField:(NSString *)field { return nil; }
-- (NSDictionary *)allHTTPHeaderFields { return nil; }
-- (NSString *)HTTPMethod { return nil; }
-- (BOOL)HTTPShouldHandleCookies { return YES; }
-@end
-
 @implementation FileDownloader
 @synthesize uuid = _uuid;
 @synthesize path = _path;
@@ -87,7 +74,7 @@
 		[connection cancel];
 	}
 	else {
-		NSURLCredential *credential = [NSURLCredential credentialWithUser:@"wp" password:@"7001" persistence:NSURLCredentialPersistenceNone];
+		NSURLCredential *credential = [NSURLCredential credentialWithUser:AUTH_USERNAME password:AUTH_PASSWORD persistence:NSURLCredentialPersistenceNone];
 		[[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
 	}
 	

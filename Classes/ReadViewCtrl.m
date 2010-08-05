@@ -25,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	_readViewACtrl = nil;
+	_readViewBCtrl = nil;
 	_windowMode = MODE_NONE;
 	[_slider addTarget:self action:@selector(onUpdateSlider:) forControlEvents:UIControlEventValueChanged];
 	_slider.minimumValue = 1;
@@ -68,6 +70,13 @@
 		maxPage = _pageNum;
 	}
 	
+	if (_readViewACtrl && _readViewACtrl.currentPage > 0) {
+		_selectPage = _readViewACtrl.currentPage;
+	}
+	else if (_readViewBCtrl && _readViewBCtrl.currentPage > 0) {
+		_selectPage = _readViewBCtrl.currentPage;
+	}
+	
 	[self.view insertSubview:ctrl.view atIndex:0];
 	[ctrl.view setAlpha:0];
 	[ctrl setup:_uuid selectPage:_selectPage pageNum:maxPage direction:_direction];
@@ -84,6 +93,7 @@
 		{
 			[_readViewACtrl.view removeFromSuperview];
 			[_readViewACtrl release];
+			_readViewACtrl = nil;
 		}
 	}
 	else {
@@ -91,6 +101,7 @@
 		{
 			[_readViewBCtrl.view removeFromSuperview];
 			[_readViewBCtrl release];
+			_readViewBCtrl = nil;
 		}
 	}
 }

@@ -18,6 +18,8 @@
 	float _scrollOffsetX;
 }
 
+@property (assign) NSInteger currentPage;
+
 - (BOOL)isNext;
 - (void)next;
 - (BOOL)isPrev;

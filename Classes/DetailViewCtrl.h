@@ -11,14 +11,18 @@
 
 @interface DetailViewCtrl : UIViewController {
 	UIImageView *_frontImage;
-	UILabel *_titleText;
-	UILabel *_authorText;
+//	UILabel *_titleText;
+//	UILabel *_authorText;
+	UITextView *_titleText;
+	UITextView *_authorText;
 	UITextView *_reviewView;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *frontImage;
-@property (nonatomic, retain) IBOutlet UILabel *titleText;
-@property (nonatomic, retain) IBOutlet UILabel *authorText;
+//@property (nonatomic, retain) IBOutlet UILabel *titleText;
+//@property (nonatomic, retain) IBOutlet UILabel *authorText;
+@property (nonatomic, retain) IBOutlet UITextView *titleText;
+@property (nonatomic, retain) IBOutlet UITextView *authorText;
 @property (nonatomic, retain) IBOutlet UITextView *reviewView;
 
 - (IBAction)clickBack:(UIButton*)sender;

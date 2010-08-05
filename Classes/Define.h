@@ -19,8 +19,8 @@
 
 // URL
 #define TOP_URL @"http://wepublish.jp/"
-#define UPDATE_URL @"http://wepublish.jp/mypage/login_check.php"
-#define NEW_ACCOUNT_URL @"http://wepublish.jp/entry/kiyaku.php"
+#define UPDATE_URL @"https://wepublish.jp/mypage/login_check.php"
+#define NEW_ACCOUNT_URL @"https://wepublish.jp/"
 
 // Event
 #define APP_FINISH_EVENT @"app_finish_event"
@@ -44,15 +44,17 @@
 
 // Auth
 #define UPDATE_RETRY_COUNT 2
+#define AUTH_USERNAME @"wpauth"
+#define AUTH_PASSWORD @"ka08tbj3hZfa"
 
 // Message
 #define WARNING_TITLE @"警告"
 #define BOOKMARK_MESSAGE @"続きから読みますか？"
-#define TRASH_WARNING_MESSAGE @"iPadに保存されたアカウントと本を削除します。\nアカウントを再設定後、本を再ダウンロードします。\nよろしいですか？"
+#define TRASH_WARNING_MESSAGE @"iPadに保存されたアカウントと本を削除します。アカウントを再設定後、本を再ダウンロードします。\nよろしいですか？"
 #define RELOAD_DATA_WARNING_MESSAGE @"データを再取得しますか？"
-#define AUTHENTICATION_ERROR_MESSAGE @"認証に失敗しました"
-#define NETWORK_ERROR_MESSAGE @"ネットワークに接続されていません"
-#define NETWORK_ERROR_LOGO_MESSAGE @"情報が取得できません\nアプリケーションを終了して下さい"
+#define AUTHENTICATION_ERROR_MESSAGE @"認証に失敗しました。"
+#define NETWORK_ERROR_MESSAGE @"ネットワークに接続されていません。"
+#define NETWORK_ERROR_LOGO_MESSAGE @"情報が取得できません\nアプリケーションを終了して下さい。"
 
 #define XML_DIRECTORY @"xml"
 #define BOOK_DIRECTORY @"xml/book"

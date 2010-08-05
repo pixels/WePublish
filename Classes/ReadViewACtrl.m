@@ -175,6 +175,7 @@
 			if (image)
 			{
 				UIImageViewWithTouch *imageView = [[UIImageViewWithTouch alloc] initWithImage:image];
+				[imageView setContentMode:UIViewContentModeScaleAspectFit];
 				[imageView setUserInteractionEnabled:YES];
 				[imageView setTag:selectPageWithOffset];
 				[imageView setFrame:CGRectMake(WINDOW_AW * pagePosition, 0, WINDOW_AW, WINDOW_AH)];
