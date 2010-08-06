@@ -589,6 +589,7 @@
 		}
 		else {
 			// ここはDLしたいinfoを追加
+			NSLog(@"dl request name: %@", info.title);
 			[_tmpDlDic setValue:info forKey:info.uuid];
 		}
 		[bookDir release];

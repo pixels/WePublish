@@ -58,7 +58,7 @@ categoryword:(NSString *)categoryword
 	[_books addObject:bi];
 	[_booksDic setObject:bi forKey:bi.uuid];
 	
-	NSLog(@"BookCollection.m add info key: %@", bi.uuid);
+//	NSLog(@"BookCollection.m add info key: %@", bi.uuid);
 	[bi release];
 }
 
@@ -81,7 +81,7 @@ categoryword:(NSString *)categoryword
 	[_books addObject:bi];
 	[_booksDic setObject:bi forKey:bi.uuid];
 	
-	NSLog(@"BookCollection.m add info key: %@", bi.uuid);
+//	NSLog(@"BookCollection.m add info key: %@", bi.uuid);
 	[bi release];
 }
 

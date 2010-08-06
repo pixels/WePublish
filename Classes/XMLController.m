@@ -125,7 +125,7 @@
 
 - (void)checkVersion {
 	NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-	[inputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ssZZZZ"];
+	[inputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
 	BookInfo *info;
 	BookInfo *savedInfo;
 	NSDate* date;
@@ -137,21 +137,18 @@
 		savedInfo = [_savedBookCollection getByKey:info.uuid];
 		
 		date = [inputFormatter dateFromString:info.download];
-		savedDate = [inputFormatter dateFromString:info.download];
-		
-		switch ([date compare:savedDate]){
-			case NSOrderedAscending:
-				NSLog(@"NSOrderedAscending");
-				break;
-			case NSOrderedSame:
-				NSLog(@"NSOrderedSame");
-				break;
-			case NSOrderedDescending:
-				NSLog(@"NSOrderedDescending");
-				break;
-		}
+		savedDate = [inputFormatter dateFromString:savedInfo.download];
 		
 		info.oldVersion = NO;
+		switch ([date compare:savedDate]){
+			case NSOrderedAscending: // 日付がsavedDateに比べて早い
+				break;
+			case NSOrderedSame: // 同じ
+				break;
+			case NSOrderedDescending: // 日付がsavedDateに比べて遅い
+				info.oldVersion = YES;
+				break;
+		}
 	}
 }
 
@@ -324,6 +321,20 @@
 //	NSLog(@"parser didEndElement: %@ namespaceURI: %@ qName: %@", elementName, namespaceURI, qName);
 	
 	if ([elementName isEqualToString:@"book"]) {
+//		NSLog(@"didEndElement _savedXMLLoad: %d, uuid: %@ download: %@ url: %@ md5: %@ category: %@ title: %@ author: %@ length: %d direction: %d review: %@",
+//			  _savedXMLLoad,
+//			  _currentBookInfo.uuid,
+//			  _currentBookInfo.download,
+//			  _currentBookInfo.url,
+//			  _currentBookInfo.md5,
+//			  _currentBookInfo.category,
+//			  _currentBookInfo.title,
+//			  _currentBookInfo.author,
+//			  _currentBookInfo.length,
+//			  _currentBookInfo.direction,
+//			  _currentBookInfo.review
+//			  );
+		
 		if (_savedXMLLoad) {
 			[_savedBookCollection addByInfo:_currentBookInfo];
 		}
@@ -341,7 +352,7 @@
 			[notificationCenter postNotificationName:PARSE_END_EVENT object:_bookCollection userInfo:nil];
 		}
 		else if (_savedData) {
-			[self parse:_data savedXMLLoad:YES];
+			[self parse:_savedData savedXMLLoad:YES];
 		}
 	}
 	
