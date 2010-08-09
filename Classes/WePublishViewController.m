@@ -274,6 +274,18 @@
 
 }
 
+- (void)releaseBackground:(NSInteger)windowModeType {
+	NSMutableArray *targetList = (windowModeType = MODE_A) ? _aBgList : _bBgList;
+	
+	if (targetList) {
+		for (UIImageView *v in targetList) {
+			v.image = nil;
+			[v removeFromSuperview];
+		}
+		[targetList removeAllObjects];
+	}
+}
+
 - (void)releaseBooks:(BOOL)scrollHidden {
 	for (UIButton *button in _buttons) {
 		button.imageView.image = nil;
@@ -307,6 +319,10 @@
 		frame = imageView.frame;
 		
 		if (_windowMode == MODE_A) {
+			if ([_aBgList count] > i) {
+				continue;
+			}
+			
 			[_aBgList addObject:imageView];
 			path = [[NSBundle mainBundle] pathForResource:@"bk_a" ofType:@"png"];
 			frame.size.width = WINDOW_AW;
@@ -314,6 +330,10 @@
 			frame.origin.x = WINDOW_AW * i;
 		}
 		else {
+			if ([_bBgList count] > i) {
+				continue;
+			}
+			
 			[_bBgList addObject:imageView];
 			path = [[NSBundle mainBundle] pathForResource:@"bk_b" ofType:@"png"];
 			frame.size.width = WINDOW_BW;
@@ -494,7 +514,7 @@
 	if (requireMode != _windowMode)
 	{
 		_windowMode = requireMode;
-		[self changeOrientation:YES];
+		[self changeOrientation:NO];
 		
 		if (_readViewCtrl != nil)
 			[_readViewCtrl shouldAutorotateToInterfaceOrientation:interfaceOrientation];
@@ -519,18 +539,10 @@
 	
 	else if ([animationID isEqualToString:CHANGE_ORIENTATION_ANIM_ID]) {
 		if (_windowMode == MODE_A) {
-			for (UIImageView *v in _bBgList) {
-				v.image = nil;
-				[v removeFromSuperview];
-			}
-			[_bBgList removeAllObjects];
+			[self releaseBackground:MODE_B];
 		}
 		else {
-			for (UIImageView *v in _aBgList) {
-				v.image = nil;
-				[v removeFromSuperview];
-			}
-			[_aBgList removeAllObjects];
+			[self releaseBackground:MODE_A];
 		}
 		
 		[self setBooks:YES];
@@ -761,6 +773,7 @@
 	
 	[self setMenuBarItems:NO list:YES trash:YES buy:YES];
 	[self releaseListView];
+	[self releaseBackground:_windowMode];
 	[self releaseBooks:YES];
 	
 	
@@ -800,6 +813,7 @@
 
 // 一覧ボタンが選択された時
 - (IBAction)onMenuListClick:(id)sender {
+	[self releaseBackground:_windowMode];
 	[self releaseBooks:YES];
 	
 	ListViewCtrl *ctrl;
@@ -817,6 +831,7 @@
 // 購入ボタンが選択されたとき
 - (IBAction)onMenuBuyClick:(id)sender {
 	if (USE_WEBKIT) {
+		[self releaseBackground:_windowMode];
 		[self releaseBooks:YES];
 		
 		BuyViewCtrl *ctrl;

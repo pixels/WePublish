@@ -62,6 +62,7 @@
 - (void)updateXMLFinish;
 - (void)setBooks:(BOOL)animation;
 - (void)reloadBooks;
+- (void)releaseBackground:(NSInteger)windowModeType;
 - (void)releaseBooks:(BOOL)scrollHidden;
 - (void)setMenuBarItems:(BOOL)book list:(BOOL)list trash:(BOOL)trash buy:(BOOL)buy;
 - (void)showDetail:(NSInteger)bookIndex;
