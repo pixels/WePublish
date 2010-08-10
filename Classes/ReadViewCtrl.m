@@ -36,6 +36,7 @@
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 	[notificationCenter addObserver:self selector:@selector(onTouchImage:) name:@"imageTouchEvent" object:nil];
 	[notificationCenter addObserver:self selector:@selector(onBookmarkSaveSelect:) name:BOOKMARK_SAVE_EVENT object:nil];
+	[notificationCenter addObserver:self selector:@selector(onPageChangeSelect:) name:PAGE_CHANGE_EVENT object:nil];
 }
 
 - (void)setup:(NSString *)uuid selectPage:(NSUInteger)selectPage pageNum:(NSInteger)pageNum fakePage:(NSInteger)fakePage direction:(NSInteger)direction {
@@ -156,8 +157,8 @@
 - (void)onUpdateSlider:(UISlider *)aSlider {
 	int number = floor(_slider.value);
 	
-	if (_direction == DIRECTION_LEFT)
-		number = _pageNum - number + 1;
+//	if (_direction == DIRECTION_LEFT)
+//		number = _pageNum - number + 1;
 	
 	if (_windowMode == MODE_A) {
 		[_readViewACtrl requestPage:number];
@@ -246,6 +247,15 @@
 			[self pageNext];
 		}
 	}	
+}
+
+- (void)onPageChangeSelect:(NSNotification *)notification {
+	NSNumber *pageNumber = (NSNumber *)[notification object];
+	
+	float rate = [pageNumber floatValue] / _pageNum;
+	_slider.value = _slider.maximumValue * rate;
+	
+	NSLog(@"value: %f rate: %f %d", _slider.value, rate, _pageNum);
 }
 
 - (void)onBookmarkSaveSelect:(NSNotification *)notification {

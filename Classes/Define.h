@@ -31,6 +31,7 @@
 #define PARSE_END_EVENT @"parse_end_event"               // XML解析完了
 #define DLBOOK_SUCCESS_EVENT @"dlbook_success_event"     // DL成功
 #define DLBOOK_ERROR_EVENT @"dlbook_error_event"         // DL失敗
+#define PAGE_CHANGE_EVENT @"page_change_event"           // ページの切り替わり
 #define BOOKMARK_SAVE_EVENT @"bookmark_save_event"       // しおり保存
 #define READ_TO_SELECT_EVENT @"read_to_select_event"     // 読む画面から選択画面へ
 #define LIST_TO_DETAIL_EVENT @"list_to_detail_event"     // 詳細画面から選択画面へ

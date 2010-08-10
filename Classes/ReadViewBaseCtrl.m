@@ -38,6 +38,10 @@
 	} else if (_currentPage < 1) {
 		_currentPage = 1;
 	}
+	
+//	NSLog(@"setPage selectPage: %d", selectPage);
+	NSNumber *pageNumber = [NSNumber numberWithInt:selectPage];
+	[[NSNotificationCenter defaultCenter] postNotificationName:PAGE_CHANGE_EVENT object:pageNumber userInfo:nil];
 }
 
 - (BOOL)isNext { return YES; }
