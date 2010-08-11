@@ -216,15 +216,15 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 //	// Debug
-//	NSString* str;
-//	str = [[NSString alloc] initWithData:_data encoding:NSASCIIStringEncoding];
+	NSString* str;
+	str = [[NSString alloc] initWithData:_data encoding:NSASCIIStringEncoding];
 //	NSLog(@"Connection connectionDidFinishLoading byte len: %d data: %@", [_data length], str);
 //	[str release];
 		
 	[connection release];
 	
 	// 認証がうまくいった場合
-	if ([_data length] > 0) {
+	if ([_data length] > 0 && ([str compare:@"NG"] != NSOrderedSame)) {
 		_updateRetryCount = 0;
 		[self saveXML];
 		[self parse:_data savedXMLLoad:NO];
