@@ -18,8 +18,8 @@
 
 @implementation ReadViewCtrl
 @synthesize slider = _slider;
-@synthesize lButton = _lButton;
-@synthesize rButton = _rButton;
+@synthesize startLabel = startLabel_;
+@synthesize endLabel = endLabel_;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -191,23 +191,24 @@
 	if ([animationID isEqualToString:CHANGE_ORIENTATION_ANIM_ID]) {
 		CGRect frame;
 		if (_windowMode == MODE_A) {
-			[_lButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 20 : 408, 844, 340, 140)];
-			[_rButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 408 : 20, 844, 340, 140)];
 			frame = _slider.frame;
-//			frame.origin.x = WINDOW_AW - frame.size.width - 20;
 			frame.origin.y = 30;
 			_slider.frame = frame;
 			
 			[self cleanupCurrentView:MODE_B];
 		} else {
-			[_lButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 20 : 664, 588, 340, 140)];
-			[_rButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 664 : 20, 588, 340, 140)];
 			frame = _slider.frame;
-//			frame.origin.x = WINDOW_BW - frame.size.width - 20;
 			frame.origin.y = 30;
 			_slider.frame = frame;
 			
 			[self cleanupCurrentView:MODE_A];
+		}
+		
+		endLabel_.text = (_direction == DIRECTION_LEFT) ? @"始め" : @"終わり";
+		startLabel_.text = (_direction == DIRECTION_LEFT) ? @"終わり" : @"始め";
+		if (_direction == DIRECTION_LEFT) {
+			CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI * 180 / 180.0f);
+			_slider.transform = trans;
 		}
 	}
 }
@@ -287,8 +288,8 @@
 	}
 
 	[self.slider release];
-	[self.lButton release];
-	[self.rButton release];
+	[self.startLabel release];
+	[self.endLabel release];
 	[_uuid release];
     [super dealloc];
 }
