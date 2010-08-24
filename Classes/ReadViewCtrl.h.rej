@@ -1,0 +1,44 @@
+***************
+*** 13,18 ****
+  
+  @interface ReadViewCtrl : UIViewController {
+  	UISlider *_slider;
+  	NSInteger _windowMode;
+  	NSInteger _direction;
+  	NSString *_uuid;
+--- 13,20 ----
+  
+  @interface ReadViewCtrl : UIViewController {
+  	UISlider *_slider;
++ 	UILabel *startLabel_;
++ 	UILabel *endLabel_;
+  	NSInteger _windowMode;
+  	NSInteger _direction;
+  	NSString *_uuid;
+***************
+*** 21,33 ****
+  	NSUInteger _selectPage;
+  	ReadViewACtrl *_readViewACtrl;
+  	ReadViewBCtrl *_readViewBCtrl;
+- 	UIButton *_lButton;
+- 	UIButton *_rButton;
+  }
+  
+  @property (nonatomic, retain) IBOutlet UISlider *slider;
+- @property (nonatomic, retain) IBOutlet UIButton *lButton;
+- @property (nonatomic, retain) IBOutlet UIButton *rButton;
+  
+  - (void)setup:(NSString *)uuid selectPage:(NSUInteger)selectPage pageNum:(NSInteger)pageNum fakePage:(NSInteger)fakePage direction:(NSInteger)direction;
+  - (void)initAnimation:(NSString *)animationID duration:(NSTimeInterval)duration;
+--- 23,33 ----
+  	NSUInteger _selectPage;
+  	ReadViewACtrl *_readViewACtrl;
+  	ReadViewBCtrl *_readViewBCtrl;
+  }
+  
+  @property (nonatomic, retain) IBOutlet UISlider *slider;
++ @property (nonatomic, retain) IBOutlet UILabel *startLabel;
++ @property (nonatomic, retain) IBOutlet UILabel *endLabel;
+  
+  - (void)setup:(NSString *)uuid selectPage:(NSUInteger)selectPage pageNum:(NSInteger)pageNum fakePage:(NSInteger)fakePage direction:(NSInteger)direction;
+  - (void)initAnimation:(NSString *)animationID duration:(NSTimeInterval)duration;

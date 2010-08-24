@@ -37,7 +37,6 @@
 		702E087C11F27DA2005C5C48 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 702E087411F27DA2005C5C48 /* unzip.c */; };
 		702E087D11F27DA2005C5C48 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 702E087611F27DA2005C5C48 /* zip.c */; };
 		702E087E11F27DA2005C5C48 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 702E087911F27DA2005C5C48 /* ZipArchive.mm */; };
-		702E08A811F280B8005C5C48 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 702E08A711F280B8005C5C48 /* libz.1.2.3.dylib */; };
 		702E0B4E11F33EBE005C5C48 /* LoginViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 702E0B4D11F33EBE005C5C48 /* LoginViewCtrl.m */; };
 		702E0C3A11F3C4ED005C5C48 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 702E0C3911F3C4ED005C5C48 /* LoginView.xib */; };
 		7063DD7B11E4AFC500A76A02 /* UIImageViewWithTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 7063DD7A11E4AFC500A76A02 /* UIImageViewWithTouch.m */; };
@@ -54,6 +53,11 @@
 		70DE5F1811DCF2C800E2A18B /* dummy.png in Resources */ = {isa = PBXBuildFile; fileRef = 70DE5F1711DCF2C800E2A18B /* dummy.png */; };
 		70DE5F4511E02B8100620D72 /* BookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE5F4411E02B8100620D72 /* BookInfo.m */; };
 		70DE5F4811E02D1D00620D72 /* BookCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE5F4711E02D1D00620D72 /* BookCollection.m */; };
+		97B6BCD4121EE5930040978B /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B6BCD3121EE5930040978B /* libz.1.2.3.dylib */; };
+		97B6BDF7121FB9300040978B /* UIViewWithTouchesDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6BDF6121FB9300040978B /* UIViewWithTouchesDelegate.m */; };
+		97B6BEEA121FDBC40040978B /* MyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6BEE9121FDBC40040978B /* MyScrollView.m */; };
+		97B6BF9E122008FD0040978B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B6BF9D122008FD0040978B /* QuartzCore.framework */; };
+		97B6BFA812200AAE0040978B /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B6BFA712200AAE0040978B /* Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,7 +110,6 @@
 		702E087711F27DA2005C5C48 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		702E087811F27DA2005C5C48 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		702E087911F27DA2005C5C48 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
-		702E08A711F280B8005C5C48 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		702E0B4C11F33EBE005C5C48 /* LoginViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewCtrl.h; sourceTree = "<group>"; };
 		702E0B4D11F33EBE005C5C48 /* LoginViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewCtrl.m; sourceTree = "<group>"; };
 		702E0C3911F3C4ED005C5C48 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
@@ -135,6 +138,15 @@
 		70DE5F4611E02D1D00620D72 /* BookCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCollection.h; sourceTree = "<group>"; };
 		70DE5F4711E02D1D00620D72 /* BookCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCollection.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WePublish-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WePublish-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		97B6BCD3121EE5930040978B /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		97B6BDF5121FB9300040978B /* UIViewWithTouchesDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewWithTouchesDelegate.h; sourceTree = "<group>"; };
+		97B6BDF6121FB9300040978B /* UIViewWithTouchesDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewWithTouchesDelegate.m; sourceTree = "<group>"; };
+		97B6BDF8121FB9420040978B /* TouchesDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchesDelegate.h; sourceTree = "<group>"; };
+		97B6BEE8121FDBC40040978B /* MyScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyScrollView.h; sourceTree = "<group>"; };
+		97B6BEE9121FDBC40040978B /* MyScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyScrollView.m; sourceTree = "<group>"; };
+		97B6BF9D122008FD0040978B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		97B6BFA712200AAE0040978B /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		97B6BFA912200ABE0040978B /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +157,8 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
-				702E08A811F280B8005C5C48 /* libz.1.2.3.dylib in Frameworks */,
+				97B6BCD4121EE5930040978B /* libz.1.2.3.dylib in Frameworks */,
+				97B6BF9E122008FD0040978B /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +223,8 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
-				702E08A711F280B8005C5C48 /* libz.1.2.3.dylib */,
+				97B6BCD3121EE5930040978B /* libz.1.2.3.dylib */,
+				97B6BF9D122008FD0040978B /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -315,6 +329,8 @@
 		702E088111F27DEA005C5C48 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				97B6BFA912200ABE0040978B /* Utilities.h */,
+				97B6BFA712200AAE0040978B /* Utilities.m */,
 				702E076E11F1F86C005C5C48 /* FileDownloader.h */,
 				702E076F11F1F86C005C5C48 /* FileDownloader.m */,
 				7063DD7911E4AFC500A76A02 /* UIImageViewWithTouch.h */,
@@ -323,6 +339,11 @@
 				70AA714511EB6D8D007F9257 /* XMLController.m */,
 				70AA727111ECB4B8007F9257 /* Util.h */,
 				70AA727211ECB4B8007F9257 /* Util.m */,
+				97B6BDF5121FB9300040978B /* UIViewWithTouchesDelegate.h */,
+				97B6BDF6121FB9300040978B /* UIViewWithTouchesDelegate.m */,
+				97B6BDF8121FB9420040978B /* TouchesDelegate.h */,
+				97B6BEE8121FDBC40040978B /* MyScrollView.h */,
+				97B6BEE9121FDBC40040978B /* MyScrollView.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -459,6 +480,9 @@
 				702E087D11F27DA2005C5C48 /* zip.c in Sources */,
 				702E087E11F27DA2005C5C48 /* ZipArchive.mm in Sources */,
 				702E0B4E11F33EBE005C5C48 /* LoginViewCtrl.m in Sources */,
+				97B6BDF7121FB9300040978B /* UIViewWithTouchesDelegate.m in Sources */,
+				97B6BEEA121FDBC40040978B /* MyScrollView.m in Sources */,
+				97B6BFA812200AAE0040978B /* Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,18 +516,58 @@
 			};
 			name = Release;
 		};
+		70C54CF91224461E00BFC4F4 /* DebugDevice */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yusuke Kikkawa (XQ5X274X8U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yusuke Kikkawa (XQ5X274X8U)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				LIBRARY_SEARCH_PATHS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/lib;
+				MACH_O_TYPE = mh_execute;
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "366FEE20-D7BF-4980-8330-C4BFAD1199C0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "366FEE20-D7BF-4980-8330-C4BFAD1199C0";
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = DebugDevice;
+		};
+		70C54CFA1224461E00BFC4F4 /* DebugDevice */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WePublish_Prefix.pch;
+				INFOPLIST_FILE = "WePublish-Info.plist";
+				PRODUCT_NAME = WePublish;
+			};
+			name = DebugDevice;
+		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"ARCHS[sdk=iphoneos*]" = armv7;
 				"ARCHS[sdk=iphonesimulator*]" = i386;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yusuke Kikkawa (XQ5X274X8U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yusuke Kikkawa (XQ5X274X8U)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include;
 				LIBRARY_SEARCH_PATHS = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/lib;
+				MACH_O_TYPE = mh_execute;
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "366FEE20-D7BF-4980-8330-C4BFAD1199C0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "366FEE20-D7BF-4980-8330-C4BFAD1199C0";
 				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -514,14 +578,18 @@
 			buildSettings = {
 				"ARCHS[sdk=iphoneos*]" = armv7;
 				"ARCHS[sdk=iphonesimulator*]" = i386;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Naoya Karatsu (P52ZVS6MZ8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Naoya Karatsu (P52ZVS6MZ8)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include;
 				LIBRARY_SEARCH_PATHS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/lib;
+				MACH_O_TYPE = mh_execute;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "EFC8CE86-E7EB-407E-9D5D-2B4000998459";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EFC8CE86-E7EB-407E-9D5D-2B4000998459";
 				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -534,6 +602,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
+				70C54CFA1224461E00BFC4F4 /* DebugDevice */,
 				1D6058950D05DD3E006BFB54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -543,6 +612,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
+				70C54CF91224461E00BFC4F4 /* DebugDevice */,
 				C01FCF5008A954540054247B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

@@ -1,0 +1,825 @@
+//
+//  ReadViewACtrl.m
+//  WePublish
+//
+//  Created by Yusuke Kikkawa on 10/06/27.
+//  Copyright 2010 3di. All rights reserved.
+//
+
+#import "ReadViewACtrl.h"
+#import "WindowModeType.h"
+#import "Util.h"
+#import "Define.h"
+#import "DirectionType.h"
+#import "UIImageViewWithTouch.h"
+
+@implementation ReadViewACtrl
+@synthesize scrollView = _scrollView;
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+  [super viewDidLoad];
+
+  _scrollView = [[MyScrollView alloc] init];
+  [_scrollView setMinimumZoomScale:MIN_ZOOM_SCALE];
+  [_scrollView setMaximumZoomScale:MAX_ZOOM_SCALE];
+  _scrollView.pagingEnabled = NO;
+  _scrollView.delegate = self;
+
+  _leftView = [[UIView alloc] init];
+  [_leftView setUserInteractionEnabled:NO];
+  [_scrollView addSubview:_leftView];
+
+  _rightView = [[UIView alloc] init];
+  [_rightView setUserInteractionEnabled:NO];
+  [_scrollView addSubview:_rightView];
+
+  [self.view addSubview:_scrollView];
+
+  _pageCurlView = [[UIView alloc] initWithFrame:self.view.frame];
+  //[_pageCurlView setBackgroundColor:[UIColor blueColor]];
+  [_pageCurlView setUserInteractionEnabled:NO];
+  //_pageCurlView.delegate = self;
+
+  [self initLayers:_pageCurlView];
+
+  [self.view addSubview:_pageCurlView];
+
+  _mode = page_mode_none;
+}
+
+- (void) initLayers:(UIView *)targetView {
+  targetView.clipsToBounds = YES;
+
+  curlingPageR = [[CALayer alloc] init];
+  curlingPageR.masksToBounds = YES;
+  //curlingPageR.backgroundColor = [[UIColor whiteColor] CGColor];
+
+  curlingPageRImage = [[CALayer alloc] init];
+  //curlingPageRImage.contentsGravity = kCAGravityLeft;
+  curlingPageRImage.masksToBounds = YES;
+
+  [curlingPageR addSublayer:curlingPageRImage];
+
+  curlingPageL = [[CALayer alloc] init];
+  curlingPageL.masksToBounds = YES;
+  //curlingPageL.backgroundColor = [[UIColor whiteColor] CGColor];
+
+  curlingPageLImage = [[CALayer alloc] init];
+  curlingPageLImage.masksToBounds = YES;
+  curlingPageLImage.backgroundColor = [[UIColor whiteColor] CGColor];
+
+  [curlingPageL addSublayer:curlingPageLImage];
+
+  [targetView.layer addSublayer:curlingPageR];
+
+  [targetView.layer addSublayer:curlingPageL];
+}
+
+- (void)setup:(NSString *)uuid selectPage:(NSUInteger)selectPage pageNum:(NSInteger)pageNum direction:(NSInteger)direction windowMode:(NSInteger)windowMode {
+ [super setup:uuid selectPage:selectPage pageNum:pageNum direction:direction windowMode:windowMode];
+
+ //	if (direction == DIRECTION_LEFT) {
+ //		_scrollView.contentOffset = CGPointMake(WINDOW_AW * (pageNum - 1), 0);
+ //	} else {
+ //		_scrollView.contentOffset = CGPointMake(WINDOW_AW * 0, 0);
+ //	}
+
+ NSInteger scrollPointX;
+ if (_direction == DIRECTION_LEFT) {
+   scrollPointX = _maxPage - selectPage;
+ } else {
+   scrollPointX = selectPage - 1;
+ }
+
+ //_scrollView.contentOffset = CGPointMake(_scrollView.frame.size.width * scrollPointX, 0);
+ [self setPage:selectPage windowMode:windowMode];
+}
+
+  - (BOOL)isNext {
+    if (_currentPage < _maxPage)
+      return YES;
+
+    return NO;
+  }
+
+- (void)next {
+  [super next];
+
+  NSLog(@"next");
+
+  NSInteger targetPage;
+  if ( _windowMode == MODE_A ) { //TODO
+    targetPage = _currentPage + 1;
+  } else {
+    targetPage = _currentPage + 2;
+  }
+
+  if (targetPage > _maxPage)
+    return;
+
+  NSInteger scrollPointX;
+  if (_direction == DIRECTION_LEFT) {
+    scrollPointX = _maxPage - targetPage;
+  } else {
+    scrollPointX = targetPage - 1;
+  }
+
+  [self setPage:targetPage windowMode:_windowMode];
+  //_scrollView.contentOffset = CGPointMake(0, 0);
+  [self releaseFarBooks:targetPage];
+}
+
+  - (BOOL)isPrev {
+    if (_currentPage > 1)
+      return YES;
+
+    return NO;
+  }
+
+- (void)prev {
+  [super prev];
+
+  NSLog(@"prev");
+
+  NSInteger targetPage;
+  if ( _windowMode == MODE_A ) { //TODO
+    targetPage = _currentPage - 1;
+  } else {
+    targetPage = _currentPage - 2;
+  }
+  if (targetPage < 1)
+    return;
+
+  NSInteger scrollPointX;
+  if (_direction == DIRECTION_LEFT) {
+    scrollPointX = _maxPage - targetPage;
+  } else {
+    scrollPointX = targetPage - 1;
+  }
+
+  [self setPage:targetPage windowMode:_windowMode];
+
+  //_scrollView.contentOffset = CGPointMake(0, 0);
+  [self releaseFarBooks:targetPage];
+}
+
+- (void)requestPage:(NSInteger)targetPage {
+ [super requestPage:targetPage];
+
+ if (_direction == DIRECTION_LEFT)
+   targetPage = _maxPage - targetPage;
+
+  [self setPage:targetPage windowMode:_windowMode];
+
+  [self releaseFarBooks:targetPage];
+
+ _scrollView.contentOffset = CGPointMake(0, 0);
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)sender {
+  NSLog(@"scrolling");
+  /*
+  CGFloat pageWidth = _scrollView.frame.size.width;  
+  NSInteger targetPage = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+
+  if (_direction == DIRECTION_LEFT)
+    targetPage = _maxPage - targetPage;
+  else {
+    targetPage = targetPage + 1;
+  }
+
+  [self setPage:targetPage windowMode:_windowMode];
+  */
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)sender {
+  NSLog(@"scroll view  will begin dragging");
+}
+
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)sender {
+  NSLog(@"scroll view  will begin decelerating");
+}
+
+/*
+   - (void)scrollViewDidEndDragging:(UIScrollView *)sender willDecelerate:(BOOL)decelerate{
+   CGFloat pageWidth = _scrollView.frame.size.width;  
+   NSInteger targetPage = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+   NSLog(@"end dragging");
+
+   if (_direction == DIRECTION_LEFT)
+   targetPage = _maxPage - targetPage;
+   else {
+   targetPage = targetPage + 1;
+   }
+
+   if(_currentPage != targetPage) {
+   [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width * targetPage, 0) animated:YES];
+   }
+
+   [self setPage:targetPage];
+   }
+   */
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+  NSLog(@"dec");
+
+  if (_scrollOffsetX > scrollView.contentOffset.x) {
+    if (_direction == DIRECTION_LEFT) {
+      //			NSLog(@"scrollViewDidEndScrollingAnimation Next");
+    } else {
+      //			NSLog(@"scrollViewDidEndScrollingAnimation Prev");
+    }
+  } else {
+    if (_direction == DIRECTION_LEFT) {
+      //			NSLog(@"scrollViewDidEndScrollingAnimation Prev");
+    } else {
+      //			NSLog(@"scrollViewDidEndScrollingAnimation Next");
+    }
+  }
+
+  [self setPage:_currentPage windowMode:_windowMode];
+
+  [self releaseFarBooks:_currentPage];
+}
+
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+  NSLog(@"zoom");
+  return scrollView;
+}
+
+- (void)releaseFarBooks:(NSInteger)targetPage {
+  for (NSInteger i = 1; i < _maxPage; i++) {
+    if (i < (targetPage - 2) || (targetPage + 3) < i) {
+      NSNumber *number = [NSNumber numberWithInteger:i];
+      if ([_pageList objectForKey:number]) {
+	 [super releaseBook:number removeFromList:YES];
+      }
+      if ([_imageList objectForKey:number]) {
+	 [super releaseImage:number removeFromList:YES];
+      }
+    }
+  }
+}
+
+- (void)releaseAllBooks:(NSInteger)targetPage {
+  for (NSInteger i = 1; i < _maxPage; i++) {
+    if (i < (targetPage - 2) || (targetPage + 3) < i) {
+      NSNumber *number = [NSNumber numberWithInteger:i];
+      if ([_pageList objectForKey:number]) {
+	 [super releaseBook:number removeFromList:YES];
+      }
+      if ([_imageList objectForKey:number]) {
+	 [super releaseImage:number removeFromList:YES];
+      }
+    }
+  }
+}
+- (void)setPage:(NSInteger)selectPage windowMode:(NSInteger)windowMode {
+  if (windowMode != _windowMode) {
+    _windowMode = windowMode;
+    if (_windowMode == MODE_A) {
+      _scrollView.frame = CGRectMake(0, 0, WINDOW_AW, WINDOW_AH);
+      _scrollView.contentSize = CGSizeMake(WINDOW_AW, WINDOW_AH);
+      [_rightView setFrame:CGRectMake(0, 0, WINDOW_AW, WINDOW_AH)];
+      [_leftView setFrame:CGRectMake(WINDOW_AW, 0, WINDOW_AW, WINDOW_AH)]; //TODO
+
+      [_pageCurlView setFrame:CGRectMake(0, 0, WINDOW_AW, WINDOW_AH)];
+    } else {
+      _scrollView.frame = CGRectMake(0, 0, WINDOW_BW, WINDOW_BH);
+      _scrollView.contentSize = CGSizeMake(WINDOW_BW, WINDOW_BH);
+      [_rightView setFrame:CGRectMake(WINDOW_BW / 2, 0, WINDOW_BW / 2, WINDOW_BH)];
+      [_leftView setFrame:CGRectMake(0, 0, WINDOW_BW / 2, WINDOW_BH)];
+
+      [_pageCurlView setFrame:CGRectMake(0, 0, WINDOW_BW, WINDOW_BH)];
+    }
+  } else {
+    if (selectPage == _currentPage)
+      return;
+  }
+
+  [super setPage:selectPage windowMode:_windowMode];
+
+  NSLog(@"selected page : %d", selectPage);
+  if (_windowMode == MODE_A) {
+    [self setPageForSingleFace:selectPage];
+  } else {
+    [self setPageForDoubleFace:selectPage];
+  }
+}
+
+- (void)setPageForSingleFace:(NSInteger)selectPage {
+	NSLog(@"set page for single face: %d", selectPage);
+
+	NSInteger selectPageWithOffset;
+	for (NSInteger i = 0; i < 3; i++) {
+	  selectPageWithOffset = selectPage + (i - 1);
+	  NSInteger pagePosition = selectPageWithOffset;
+	  if (_direction == DIRECTION_LEFT)
+	    pagePosition = _maxPage - pagePosition;
+	  else {
+	    pagePosition = pagePosition - 1;
+	  }
+
+	  NSNumber *number = [NSNumber numberWithInteger:selectPageWithOffset];
+	  if ([_pageList objectForKey:number]) {
+	      NSLog(@"there exists %d", selectPageWithOffset);
+		  UIImageViewWithTouch *imageView = [_pageList objectForKey:number];
+		  //			NSLog(@"already exist page: %d", selectPageWithOffset);
+		  [imageView setFrame:CGRectMake(0, 0, WINDOW_AW, WINDOW_AH)];
+		  if (selectPageWithOffset == _currentPage) {
+		    [self removeAllSubviewsFrom:_rightView];
+		    [_rightView addSubview:imageView];
+		  }
+	  } else {
+	    NSString *documentDir = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], BOOK_DIRECTORY, _uuid];
+	    NSString *image_path = [Util makeBookPathFormat:documentDir pageNo:selectPageWithOffset extension:BOOK_EXTENSION];
+	    UIImage *image = [[UIImage alloc] initWithContentsOfFile:image_path];
+	    if (image)
+	    {
+	      NSLog(@"image load success %d", selectPageWithOffset);
+	      UIImageViewWithTouch *imageView = [[UIImageViewWithTouch alloc] initWithImage:image];
+	      [imageView setContentMode:UIViewContentModeScaleAspectFit];
+	      [imageView setUserInteractionEnabled:NO];
+	      [imageView setTag:selectPageWithOffset];
+	      [imageView setFrame:CGRectMake(0, 0, WINDOW_AW, WINDOW_AH)];
+	      if (selectPageWithOffset == _currentPage) {
+		[self removeAllSubviewsFrom:_rightView];
+		[_rightView addSubview:imageView];
+		[imageView release];
+		[image release];
+	      }
+	      [_pageList setObject:imageView forKey:number];
+	      [_imageList setObject:[self getImageRefFromUIImage:image] forKey:number];
+
+	      //				NSLog(@"add page: %d", selectPageWithOffset);
+	    }
+	    [image_path release];
+	    [documentDir release];
+	  }
+	}
+}
+
+- (void)setPageForDoubleFace:(NSInteger)selectPage {
+	NSLog(@"set page for double face: %d", selectPage);
+
+	NSInteger selectPageWithOffset;
+	for (NSInteger i = 0; i < 6; i++) {
+	  selectPageWithOffset = selectPage + (i - 2);
+	  NSInteger pagePosition = selectPageWithOffset;
+	  if (_direction == DIRECTION_LEFT)
+	    pagePosition = _maxPage - pagePosition;
+	  else {
+	    pagePosition = pagePosition - 1;
+	  }
+
+	  NSNumber *number = [NSNumber numberWithInteger:selectPageWithOffset];
+	  if ([_pageList objectForKey:number]) {
+	      NSLog(@"there exists %d", selectPageWithOffset);
+		  UIImageViewWithTouch *imageView = [_pageList objectForKey:number];
+		  [imageView setFrame:CGRectMake(0, 0, WINDOW_BW / 2, WINDOW_BH)];
+		  if ( _direction == DIRECTION_LEFT ) {
+		    if (selectPageWithOffset == _currentPage) {
+		      [self removeAllSubviewsFrom:_rightView];
+		      [_rightView addSubview:imageView];
+		    } else if (selectPageWithOffset == _currentPage + 1) {
+		      [self removeAllSubviewsFrom:_leftView];
+		      [_leftView addSubview:imageView];
+		    }
+		  } else {
+		    if (selectPageWithOffset == _currentPage + 1) {
+		      [self removeAllSubviewsFrom:_rightView];
+		      [_rightView addSubview:imageView];
+		    } else if (selectPageWithOffset == _currentPage) {
+		      [self removeAllSubviewsFrom:_leftView];
+		      [_leftView addSubview:imageView];
+		    }
+		  }
+	  } else {
+	    NSString *documentDir = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], BOOK_DIRECTORY, _uuid];
+	    NSString *image_path = [Util makeBookPathFormat:documentDir pageNo:selectPageWithOffset extension:BOOK_EXTENSION];
+	    UIImage *image = [[UIImage alloc] initWithContentsOfFile:image_path];
+	    if (image)
+	    {
+	      NSLog(@"image load success %d", selectPageWithOffset);
+	      UIImageViewWithTouch *imageView = [[UIImageViewWithTouch alloc] initWithImage:image];
+	      [imageView setContentMode:UIViewContentModeScaleAspectFit];
+	      [imageView setUserInteractionEnabled:NO];
+	      [imageView setTag:selectPageWithOffset];
+	      [imageView setFrame:CGRectMake(0, 0, WINDOW_BW / 2, WINDOW_BH)];
+	      if ( _direction == DIRECTION_LEFT ) {
+		if (selectPageWithOffset == _currentPage) {
+		  [self removeAllSubviewsFrom:_rightView];
+		  [_rightView addSubview:imageView];
+		  [imageView release];
+		  [image release];
+		} else if (selectPageWithOffset == _currentPage + 1) {
+		  [self removeAllSubviewsFrom:_leftView];
+		  [_leftView addSubview:imageView];
+		  [imageView release];
+		  [image release];
+		}
+	      } else {
+		if (selectPageWithOffset == _currentPage) {
+		  [self removeAllSubviewsFrom:_leftView];
+		  [_leftView addSubview:imageView];
+		  [imageView release];
+		  [image release];
+		} else if (selectPageWithOffset == _currentPage + 1) {
+		  [self removeAllSubviewsFrom:_rightView];
+		  [_rightView addSubview:imageView];
+		  [imageView release];
+		  [image release];
+		}
+	      }
+	      [_pageList setObject:imageView forKey:number];
+	      [_imageList setObject:[self getImageRefFromUIImage:imageView.image] forKey:number];
+
+	      //				NSLog(@"add page: %d", selectPageWithOffset);
+	    }
+	    [image_path release];
+	    [documentDir release];
+	  }
+	}
+}
+
+
+- (void)didReceiveMemoryWarning {
+  // Releases the view if it doesn't have a superview.
+  [super didReceiveMemoryWarning];
+
+  // Release any cached data, images, etc that aren't in use.
+}
+
+- (void)viewDidUnload {
+  [super viewDidUnload];
+  // Release any retained subviews of the main view.
+  // e.g. self.myOutlet = nil;
+}
+
+- (void)dealloc {
+  [self.scrollView release];
+  [super dealloc];
+}
+
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
+  NSLog(@"touch! %d", [touches count]);
+  NSLog(@"zoom %f", _scrollView.zoomScale);
+
+  touchStartPoint = [[touches anyObject] locationInView:self.view];
+  if ( [touches count] == 1 && _scrollView.zoomScale == 1.0f) {
+    if ( _mode == page_mode_none ) {
+      _mode = page_mode_curl_start;
+    }
+
+    [_scrollView setScrollEnabled:NO];
+    [_scrollView setCanCancelContentTouches:NO];
+  }
+}
+
+- (void)touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event {
+  CGPoint point;
+  point = [[touches anyObject] locationInView:self.view];
+  float delta_x = point.x - touchStartPoint.x;
+  float base_width;
+  NSLog(@"location %f", delta_x);
+  if ( _mode == page_mode_curl_start ) {
+    if ( delta_x >= 0) {
+      [self beganToCurlLeft];
+      _mode = page_mode_curl_left;
+    } else {
+      [self beganToCurlRight];
+      _mode = page_mode_curl_right;
+    }
+  } else if ( _mode == page_mode_curl_right ) {
+    if ( delta_x >= 0) {
+      [self beganToCurlLeft];
+      _mode = page_mode_curl_left;
+    } else {
+      [self curlPageToRight:((-1.0f * delta_x) / WINDOW_BW)];
+    }
+  } else if ( _mode == page_mode_curl_left ) {
+    if ( delta_x < 0) {
+      [self beganToCurlRight];
+      _mode = page_mode_curl_right;
+    } else {
+      [self curlPageToLeft:(delta_x / WINDOW_BW)];
+    }
+  }
+}
+
+- (void) beganToCurlLeft {
+  [CATransaction begin];
+  [CATransaction setValue:(id)kCFBooleanTrue
+		   forKey:kCATransactionDisableActions];
+    [self initCurlPageToLeft];
+  [CATransaction commit];
+
+  if ( _windowMode == MODE_A) {
+    [self removeAllSubviewsFrom:_rightView];
+    if ( _direction == DIRECTION_LEFT ) {
+      [_rightView addSubview:[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage+1]]];
+    } else {
+      [_rightView addSubview:[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage-1]]];
+    }
+  } else {
+    if ( _direction == DIRECTION_LEFT ) {
+      NSLog(@"commit");
+      [self removeAllSubviewsFrom:_leftView];
+      [_leftView addSubview:[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage+3]]];
+    } else {
+      NSLog(@"commit");
+      [self removeAllSubviewsFrom:_leftView];
+      [_leftView addSubview:[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage-2]]];
+    }
+  }
+}
+
+- (void) beganToCurlRight {
+  [CATransaction begin];
+  [CATransaction setValue:(id)kCFBooleanTrue
+		   forKey:kCATransactionDisableActions];
+    [self initCurlPageToRight];
+  [CATransaction commit];
+
+  if ( _windowMode == MODE_A) {
+    [self removeAllSubviewsFrom:_rightView];
+    if ( _direction == DIRECTION_LEFT ) {
+      [_rightView addSubview:[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage-1]]];
+    } else {
+      [_rightView addSubview:[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage+1]]];
+    }
+  } else {
+    if ( _direction == DIRECTION_LEFT ) {
+      [self removeAllSubviewsFrom:_rightView];
+      [_rightView addSubview:[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage-2]]];
+    } else {
+      [self removeAllSubviewsFrom:_rightView];
+      [_rightView addSubview:[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage+3]]];
+    }
+  }
+}
+
+- (void) initCurlPageToLeft {
+  NSLog(@"init curl page to left");
+
+  if ( _windowMode == MODE_A ) {
+    curlingPageR.opacity = 1.0f;
+    curlingPageRImage.opacity = 1.0f;
+    curlingPageRImage.transform = CATransform3DMakeScale(-1, 1, 1);
+    curlingPageRImage.contents = [_imageList objectForKey:[NSNumber numberWithInteger:_currentPage]];
+    curlingPageRImage.frame = [self getAspectFittingImageRect:[[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage]] image]];
+
+    [curlingPageL removeFromSuperlayer];
+    [_pageCurlView.layer addSublayer:curlingPageL];
+  } else {
+    curlingPageR.opacity = 1.0f;
+    curlingPageRImage.opacity = 1.0f;
+    curlingPageRImage.transform = CATransform3DMakeScale(1, 1, 1);
+    if ( _direction == DIRECTION_LEFT ) {
+      curlingPageRImage.contents = [_imageList objectForKey:[NSNumber numberWithInteger:_currentPage]];
+    } else {
+      curlingPageRImage.contents = [_imageList objectForKey:[NSNumber numberWithInteger:_currentPage]];
+    }
+    curlingPageRImage.frame = [self getAspectFittingImageRect:[[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage]] image]];
+
+    curlingPageL.opacity = 1.0f;
+    curlingPageLImage.opacity = 1.0f;
+    curlingPageLImage.transform = CATransform3DMakeScale(1, 1, 1);
+    if ( _direction == DIRECTION_LEFT ) {
+      curlingPageLImage.contents = [_imageList objectForKey:[NSNumber numberWithInteger:_currentPage - 1]];
+    } else {
+      curlingPageLImage.contents = [_imageList objectForKey:[NSNumber numberWithInteger:_currentPage - 1]];
+    }
+    curlingPageLImage.frame = [self getAspectFittingImageRect:[[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage - 1]] image]];
+
+    [curlingPageL removeFromSuperlayer];
+    [_pageCurlView.layer addSublayer:curlingPageL];
+  }
+
+  [self curlPageToLeft:0];
+}
+
+- (void) initCurlPageToRight {
+  if ( _windowMode == MODE_A ) {
+    curlingPageR.opacity = 1.0f;
+    curlingPageRImage.opacity = 1.0f;
+    curlingPageRImage.transform = CATransform3DMakeScale(-1, 1, 1);
+    curlingPageRImage.contents = [_imageList objectForKey:[NSNumber numberWithInteger:_currentPage]];
+    curlingPageRImage.frame = [self getAspectFittingImageRect:[[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage]] image]];
+
+    [curlingPageR removeFromSuperlayer];
+    [_pageCurlView.layer addSublayer:curlingPageR];
+  } else {
+    curlingPageR.opacity = 1.0f;
+    curlingPageRImage.opacity = 1.0f;
+    curlingPageRImage.transform = CATransform3DMakeScale(1, 1, 1);
+    if ( _direction == DIRECTION_LEFT ) {
+      curlingPageRImage.contents = [_imageList objectForKey:[NSNumber numberWithInteger:_currentPage + 2]];
+    } else {
+      curlingPageRImage.contents = [_imageList objectForKey:[NSNumber numberWithInteger:_currentPage + 2]];
+    }
+    curlingPageRImage.frame = [self getAspectFittingImageRect:[[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage]] image]];
+
+    curlingPageL.opacity = 1.0f;
+    curlingPageLImage.opacity = 1.0f;
+    curlingPageLImage.transform = CATransform3DMakeScale(1, 1, 1);
+    if ( _direction == DIRECTION_LEFT ) {
+      curlingPageLImage.contents = [_imageList objectForKey:[NSNumber numberWithInteger:_currentPage + 1]];
+    } else {
+      curlingPageLImage.contents = [_imageList objectForKey:[NSNumber numberWithInteger:_currentPage + 1]];
+    }
+    curlingPageLImage.frame = [self getAspectFittingImageRect:[[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage]] image]];
+
+    [curlingPageR removeFromSuperlayer];
+    [_pageCurlView.layer addSublayer:curlingPageR];
+  }
+
+  [self curlPageToRight:0];
+}
+
+- (void) curlPageToLeft:(float)curlRatio {
+  NSLog(@"curlPageToLeft : %f", curlRatio);
+  if ( _windowMode == MODE_A ) {
+    curlingPageR.frame = CGRectMake(0, 0, 
+      (WINDOW_BW / 2), WINDOW_BH);
+
+  curlingPageRImage.transform = CATransform3DMakeScale(1, 1, 1);
+  curlingPageRImage.frame = CGRectMake(0, 0, 
+    WINDOW_BW / 2, WINDOW_BH);
+  } else {
+    curlingPageR.frame = CGRectMake((WINDOW_BW / 2 ) * curlRatio, 0, 
+      MAX((WINDOW_BW / 2) - (WINDOW_BW / 2 ) * curlRatio, 0), WINDOW_BH);
+    curlingPageRImage.frame = CGRectMake(-1.0f * (WINDOW_BW / 2) * curlRatio, curlingPageRImage.frame.origin.y,
+      curlingPageRImage.frame.size.width, curlingPageRImage.frame.size.height);
+
+    curlingPageL.frame = CGRectMake((WINDOW_BW / 2) * curlRatio, 0, 
+      (WINDOW_BW / 2) * curlRatio, WINDOW_BH);
+    curlingPageLImage.frame = CGRectMake(-1.0f * ((WINDOW_BW / 2) - ((WINDOW_BW / 2) * curlRatio)), curlingPageLImage.frame.origin.y,
+      curlingPageLImage.frame.size.width, curlingPageLImage.frame.size.height);
+  }
+}
+
+- (void) curlPageToRight:(float)curlRatio {
+  NSLog(@"curlPageToRight");
+  if ( _windowMode == MODE_A ) {
+    curlingPageR.frame = CGRectMake(0, 0, 
+      (WINDOW_BW / 2), WINDOW_BH);
+    curlingPageRImage.opacity = 1.0f;
+    curlingPageRImage.transform = CATransform3DMakeScale(1, 1, 1);
+    curlingPageRImage.frame = CGRectMake(0, 0, 
+      WINDOW_BW / 2, WINDOW_BH);
+  } else {
+    curlingPageL.frame = CGRectMake(WINDOW_BW / 2 , 0, 
+      MAX((WINDOW_BW / 2) - (WINDOW_BW / 2 ) * curlRatio, 0), WINDOW_BH);
+    curlingPageLImage.frame = CGRectMake(0, curlingPageLImage.frame.origin.y,
+      curlingPageLImage.frame.size.width, curlingPageLImage.frame.size.height);
+
+    curlingPageR.frame = CGRectMake(WINDOW_BW - 2 * (WINDOW_BW / 2) * curlRatio, 0, 
+      (WINDOW_BW / 2) * curlRatio, WINDOW_BH);
+    curlingPageRImage.frame = CGRectMake(0, curlingPageRImage.frame.origin.y,
+      curlingPageRImage.frame.size.width, curlingPageRImage.frame.size.height);
+  }
+}
+
+- (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
+  UITouch *touch = [touches anyObject];
+  NSInteger tapCount = [touch tapCount];
+  CGPoint point = [touch locationInView:self.view];
+
+  float delta_x = point.x - touchStartPoint.x;
+
+  NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+
+  if ( _mode == page_mode_curl_start ) {
+    if ( point.x < self.view.frame.size.width / 2 ) {
+      [notificationCenter postNotificationName:@"leftPageTouchEvent" object:nil userInfo:nil];
+    } else {
+      [notificationCenter postNotificationName:@"rightPageTouchEvent" object:nil userInfo:nil];
+    }
+  } else {
+    if ( _mode == page_mode_curl_right ) {
+      [CATransaction begin];
+      [CATransaction setValue:[NSNumber numberWithFloat:0.5]
+		       forKey:kCATransactionAnimationDuration];
+	[self curlPageToRight:0];
+      [CATransaction commit];
+    } else if ( _mode == page_mode_curl_left ) {
+      [CATransaction begin];
+      [CATransaction setValue:[NSNumber numberWithFloat:0.5]
+		       forKey:kCATransactionAnimationDuration];
+	[self curlPageToLeft:0];
+      [CATransaction commit];
+    }
+    [self performSelector:@selector(endToCurl)
+	       withObject:nil 
+	       afterDelay:0.5];
+  }
+
+  [self performSelector:@selector(setModeToNone)
+	     withObject:nil 
+	     afterDelay:0.51];
+  [_scrollView setScrollEnabled:YES];
+  [_scrollView setCanCancelContentTouches:YES];
+}
+
+-(void) setModeToNone {
+  _mode = page_mode_none;
+}
+
+- (void) endToCurl {
+  NSLog(@"end to curl");
+  if ( _windowMode == MODE_A) {
+    [self removeAllSubviewsFrom:_rightView];
+    [_rightView addSubview:[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage]]];
+  } else {
+    if ( _mode == page_mode_curl_right ) {
+    NSLog(@"end to curl right");
+      if ( _direction == DIRECTION_LEFT ) {
+	[self removeAllSubviewsFrom:_rightView];
+	[_rightView addSubview:[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage]]];
+      } else {
+	[self removeAllSubviewsFrom:_rightView];
+	[_rightView addSubview:[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage+1]]];
+      }
+    } else {
+    NSLog(@"end to curl left");
+      if ( _direction == DIRECTION_LEFT ) {
+	[self removeAllSubviewsFrom:_leftView];
+	[_leftView addSubview:[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage+1]]];
+      } else {
+	[self removeAllSubviewsFrom:_leftView];
+	[_leftView addSubview:[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage]]];
+      }
+    }
+  }
+
+  [CATransaction setValue:(id)kCFBooleanTrue
+		   forKey:kCATransactionDisableActions];
+  curlingPageR.opacity = 0.0f;
+  curlingPageL.opacity = 0.0f;
+  [CATransaction commit];
+}
+
+- (void)touchesCanceled:(NSSet*)touches withEvent:(UIEvent*)event {
+  NSLog(@"cancel!");
+
+  _mode = page_mode_none;
+  [_scrollView setScrollEnabled:YES];
+  [_scrollView setCanCancelContentTouches:YES];
+}
+
+- (void)changeOrientation:(int)mode {
+  NSLog(@"change orientation");
+}
+
+- (CGImageRef) getImageRefFromUIImage:(UIImage*)im0 {
+  UIImage *im = im0;
+  CGSize pageSize = im0.size;
+  CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+  CGContextRef context = CGBitmapContextCreate(NULL, 
+    pageSize.width, 
+    pageSize.height, 
+    8,				/* bits per component*/
+    pageSize.width * 4, 	/* bytes per row */
+    colorSpace, 
+    kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+
+  CGColorSpaceRelease(colorSpace);
+
+  CGContextClipToRect(context, CGRectMake(0, 0, pageSize.width, pageSize.height));
+
+  CGRect imageRect = CGRectMake(0, 0, im.size.width, im.size.height);
+  CGAffineTransform transform = aspectFit(imageRect,
+	CGContextGetClipBoundingBox(context));
+  CGContextConcatCTM(context, transform);
+  CGContextDrawImage(context, imageRect, [im CGImage]);
+
+  CGImageRef image = CGBitmapContextCreateImage(context);
+  CGContextRelease(context);
+
+  [UIImage imageWithCGImage:image];
+  CGImageRelease(image);
+
+  return image;
+}
+
+- (CGRect) getAspectFittingImageRect:(UIImage *)im0 {
+  UIImage * im = im0;
+
+  if ( _windowMode == MODE_A ) {
+    if ( WINDOW_AW / WINDOW_AH > im.size.width / im.size.height ) {
+      return CGRectMake(0, 0, WINDOW_AH * (im.size.width / im.size.height) , WINDOW_AH);
+    } else {
+      return CGRectMake(0, 0, WINDOW_AW, WINDOW_AW * (im.size.height / im.size.width));
+    }
+  } else {
+    if ( (WINDOW_BW / 2 ) / WINDOW_BH > im.size.width / im.size.height ) {
+      return CGRectMake(0, 0, WINDOW_BH * (im.size.width / im.size.height) , WINDOW_BH);
+    } else {
+      return CGRectMake(0, (WINDOW_BH - ((WINDOW_BW / 2) * (im.size.height / im.size.width))) / 2, (WINDOW_BW / 2), (WINDOW_BW / 2) * (im.size.height / im.size.width));
+    }
+  }
+}
+
+@end

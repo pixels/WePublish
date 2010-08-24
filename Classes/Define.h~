@@ -18,7 +18,7 @@
 #define WINDOW_BH 768
 
 // Max scale
-#define MAX_ZOOM_SCALE 1.0f
+#define MAX_ZOOM_SCALE 2.0f
 #define MIN_ZOOM_SCALE 1.0f
 
 #define REVERSE_PAGE_OPACITY 0.5f

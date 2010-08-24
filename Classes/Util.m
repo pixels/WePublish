@@ -9,6 +9,7 @@
 #import "CommonCrypto/CommonDigest.h"
 #import "Util.h"
 #import "Define.h"
+#include <mach/mach.h>
 
 @implementation Util
 
@@ -55,4 +56,21 @@
 + (NSString *)makeBookPathFormat:(NSString *)dir pageNo:(NSUInteger)pageNo extension:(NSString *)extension {
 	return [[NSString alloc] initWithFormat:@"%@/%04d.%@", dir, pageNo, extension];
 }
+
++ (NSUInteger)realMemory {
+	struct task_basic_info t_info;
+	mach_msg_type_number_t t_info_count = TASK_BASIC_INFO_COUNT;
+	if (task_info(current_task(), TASK_BASIC_INFO, (task_info_t)&t_info, &t_info_count)!= KERN_SUCCESS) {
+		NSLog(@"%s(): Error in task_info(): %s", __FUNCTION__, strerror(errno));
+	}
+	
+	//	// 物理メモリの使用量(byte) - Activity MonitorのReal Memoryに該当
+	//	u_int rss = t_info.resident_size;
+	
+	//	// 仮想メモリの使用量(byte) - Activity MonitorのVirtual Memoryに該当??
+	//	u_int vs = t_info.virtual_size;
+	
+	return t_info.resident_size;
+}
+
 @end

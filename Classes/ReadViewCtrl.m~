@@ -174,6 +174,7 @@
 //			frame.origin.x = WINDOW_AW - frame.size.width - 20;
 			frame.origin.y = 30;
 			_slider.frame = frame;
+			self.view.frame = CGRectMake(0, 0, WINDOW_AW, WINDOW_AH);
 			
 			//[self cleanupCurrentView:MODE_B];
 		} else {
@@ -183,6 +184,7 @@
 //			frame.origin.x = WINDOW_BW - frame.size.width - 20;
 			frame.origin.y = 30;
 			_slider.frame = frame;
+			self.view.frame = CGRectMake(0, 0, WINDOW_BW, WINDOW_BH);
 			
 			//[self cleanupCurrentView:MODE_A];
 		
