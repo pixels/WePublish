@@ -144,6 +144,10 @@
 	
 	for (i = 0; i < book_count; i++) {
 		page = i / HxW;
+		if ([_buttons count] <= i) {
+			break;
+		}
+		
 		btn = [_buttons objectAtIndex:i];
 		
 		if (currentPage_ == page) {
