@@ -153,6 +153,7 @@
 			if (image_path) {
 				image = [[UIImage alloc] initWithContentsOfFile:image_path];
 				if (image) {
+					[btn setAlpha:1];
 					[btn setBackgroundImage:image forState:UIControlStateNormal];
 					[image release];
 				}		
@@ -172,6 +173,7 @@
 			[btn setFrame:frame];
 			[btn setTitle:nil forState:UIControlStateNormal];
 			[btn setTag:i];
+			[btn setAlpha:0];
 			[btn addTarget:self action:@selector(onBookClick:) forControlEvents:UIControlEventTouchUpInside];
 			[_scrollView addSubview:btn];
 			[_buttons insertObject:btn atIndex:i];
