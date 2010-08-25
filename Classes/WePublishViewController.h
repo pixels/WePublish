@@ -43,6 +43,7 @@
 	NSInteger _selectBookIndex;
 	NSInteger _bookmarkPage;
 	BOOL _updating;
+	NSUInteger currentPage_;
 }
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
@@ -54,6 +55,7 @@
 
 - (void)initDirectory;
 - (void)initBooks;
+- (void)setImageToBooks;
 - (void)initAnimation:(NSString *)animationID duration:(NSTimeInterval)duration;
 - (void)logoToTop;
 - (void)showAlert:(NSString *)title message:(NSString *)message btn1:(NSString *)btn1 btn2:(NSString *)btn2 tag:(NSUInteger)tag;

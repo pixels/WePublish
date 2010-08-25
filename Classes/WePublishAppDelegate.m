@@ -11,7 +11,7 @@
 #import "Define.h"
 #import "Util.h"
 
-#define MEMORY_CHECK YES
+#define MEMORY_CHECK NO
 #define MEMORY_CHECK_INTERVAL_SEC 5
 
 @implementation WePublishAppDelegate

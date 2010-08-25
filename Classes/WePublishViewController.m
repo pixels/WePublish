@@ -103,11 +103,39 @@
 	[path release];
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+	NSUInteger page = scrollView.contentOffset.x / scrollView.frame.size.width;
+	if (currentPage_ != page) {
+		currentPage_ = page;
+		[self setImageToBooks];
+//		NSLog(@"DidChange page: %d", page);
+	}
+}
+
 - (void)initBooks {
 	
 	NSInteger book_count = [_bookCollection count];
-	NSInteger i, page, h_line, w_line;
-	NSInteger HxW = H_COUNT_A * W_COUNT_A;
+	NSInteger i;
+	UIButton* btn;
+	
+	for (i = 0; i < book_count; i++) {
+		btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+		[btn.imageView setContentMode:UIViewContentModeScaleAspectFit];
+		[btn setShowsTouchWhenHighlighted:YES];
+		[btn setFrame:CGRectMake(0, 0, 146, 205)];
+		[btn setTitle:nil forState:UIControlStateNormal];
+		[btn setTag:i];
+		[btn addTarget:self action:@selector(onBookClick:) forControlEvents:UIControlEventTouchUpInside];
+		[_scrollView addSubview:btn];
+		[_buttons addObject:btn];
+	}
+}
+
+- (void)setImageToBooks {
+	
+	NSInteger book_count = [_bookCollection count];
+	NSInteger i, page;
+	NSInteger HxW = (_windowMode == MODE_A) ? H_COUNT_A * W_COUNT_A : H_COUNT_B * W_COUNT_B;
 	UIImage *image;
 	NSString *documentDir;
 	NSString *image_path;
@@ -116,33 +144,41 @@
 	
 	for (i = 0; i < book_count; i++) {
 		page = i / HxW;
-		w_line = (i % HxW) % W_COUNT_A;
-		h_line = (i % HxW) / W_COUNT_A;
+		btn = [_buttons objectAtIndex:i];
 		
-		info = [_bookCollection getAt:i];
-		
-		documentDir = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], BOOK_DIRECTORY, info.uuid];
-		image_path = [Util makeBookPathFormat:documentDir pageNo:1 extension:BOOK_EXTENSION];
-//		NSLog(@"image_path: %@", image_path);
-		if (image_path) {
-			image = [[UIImage alloc] initWithContentsOfFile:image_path];
-			if (image) {
-				btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-				[btn.imageView setContentMode:UIViewContentModeScaleAspectFit];
-				[btn setShowsTouchWhenHighlighted:YES];
-				[btn setFrame:CGRectMake(0, 0, 146, 205)];
-				[btn setTitle:nil forState:UIControlStateNormal];
-				[btn setTag:i];
-				[btn setBackgroundImage:image forState:UIControlStateNormal];
-				[btn addTarget:self action:@selector(onBookClick:) forControlEvents:UIControlEventTouchUpInside];
-				[_scrollView addSubview:btn];
-				[_buttons addObject:btn];
-				[image release];
-			}		
-			[image_path release];
+		if (currentPage_ == page) {
+			info = [_bookCollection getAt:i];
+			documentDir = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], BOOK_DIRECTORY, info.uuid];
+			image_path = [Util makeBookPathFormat:documentDir pageNo:1 extension:BOOK_EXTENSION];
+			if (image_path) {
+				image = [[UIImage alloc] initWithContentsOfFile:image_path];
+				if (image) {
+					[btn setBackgroundImage:image forState:UIControlStateNormal];
+					[image release];
+				}		
+				[image_path release];
+			}
+			[documentDir release];
 		}
+		else {
+			CGRect frame = btn.frame;
+			btn.imageView.image = nil;
+			[btn removeFromSuperview];
+			[_buttons removeObject:btn];
+			
+			btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+			[btn.imageView setContentMode:UIViewContentModeScaleAspectFit];
+			[btn setShowsTouchWhenHighlighted:YES];
+			[btn setFrame:frame];
+			[btn setTitle:nil forState:UIControlStateNormal];
+			[btn setTag:i];
+			[btn addTarget:self action:@selector(onBookClick:) forControlEvents:UIControlEventTouchUpInside];
+			[_scrollView addSubview:btn];
+			[_buttons insertObject:btn atIndex:i];
+			//			NSLog(@"release image: tag: %d", btn.tag);
+		}
+		
 	}
-	[documentDir release];
 }
 
 - (void)initAnimation:(NSString *)animationID duration:(NSTimeInterval)duration {
@@ -404,6 +440,9 @@
 		[UIView commitAnimations];
 	} else {
 		[self setBooks:NO];
+		
+		currentPage_ = 0;
+		[self setImageToBooks];
 	}
 
 }
