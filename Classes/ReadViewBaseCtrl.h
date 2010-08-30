@@ -32,8 +32,9 @@
 - (void)prev;
 - (void)requestPage:(NSInteger)targetPage;
 - (void)setup:(NSString *)uuid selectPage:(NSUInteger)selectPage pageNum:(NSInteger)pageNum direction:(NSInteger)direction windowMode:(NSInteger)windowMode;
-- (void)setPage:(NSInteger)selectPage;
+- (void)setPage:(NSInteger)selectPage windowMode:(NSInteger)windowMode;
 - (void)saveBookmark;
+- (void)releaseImage:(NSNumber*)pageNo removeFromList:(BOOL)removeFromList;
 - (void)releaseBook:(NSNumber*)pageNo removeFromList:(BOOL)removeFromList;
 - (void)releaseAllBooks;
 - (void)removeAllSubviewsFrom:(UIView *)targetView;

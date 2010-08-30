@@ -52,11 +52,23 @@ enum {
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 
+- (void)initLayers:(UIView *)targetView;
 - (void)scrollViewDidScroll:(UIScrollView *)sender;
-- (void)setPage:(NSInteger)selectPage;
+- (void)resetContentsSize;
+- (void)setPage:(NSInteger)selectPage windowMode:(NSInteger)windowMode;
+- (void)setPageForSingleFace:(NSInteger)selectPage;
+- (void)setPageForDoubleFace:(NSInteger)selectPage;
 - (void)releaseFarBooks:(NSInteger)targetPage;
-- (CGRect) getAspectFittingImageRect:(UIImage *)im0;
-- (void) curlPageToLeft:(float)curlRatio;
-- (void) curlPageToRight:(float)curlRatio;
+- (CGRect)getAspectFittingImageRect:(UIImage *)im0;
+- (void)curlPageToLeft:(float)curlRatio;
+- (void)curlPageToRight:(float)curlRatio;
+- (void)initCurlPageToLeft;
+- (void)initCurlPageToRight;
+- (void)beginToCurlLeft;
+- (void)beginToCurlRight;
+- (void)notifyGoToNextPage;
+- (void)notifyGoToPrevPage;
+- (void)setModeToNone;
+- (CGImageRef)getImageRefFromUIImage:(UIImage *)im0;
 
 @end
