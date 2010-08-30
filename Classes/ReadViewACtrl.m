@@ -13,6 +13,8 @@
 #import "DirectionType.h"
 #import "UIImageViewWithTouch.h"
 
+#define CENTER_SHADOW_WIDTH 64
+
 @implementation ReadViewACtrl
 @synthesize scrollView = _scrollView;
 
@@ -108,6 +110,9 @@
 	curlingPageLShadow = [[CAGradientLayer alloc] init];
 	[curlingPageL addSublayer:curlingPageLShadow];
 	
+	centerPageShadow = [[CAGradientLayer alloc] init];
+	[targetView.layer addSublayer:centerPageShadow];
+	
 	rightPageShadow = [[CAGradientLayer alloc] init];
 	[targetView.layer addSublayer:rightPageShadow];
 	
@@ -137,6 +142,23 @@
 	
 	//_scrollView.contentOffset = CGPointMake(_scrollView.frame.size.width * scrollPointX, 0);
 	[self setPage:selectPage windowMode:windowMode];
+	
+	if (windowMode == MODE_A) {
+		[centerPageShadow removeFromSuperlayer];
+	}
+	else {
+		centerPageShadow.opacity = 1;
+		centerPageShadow.colors = [NSArray arrayWithObjects:
+								   (id)[[UIColor clearColor] CGColor],
+								   (id)[[[UIColor blackColor] colorWithAlphaComponent:0.6] CGColor], 
+								   (id)[[UIColor clearColor] CGColor],
+								   nil];
+		centerPageShadow.startPoint = CGPointMake(1, 0.5);
+		centerPageShadow.endPoint = CGPointMake(0, 0.5);
+		centerPageShadow.frame = CGRectMake((WINDOW_BW / 2) - (CENTER_SHADOW_WIDTH / 2), 0, CENTER_SHADOW_WIDTH, WINDOW_BH);
+		[_pageCurlView.layer addSublayer:centerPageShadow];
+	}
+
 }
 
 - (BOOL)isNext {
@@ -868,12 +890,14 @@
 			
 			[curlingPageR removeFromSuperlayer];
 			[_pageCurlView.layer addSublayer:curlingPageR];
-			
+
 			[rightPageShadow removeFromSuperlayer];
 			[_pageCurlView.layer addSublayer:rightPageShadow];
 			[leftPageShadow removeFromSuperlayer];
 			[_pageCurlView.layer addSublayer:leftPageShadow];
 		}
+		
+		[centerPageShadow removeFromSuperlayer];
 	} else {
 		curlingPageRImageOverlay.opacity = 0.0f;
 		curlingPageLImageOverlay.opacity = 0.0f;
@@ -909,6 +933,8 @@
 		[_pageCurlView.layer addSublayer:leftPageShadow];
 		[rightPageShadow removeFromSuperlayer];
 		[_pageCurlView.layer addSublayer:rightPageShadow];
+		[centerPageShadow removeFromSuperlayer];
+		[_pageCurlView.layer addSublayer:centerPageShadow];
 	}
 	
 	[self curlPageToLeft:0];
@@ -989,6 +1015,7 @@
 			[rightPageShadow removeFromSuperlayer];
 			[_pageCurlView.layer addSublayer:rightPageShadow];
 		}
+		[centerPageShadow removeFromSuperlayer];
 	} else {
 		curlingPageR.opacity = 1.0f;
 		curlingPageRImage.opacity = 1.0f;
@@ -1020,6 +1047,8 @@
 		[_pageCurlView.layer addSublayer:leftPageShadow];
 		[rightPageShadow removeFromSuperlayer];
 		[_pageCurlView.layer addSublayer:rightPageShadow];
+		[centerPageShadow removeFromSuperlayer];
+		[_pageCurlView.layer addSublayer:centerPageShadow];
 	}
 	
 	[self curlPageToRight:0];

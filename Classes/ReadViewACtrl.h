@@ -32,6 +32,8 @@ enum {
 	NSInteger _mode;
 
 	CGPoint touchStartPoint;
+	
+	CAGradientLayer * centerPageShadow;
 
 	CAGradientLayer * rightPageShadow;
 
