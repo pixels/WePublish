@@ -100,10 +100,14 @@
 - (void)requestPage:(NSInteger)targetPage {
 	[super requestPage:targetPage];
 	
-	if (_direction == DIRECTION_LEFT)
-		targetPage = _maxPage - targetPage;
+	NSInteger scrollPointX;
+	if (_direction == DIRECTION_LEFT) {
+		scrollPointX = _maxPage - targetPage;
+	} else {
+		scrollPointX = targetPage - 1;
+	}
 	
-	_scrollView.contentOffset = CGPointMake(WINDOW_BW * (targetPage / 2), 0);
+	_scrollView.contentOffset = CGPointMake(WINDOW_BW * (scrollPointX / 2), 0);
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender {

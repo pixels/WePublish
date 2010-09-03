@@ -97,10 +97,14 @@
 - (void)requestPage:(NSInteger)targetPage {
 	[super requestPage:targetPage];
 	
-	if (_direction == DIRECTION_LEFT)
-		targetPage = _maxPage - targetPage;
+	NSInteger scrollPointX;
+	if (_direction == DIRECTION_LEFT) {
+		scrollPointX = _maxPage - targetPage;
+	} else {
+		scrollPointX = targetPage - 1;
+	}
 	
-	_scrollView.contentOffset = CGPointMake(_scrollView.frame.size.width * targetPage, 0);
+	_scrollView.contentOffset = CGPointMake(_scrollView.frame.size.width * scrollPointX, 0);
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
@@ -184,7 +188,7 @@
 				[image release];
 				[_booksList setObject:imageView forKey:number];
 				
-//				NSLog(@"add page: %d", selectPageWithOffset);
+//				NSLog(@"add page: %d pagePosition: %d", selectPageWithOffset, pagePosition);
 			}
 			[image_path release];
 			[documentDir release];

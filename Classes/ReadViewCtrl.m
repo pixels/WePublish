@@ -29,6 +29,7 @@
 	_readViewBCtrl = nil;
 	_windowMode = MODE_NONE;
 	[_slider addTarget:self action:@selector(onUpdateSlider:) forControlEvents:UIControlEventValueChanged];
+	[_slider addTarget:self action:@selector(onDragExitSlider:) forControlEvents:UIControlEventTouchUpInside];
 	_slider.minimumValue = 1;
 	_slider.maximumValue = _pageNum;
 	_slider.value = _pageNum;
@@ -150,22 +151,21 @@
 	}
 	
 	[self initAnimation:nil duration:0.5f];
-	//	[UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.view cache:YES];	
 	[UIView commitAnimations];
 }
 
 - (void)onUpdateSlider:(UISlider *)aSlider {
+}
+
+- (void)onDragExitSlider:(UISlider *)aSlider {
 	int number = floor(_slider.value);
-	
-//	if (_direction == DIRECTION_LEFT)
-//		number = _pageNum - number + 1;
+	NSLog(@"onDragExitSlider number: %d", number);
 	
 	if (_windowMode == MODE_A) {
 		[_readViewACtrl requestPage:number];
 	} else {
 		[_readViewBCtrl requestPage:number];
 	}
-	
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

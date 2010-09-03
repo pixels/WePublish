@@ -36,6 +36,7 @@
 - (void)pageNext;
 - (void)pagePrev;
 - (void)onUpdateSlider:(UISlider *)aSlider;
+- (void)onDragExitSlider:(UISlider *)aSlider;
 - (void)onTouchImage:(NSNotification *)notification;
 - (IBAction)onBackClick:(id)sender;
 @end
