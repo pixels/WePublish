@@ -73,4 +73,19 @@
 	return t_info.resident_size;
 }
 
++ (CGSize)makeAspectFitCGSize:(CGSize)origin target:(CGSize)target {
+	float xRate = origin.width / target.width;
+	float yRate = origin.height / target.height;
+	
+	CGSize tmp;
+	if (xRate < yRate) {
+		tmp = CGSizeMake(origin.width / yRate, origin.height / yRate);
+	}
+	else {
+		tmp = CGSizeMake(origin.width / xRate, origin.height / xRate);
+	}
+	
+	return tmp;
+}
+
 @end

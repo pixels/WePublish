@@ -20,5 +20,6 @@
 + (NSString *)array2hexForMD5:(unsigned char *)value;
 + (NSString *)makeBookPathFormat:(NSString *)dir pageNo:(NSUInteger)pageNo extension:(NSString *)extension;
 + (NSUInteger)realMemory;
++ (CGSize)makeAspectFitCGSize:(CGSize)origin target:(CGSize)target;
 
 @end
