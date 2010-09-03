@@ -266,7 +266,13 @@
 	}
 	
 	else if ([_currentNodeType isEqualToString:@"url"]) {
-		bi.url = [string retain];
+		if (bi.url) {
+			bi.url = [[NSString alloc] initWithFormat:@"%@%@", bi.url, string];
+			[bi.url release];
+		}
+		else {
+			bi.url = [string retain];
+		}
 	}
 	
 	else if ([_currentNodeType isEqualToString:@"md5"]) {
@@ -274,23 +280,53 @@
 	}
 	
 	else if ([_currentNodeType isEqualToString:@"category"]) {
-		bi.category = [string retain];
+		if (bi.category) {
+			bi.category = [[NSString alloc] initWithFormat:@"%@%@", bi.category, string];
+			[bi.category release];
+		}
+		else {
+			bi.category = [string retain];
+		}
 	}
 	
 	else if ([_currentNodeType isEqualToString:@"categoryword"]) {
-		bi.categoryword = [string retain];
+		if (bi.categoryword) {
+			bi.categoryword = [[NSString alloc] initWithFormat:@"%@%@", bi.categoryword, string];
+			[bi.categoryword release];
+		}
+		else {
+			bi.categoryword = [string retain];
+		}
 	}
 	
 	else if ([_currentNodeType isEqualToString:@"title"]) {
-		bi.title = [string retain];
+		if (bi.title) {
+			bi.title = [[NSString alloc] initWithFormat:@"%@%@", bi.title, string];
+			[bi.title release];
+		}
+		else {
+			bi.title = [string retain];
+		}
 	}
 	
 	else if ([_currentNodeType isEqualToString:@"titleword"]) {
-		bi.titleword = [string retain];
+		if (bi.titleword) {
+			bi.titleword = [[NSString alloc] initWithFormat:@"%@%@", bi.titleword, string];
+			[bi.titleword release];
+		}
+		else {
+			bi.titleword = [string retain];
+		}
 	}
 	
 	else if ([_currentNodeType isEqualToString:@"author"]) {
-		bi.author = [string retain];
+		if (bi.author) {
+			bi.author = [[NSString alloc] initWithFormat:@"%@%@", bi.author, string];
+			[bi.author release];
+		}
+		else {
+			bi.author = [string retain];
+		}
 	}
 	
 	else if ([_currentNodeType isEqualToString:@"authorword"]) {
@@ -308,6 +344,7 @@
 	else if ([_currentNodeType isEqualToString:@"review"]) {
 		if (bi.review) {
 			bi.review = [[NSString alloc] initWithFormat:@"%@%@", bi.review, string];
+			[bi.review release];
 		}
 		else {
 			bi.review = [[NSString alloc] initWithFormat:@"%@", string];
