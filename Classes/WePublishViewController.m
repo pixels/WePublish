@@ -24,6 +24,8 @@
 #import "Util.h"
 
 //#define BOOK_ANIMATION_SETUP
+#define W_BOOK 146
+#define H_BOOK 205
 #define W_COUNT_A 4
 #define H_COUNT_A 4
 #define W_COUNT_B 5
@@ -122,7 +124,7 @@
 		btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		[btn.imageView setContentMode:UIViewContentModeScaleAspectFit];
 		[btn setShowsTouchWhenHighlighted:YES];
-		[btn setFrame:CGRectMake(0, 0, 146, 205)];
+		[btn setFrame:CGRectMake(0, 0, W_BOOK, H_BOOK)];
 		[btn setTitle:nil forState:UIControlStateNormal];
 		[btn setTag:i];
 		[btn addTarget:self action:@selector(onBookClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -157,8 +159,11 @@
 			if (image_path) {
 				image = [[UIImage alloc] initWithContentsOfFile:image_path];
 				if (image) {
+					CGSize imageSize = CGSizeMake(CGImageGetWidth(image.CGImage), CGImageGetHeight(image.CGImage));
+					imageSize = [Util makeAspectFitCGSize:imageSize target:btn.frame.size];
 					[btn setAlpha:1];
 					[btn setBackgroundImage:image forState:UIControlStateNormal];
+					[btn setFrame:CGRectMake(btn.frame.origin.x, btn.frame.origin.y, imageSize.width, imageSize.height)];
 					[image release];
 				}		
 				[image_path release];
@@ -181,10 +186,12 @@
 			[btn addTarget:self action:@selector(onBookClick:) forControlEvents:UIControlEventTouchUpInside];
 			[_scrollView addSubview:btn];
 			[_buttons insertObject:btn atIndex:i];
-			//			NSLog(@"release image: tag: %d", btn.tag);
+//			NSLog(@"release image: tag: %d", btn.tag);
 		}
 		
 	}
+	
+//	NSLog(@"setImageToBooks");
 }
 
 - (void)initAnimation:(NSString *)animationID duration:(NSTimeInterval)duration {
@@ -285,23 +292,26 @@
 	NSInteger i = 0;
 	for (UIButton *btn in _buttons) {
 		CGRect frame = btn.frame;
+		float offsetY;
 		if (_windowMode == MODE_A) {
 			page = i / HxW_A;
 			w_line = (i % HxW_A) % W_COUNT_A;
 			h_line = (i % HxW_A) / W_COUNT_A;
+			offsetY = H_BOOK - frame.size.height;
 //			frame.origin.x = 140 * w_line + 42 + page * WINDOW_AW;
 //			frame.origin.y = 240 * h_line + 112;
 			frame.origin.x = 180 * w_line + 42 + page * WINDOW_AW;
-			frame.origin.y = 240 * h_line + 80;
+			frame.origin.y = 240 * h_line + 80 + offsetY;
 		}
 		else {
 			page = i / HxW_B;
 			w_line = (i % HxW_B) % W_COUNT_B;
 			h_line = (i % HxW_B) / W_COUNT_B;
+			offsetY = H_BOOK - frame.size.height;
 //			frame.origin.x = 160 * w_line + 52 + page * WINDOW_BW;
 //			frame.origin.y = 234 * h_line + 106;
 			frame.origin.x = 190 * w_line + 60 + page * WINDOW_BW;
-			frame.origin.y = 234 * h_line + 74;
+			frame.origin.y = 234 * h_line + 74 + offsetY;
 		}
 		
 		btn.frame = frame;
@@ -313,7 +323,8 @@
 	if (animation == YES)
 		[UIView commitAnimations];
 #endif
-
+	
+//	NSLog(@"setBooks");
 }
 
 - (void)releaseBackground:(NSInteger)windowModeType {
@@ -445,10 +456,9 @@
 	if (animation == YES) {
 		[UIView commitAnimations];
 	} else {
-		[self setBooks:NO];
-		
 		currentPage_ = 0;
 		[self setImageToBooks];
+		[self setBooks:NO];
 	}
 
 }

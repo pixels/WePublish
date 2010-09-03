@@ -55,4 +55,20 @@
 + (NSString *)makeBookPathFormat:(NSString *)dir pageNo:(NSUInteger)pageNo extension:(NSString *)extension {
 	return [[NSString alloc] initWithFormat:@"%@/%04d.%@", dir, pageNo, extension];
 }
+
++ (CGSize)makeAspectFitCGSize:(CGSize)origin target:(CGSize)target {
+	float xRate = origin.width / target.width;
+	float yRate = origin.height / target.height;
+	
+	CGSize tmp;
+	if (xRate < yRate) {
+		tmp = CGSizeMake(origin.width / yRate, origin.height / yRate);
+	}
+	else {
+		tmp = CGSizeMake(origin.width / xRate, origin.height / xRate);
+	}
+	
+	return tmp;
+}
+
 @end
