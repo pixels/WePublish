@@ -21,6 +21,7 @@
 	
 	UIScrollView *_scrollView;
 	UIActivityIndicatorView *_activitiyView;
+	UILabel *statusLabel_;
 	LogoViewCtrl *_logoView;
 	LoginViewCtrl *_loginView;
 	XMLController *_xmlCtrl;
@@ -44,10 +45,13 @@
 	NSInteger _bookmarkPage;
 	BOOL _updating;
 	NSUInteger currentPage_;
+	NSUInteger updateRequestFileCount_;
+	NSUInteger updateTotalDownloadCount_;
 }
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activitiyView;
+@property (nonatomic, retain) IBOutlet UILabel *statusLabel;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *bookBarButton;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *listBarButton;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *trashBarButton;

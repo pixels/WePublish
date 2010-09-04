@@ -45,6 +45,7 @@
 @synthesize listBarButton = _listBarButton;
 @synthesize trashBarButton = _trashBarButton;
 @synthesize buyBarButton = _buyBarButton;
+@synthesize statusLabel = statusLabel_;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -282,6 +283,10 @@
 	_updating = YES;
 
 	[_xmlCtrl update:UPDATE_URL];
+	[_activitiyView setHidden:NO];
+	[statusLabel_ setHidden:NO];
+	[statusLabel_ setText:STATUS_START_TO_UPDATE];
+	
 }
 
 // XMLの更新終了
@@ -289,7 +294,8 @@
 	[self reloadBooks];
 	[self setMenuBarItems:NO list:YES trash:YES buy:YES];
 	
-	_activitiyView.hidden = YES;
+	[_activitiyView setHidden:YES];
+	[statusLabel_ setHidden:YES];
 	_updating = NO;
 }
 
@@ -299,6 +305,8 @@
 		
 		BookInfo *info;
 		for (id key in _tmpDlDic) {
+			updateTotalDownloadCount_++;
+			[statusLabel_ setText:[NSString stringWithFormat:@"%d / %d", updateTotalDownloadCount_, updateRequestFileCount_]];
 			info = [_tmpDlDic objectForKey:key];
 			FileDownloader *fd = [[FileDownloader alloc] init];
 			[fd download:info.uuid url:info.url];
@@ -667,6 +675,8 @@
 	NSFileManager *fm = [NSFileManager defaultManager];
 	
 	NSInteger length = [collection count];
+	updateRequestFileCount_ = 0;
+	updateTotalDownloadCount_ = 0;
 	for (NSInteger i = 0; i < length; i++) {
 		info = [collection getAt:i];
 //		NSLog(@"uuid: %@ download: %@ url: %@ md5: %@ category: %@ title: %@ author: %@ length: %d direction: %d review: %@",
@@ -693,12 +703,14 @@
 			// ここはDLしたいinfoを追加
 			NSLog(@"dl request name: %@", info.title);
 			[_tmpDlDic setValue:info forKey:info.uuid];
+			updateRequestFileCount_++;
 		}
 		[bookDir release];
 	}
 	
 	_bookCollection = [collection retain];
-	_activitiyView.hidden = NO;
+	[_activitiyView setHidden:NO];
+	[statusLabel_ setHidden:NO];
 	
 	// List has no books.
 	if (![self startToDownloadBookFromQueue]) {
@@ -996,6 +1008,8 @@
 	[self.trashBarButton release];
 	[self.buyBarButton release];
 	[self.scrollView release];
+	[self.activitiyView release];
+	[self.statusLabel release];
     [super dealloc];
 }
 
