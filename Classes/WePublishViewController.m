@@ -160,7 +160,8 @@
 	UIButton* btn;
 	BookInfo *info;
 	UIActivityIndicatorView *indicator;
-
+	NSInteger h_line;
+	float btnY, offY;
 	for (i = 0; i < book_count; i++) {
 		page = i / HxW;
 		if ([_buttons count] <= i) {
@@ -178,8 +179,17 @@
 				if (image) {
 					CGSize imageSize = CGSizeMake(CGImageGetWidth(image.CGImage), CGImageGetHeight(image.CGImage));
 					imageSize = [Util makeAspectFitCGSize:imageSize target:btn.frame.size];
+					if (_windowMode == MODE_A) {
+						h_line = (i % HxW) / W_COUNT_A;
+						btnY = 240 * h_line + 80;
+					}
+					else {
+						h_line = (i % HxW) / W_COUNT_B;
+						btnY = 234 * h_line + 74;
+					}
+					offY = H_BOOK - imageSize.height;
 					[btn setBackgroundImage:image forState:UIControlStateNormal];
-					[btn setFrame:CGRectMake(btn.frame.origin.x, btn.frame.origin.y, imageSize.width, imageSize.height)];
+					[btn setFrame:CGRectMake(btn.frame.origin.x, btnY + (offY / 2), imageSize.width, imageSize.height)];
 					[image release];
 					
 					indicator = (UIActivityIndicatorView *)[btn viewWithTag:BOOK_ACTIVITY_INDICATOR];
@@ -337,25 +347,23 @@
 	NSInteger HxW_A = H_COUNT_A * W_COUNT_A;
 	NSInteger HxW_B = H_COUNT_B * W_COUNT_B;
 	NSInteger i = 0;
+	float offY;
 	for (UIButton *btn in _buttons) {
 		CGRect frame = btn.frame;
+		offY = H_BOOK - frame.size.height;
 		if (_windowMode == MODE_A) {
 			page = i / HxW_A;
 			w_line = (i % HxW_A) % W_COUNT_A;
 			h_line = (i % HxW_A) / W_COUNT_A;
-//			frame.origin.x = 140 * w_line + 42 + page * WINDOW_AW;
-//			frame.origin.y = 240 * h_line + 112;
 			frame.origin.x = 180 * w_line + 42 + page * WINDOW_AW;
-			frame.origin.y = 240 * h_line + 80;
+			frame.origin.y = 240 * h_line + 80 + (offY / 2);
 		}
 		else {
 			page = i / HxW_B;
 			w_line = (i % HxW_B) % W_COUNT_B;
 			h_line = (i % HxW_B) / W_COUNT_B;
-//			frame.origin.x = 160 * w_line + 52 + page * WINDOW_BW;
-//			frame.origin.y = 234 * h_line + 106;
 			frame.origin.x = 190 * w_line + 60 + page * WINDOW_BW;
-			frame.origin.y = 234 * h_line + 74;
+			frame.origin.y = 234 * h_line + 74 + (offY / 2);
 		}
 		
 		btn.frame = frame;
