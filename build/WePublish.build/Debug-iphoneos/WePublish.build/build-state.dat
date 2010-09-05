@@ -1,0 +1,1337 @@
+TWePublish
+v7
+r0
+t305398490.391036
+cCheck dependencies
+cCpResource build/Debug-iphoneos/WePublish.app/ResourceRules.plist /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+cProcessInfoPlistFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/Info.plist WePublish-Info.plist
+cCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/bk_a.png Resources/Images/Parts/bk_a.png
+cCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/bk_b.png Resources/Images/Parts/bk_b.png
+cCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/logo.png Resources/Images/Parts/logo.png
+cCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/icon.png Resources/Images/Parts/icon.png
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/MainWindow.xib
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/WePublishViewController.xib
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LogoView.xib
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewA.xib
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewB.xib
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadView.xib
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewA.xib
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewB.xib
+cCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/dummy.png Resources/Images/Parts/dummy.png
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListCell.xib
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewA.xib
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewB.xib
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewA.xib
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewB.xib
+cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LoginView.xib
+cProcessPCH /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-dxvypdfzklncpaaehrfrwvzktgph/WePublish_Prefix.pch.gch WePublish_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
+cProcessPCH /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-fppakowlfbmxowcyyxacakmunand/WePublish_Prefix.pch.gch WePublish_Prefix.pch normal armv7 c com.apple.compilers.gcc.4_2
+cProcessPCH++ /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-hbwclzswzgtcvceqzmnbfcsweuat/WePublish_Prefix.pch.gch WePublish_Prefix.pch normal armv7 objective-c++ com.apple.compilers.gcc.4_2
+cCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ioapi.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/ioapi.c normal armv7 c com.apple.compilers.gcc.4_2
+cCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/mztools.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/mztools.c normal armv7 c com.apple.compilers.gcc.4_2
+cCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/unzip.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.c normal armv7 c com.apple.compilers.gcc.4_2
+cCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/zip.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/zip.c normal armv7 c com.apple.compilers.gcc.4_2
+cProcessProductPackaging "/Users/kaerbtuo/Library/MobileDevice/Provisioning Profiles/4378A2CA-96DA-4F71-ACDB-D5CBFBE45ED4.mobileprovision" /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/embedded.mobileprovision
+cProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish.xcent
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk
+c000000004C5A53C10000000000000110
+t1280988097
+s272
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist
+c000000004C06E99F00000000000001A7
+t1275521439
+s423
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+c000000004C06E99F00000000000001E5
+t1275521439
+s485
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004C005A1C00000000003B4B70
+t1275091484
+s3885936
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h
+c000000004C005A1C00000000000004FE
+t1275091484
+s1278
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004C005A45000000000036A640
+t1275091525
+s3581504
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004C005A310000000000001355
+t1275091505
+s4949
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
+c000000004C005C74000000000000007D
+t1275092084
+s125
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000004C005D9100000000002215A0
+t1275092369
+s2233760
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004C00642C000000000000098F
+t1275094060
+s2447
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004C0064A60000000002703220
+t1275094182
+s40907296
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/lib/libz.1.2.3.dylib
+c000000004C004A350000000000020FF0
+t1275087413
+s135152
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/CommonCrypto/CommonDigest.h
+c000000004748A1090000000000002500
+t1195942153
+s9472
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/errno.h
+c000000004748A13100000000000003EB
+t1195942193
+s1003
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/mach/mach.h
+c00000000476340E90000000000001057
+t1197687017
+s4183
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/stddef.h
+c000000004748A1310000000000001404
+t1195942193
+s5124
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/stdio.h
+c000000004748A1330000000000003D1D
+t1195942195
+s15645
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/stdlib.h
+c000000004748A1330000000000002A79
+t1195942195
+s10873
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/string.h
+c000000004748A1330000000000001731
+t1195942195
+s5937
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/time.h
+c000000004748A133000000000000178E
+t1195942195
+s6030
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/zconf.h
+c000000004748ECC90000000000002577
+t1195961545
+s9591
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/zlib.h
+c000000004748ECC900000000000102A5
+t1195961545
+s66213
+
+N/Users/kaerbtuo/Library/MobileDevice/Provisioning Profiles/4378A2CA-96DA-4F71-ACDB-D5CBFBE45ED4.mobileprovision
+c000000004C82131A0000000000001C32
+t1283592986
+s7218
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/BookCollection.h
+c000000004C8229BA00000000000004DB
+t1283598778
+s1243
+i<Foundation/Foundation.h>
+i"SortType.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/BookCollection.m
+c000000004C8229BA0000000000000FDB
+t1283598778
+s4059
+i"BookCollection.h"
+i"BookInfo.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/BookInfo.h
+c000000004C8229BA0000000000000680
+t1283598778
+s1664
+i<Foundation/Foundation.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/BookInfo.m
+c000000004C8229BA000000000000031A
+t1283598778
+s794
+i"BookInfo.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/BuyViewCtrl.h
+c000000004C8229BA0000000000000121
+t1283598778
+s289
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/BuyViewCtrl.m
+c000000004C8229BA0000000000000C1C
+t1283598778
+s3100
+i"BuyViewCtrl.h"
+i"Define.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/Define.h
+c000000004C83E1400000000000000CA5
+t1283711296
+s3237
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/DetailViewCtrl.h
+c000000004C8229BA000000000000033E
+t1283598778
+s830
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/DetailViewCtrl.m
+c000000004C8229BA0000000000000649
+t1283598778
+s1609
+i"DetailViewCtrl.h"
+i"Define.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/DirectionType.h
+c000000004C8229BA00000000000000CF
+t1283598778
+s207
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/FileDownloader.h
+c000000004C8229BA0000000000000252
+t1283598778
+s594
+i<Foundation/Foundation.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/FileDownloader.m
+c000000004C8229BA0000000000000F3D
+t1283598778
+s3901
+i"FileDownloader.h"
+i"Util.h"
+i"Define.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ListCellCtrl.h
+c000000004C8229BA00000000000001CF
+t1283598778
+s463
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ListCellCtrl.m
+c000000004C8229BA0000000000000309
+t1283598778
+s777
+i"ListCellCtrl.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ListViewCtrl.h
+c000000004C8229BA0000000000000272
+t1283598778
+s626
+i<UIKit/UIKit.h>
+i"SortType.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ListViewCtrl.m
+c000000004C8229BA0000000000000C67
+t1283598778
+s3175
+i"ListViewCtrl.h"
+i"BookCollection.h"
+i"BookInfo.h"
+i"ListCellCtrl.h"
+i"Util.h"
+i"Define.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/LoginViewCtrl.h
+c000000004C8229BA00000000000002FC
+t1283598778
+s764
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/LoginViewCtrl.m
+c000000004C8229BA0000000000000B88
+t1283598778
+s2952
+i"LoginViewCtrl.h"
+i"Define.h"
+i"Util.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/LogoViewCtrl.h
+c000000004C8229BA00000000000001AC
+t1283598778
+s428
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/LogoViewCtrl.m
+c000000004C8229BA000000000000074B
+t1283598778
+s1867
+i"LogoViewCtrl.h"
+i"Define.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/MyScrollView.h
+c000000004C8229C900000000000000DD
+t1283598793
+s221
+i<Foundation/Foundation.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/MyScrollView.m
+c000000004C8229C900000000000002C1
+t1283598793
+s705
+i"MyScrollView.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewACtrl.h
+c000000004C83D6D10000000000000AB5
+t1283708625
+s2741
+i<UIKit/UIKit.h>
+i<QuartzCore/QuartzCore.h>
+i"Utilities.h"
+i"ReadViewBaseCtrl.h"
+i"UIViewWithTouchesDelegate.h"
+i"MyScrollView.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewACtrl.m
+c000000004C83E11500000000000123CA
+t1283711253
+s74698
+i"ReadViewACtrl.h"
+i"WindowModeType.h"
+i"Util.h"
+i"Define.h"
+i"DirectionType.h"
+i"UIImageViewWithTouch.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewBCtrl.h
+c000000004C8229BA00000000000001D9
+t1283598778
+s473
+i<UIKit/UIKit.h>
+i"ReadViewBaseCtrl.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewBCtrl.m
+c000000004C8229C900000000000018F6
+t1283598793
+s6390
+i"ReadViewBCtrl.h"
+i"Util.h"
+i"Define.h"
+i"DirectionType.h"
+i"UIImageViewWithTouch.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewBaseCtrl.h
+c000000004C8229C90000000000000472
+t1283598793
+s1138
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewBaseCtrl.m
+c000000004C832DCE0000000000000F2D
+t1283665358
+s3885
+i"ReadViewBaseCtrl.h"
+i"Define.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewCtrl.h
+c000000004C825E9C00000000000004B5
+t1283612316
+s1205
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewCtrl.m
+c000000004C8330400000000000002156
+t1283665984
+s8534
+i"ReadViewCtrl.h"
+i"WindowModeType.h"
+i"ReadViewBaseCtrl.h"
+i"ReadViewACtrl.h"
+i"ReadViewBCtrl.h"
+i"DirectionType.h"
+i"Define.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/SortType.h
+c000000004C8229BA0000000000000104
+t1283598778
+s260
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/TouchesDelegate.h
+c000000004C8229C9000000000000021C
+t1283598793
+s540
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/UIImageViewWithTouch.h
+c000000004C8229BA00000000000000DE
+t1283598778
+s222
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/UIImageViewWithTouch.m
+c000000004C8229BA00000000000004F9
+t1283598778
+s1273
+i"UIImageViewWithTouch.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/UIViewWithTouchesDelegate.h
+c000000004C8229C90000000000000161
+t1283598793
+s353
+i<UIKit/UIKit.h>
+i"TouchesDelegate.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/UIViewWithTouchesDelegate.m
+c000000004C8229C90000000000000494
+t1283598793
+s1172
+i"UIViewWithTouchesDelegate.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/Util.h
+c000000004C8229C9000000000000022D
+t1283598793
+s557
+i<Foundation/Foundation.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/Util.m
+c000000004C8229C90000000000000874
+t1283598793
+s2164
+i"CommonCrypto/CommonDigest.h"
+i"Util.h"
+i"Define.h"
+i<mach/mach.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/Utilities.h
+c000000004C8229C900000000000000E3
+t1283598793
+s227
+i<CoreGraphics/CoreGraphics.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/Utilities.m
+c000000004C8229C900000000000002FB
+t1283598793
+s763
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/WePublishAppDelegate.h
+c000000004C8229BA00000000000001E0
+t1283598778
+s480
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/WePublishAppDelegate.m
+c000000004C8229C9000000000000057E
+t1283598793
+s1406
+i"WePublishAppDelegate.h"
+i"WePublishViewController.h"
+i"Define.h"
+i"Util.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/WePublishViewController.h
+c000000004C8229BA00000000000009E0
+t1283598778
+s2528
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/WePublishViewController.m
+c000000004C8229C90000000000006C72
+t1283598793
+s27762
+i"WePublishViewController.h"
+i"BookCollection.h"
+i"BookInfo.h"
+i"LogoViewCtrl.h"
+i"XMLController.h"
+i"ListViewCtrl.h"
+i"BuyViewCtrl.h"
+i"DetailViewCtrl.h"
+i"ReadViewCtrl.h"
+i"LoginViewCtrl.h"
+i"WindowModeType.h"
+i"Define.h"
+i"DirectionType.h"
+i"FileDownloader.h"
+i"ZipArchive.h"
+i"Util.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/WindowModeType.h
+c000000004C8229BA00000000000000D0
+t1283598778
+s208
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/XMLController.h
+c000000004C8229BA00000000000002E1
+t1283598778
+s737
+i<Foundation/Foundation.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/XMLController.m
+c000000004C8229C90000000000002CDB
+t1283598793
+s11483
+i"XMLController.h"
+i"BookCollection.h"
+i"BookInfo.h"
+i"Util.h"
+i"Define.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/ZipArchive.h
+c000000004C8229BA0000000000000457
+t1283598778
+s1111
+i<UIKit/UIKit.h>
+i"minizip/zip.h"
+i"minizip/unzip.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/ZipArchive.mm
+c000000004C8229BA0000000000002107
+t1283598778
+s8455
+i"ZipArchive.h"
+i"zlib.h"
+i"zconf.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/crypt.h
+c000000004C8229BA00000000000012EC
+t1283598778
+s4844
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/ioapi.c
+c000000004C8229BA0000000000000F1F
+t1283598778
+s3871
+i<stdio.h>
+i<stdlib.h>
+i<string.h>
+i"zlib.h"
+i"ioapi.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/ioapi.h
+c000000004C8229BA0000000000000A32
+t1283598778
+s2610
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/mztools.c
+c000000004C8229BA000000000000204A
+t1283598778
+s8266
+i<stdio.h>
+i<stdlib.h>
+i<string.h>
+i"zlib.h"
+i"unzip.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.c
+c000000004C8229BA000000000000C6CA
+t1283598778
+s50890
+i<stdio.h>
+i<stdlib.h>
+i<string.h>
+i"zlib.h"
+i"unzip.h"
+i<stddef.h>
+i<string.h>
+i<stdlib.h>
+i<errno.h>
+i"crypt.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.h
+c000000004C8229BA000000000000340A
+t1283598778
+s13322
+i"zlib.h"
+i"ioapi.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/zip.c
+c000000004C8229BA00000000000096AC
+t1283598778
+s38572
+i<stdio.h>
+i<stdlib.h>
+i<string.h>
+i<time.h>
+i"zlib.h"
+i"zip.h"
+i<stddef.h>
+i<string.h>
+i<stdlib.h>
+i<errno.h>
+i"crypt.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/zip.h
+c000000004C8229BA000000000000237A
+t1283598778
+s9082
+i"zlib.h"
+i"ioapi.h"
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/bk_a.png
+c000000004C8229BA000000000009D729
+t1283598778
+s644905
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/bk_b.png
+c000000004C8229BA00000000000923AE
+t1283598778
+s598958
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/dummy.png
+c000000004C8229BA00000000000000BA
+t1283598778
+s186
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/icon.png
+c000000004C8229BA000000000000118D
+t1283598778
+s4493
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/logo.png
+c000000004C8229BA000000000000269F
+t1283598778
+s9887
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewA.xib
+c000000004C8229BA00000000000046A0
+t1283598778
+s18080
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewB.xib
+c000000004C8229BA0000000000004738
+t1283598778
+s18232
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewA.xib
+c000000004C8229BA000000000000842D
+t1283598778
+s33837
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewB.xib
+c000000004C8229BA00000000000084D2
+t1283598778
+s34002
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListCell.xib
+c000000004C8229BA0000000000005296
+t1283598778
+s21142
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewA.xib
+c000000004C8229BA00000000000070CC
+t1283598778
+s28876
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewB.xib
+c000000004C8229BA0000000000007164
+t1283598778
+s29028
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LoginView.xib
+c000000004C8229BA0000000000008D9D
+t1283598778
+s36253
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LogoView.xib
+c000000004C8229BA00000000000047ED
+t1283598778
+s18413
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/MainWindow.xib
+c000000004C8229BA0000000000004D1D
+t1283598778
+s19741
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadView.xib
+c000000004C8229BA0000000000006A9D
+t1283598778
+s27293
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewA.xib
+c000000004C8229C90000000000004658
+t1283598793
+s18008
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewB.xib
+c000000004C8229BA0000000000004A67
+t1283598778
+s19047
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/WePublishViewController.xib
+c000000004C8229BA0000000000008022
+t1283598778
+s32802
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch
+c000000004C8229BA00000000000000BB
+t1283598778
+s187
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app
+t1283601209
+s850
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app.dSYM
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/BuyViewA.nib
+t1283601207
+s951
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/BuyViewB.nib
+t1283601207
+s951
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/DetailViewA.nib
+t1283601205
+s3394
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/DetailViewB.nib
+t1283601205
+s3391
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/Info.plist
+t1283601204
+s975
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ListCell.nib
+t1283601206
+s1899
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ListViewA.nib
+t1283601207
+s2229
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ListViewB.nib
+t1283601207
+s2226
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/LoginView.nib
+t1283601207
+s3114
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/LogoView.nib
+t1283601205
+s1091
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/MainWindow.nib
+t1283601204
+s1127
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/PkgInfo
+t1283601204
+s8
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ReadView.nib
+t1283601206
+s2253
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ReadViewA.nib
+t1283601206
+s766
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ReadViewB.nib
+t1283601206
+s976
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ResourceRules.plist
+t1283601204
+s485
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/WePublish
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/WePublishViewController.nib
+t1283601205
+s2019
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/bk_a.png
+t1283601207
+s1080273
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/bk_b.png
+t1283601206
+s1010605
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/dummy.png
+t1283601206
+s240
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/embedded.mobileprovision
+t1283601209
+s7218
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/icon.png
+t1283601204
+s4878
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/logo.png
+t1283601204
+s11621
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/BookCollection.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/BookInfo.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/BuyViewCtrl.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/DetailViewCtrl.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/FileDownloader.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ListCellCtrl.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ListViewCtrl.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/LoginViewCtrl.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/LogoViewCtrl.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/MyScrollView.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewACtrl.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewBCtrl.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewBaseCtrl.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewCtrl.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/UIImageViewWithTouch.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/UIViewWithTouchesDelegate.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/Util.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/Utilities.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/WePublish.LinkFileList
+c000000004C8233340000000000000DD1
+t1283601204
+s3537
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/WePublishAppDelegate.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/WePublishViewController.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/XMLController.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ZipArchive.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ioapi.o
+t1283601209
+s7684
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/main.o
+t2
+s0
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/mztools.o
+t1283601209
+s10704
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/unzip.o
+t1283601209
+s27240
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/zip.o
+t1283601209
+s26116
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish.xcent
+t1283601209
+s424
+
+N/Users/kaerbtuo/Workspace/Cocoa/WePublish/main.m
+c000000004C8229BA0000000000000160
+t1283598778
+s352
+i<UIKit/UIKit.h>
+
+N/var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-dxvypdfzklncpaaehrfrwvzktgph/WePublish_Prefix.pch.gch
+t2
+s0
+
+N/var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-fppakowlfbmxowcyyxacakmunand/WePublish_Prefix.pch.gch
+t1283601208
+s1716452
+
+N/var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-hbwclzswzgtcvceqzmnbfcsweuat/WePublish_Prefix.pch.gch
+t2
+s0
+
+NWePublish-Info.plist
+c000000004C8229BA00000000000004B2
+t1283598778
+s1202
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies305398488#305398489#0(0"0(0#1#0"8608126560#0"0#
+
+CCodeSign /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/BookCollection.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/BookCollection.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/BookInfo.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/BookInfo.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/BuyViewCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/BuyViewCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/DetailViewCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/DetailViewCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/FileDownloader.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/FileDownloader.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ListCellCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ListCellCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ListViewCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ListViewCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/LoginViewCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/LoginViewCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/LogoViewCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/LogoViewCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/MyScrollView.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/MyScrollView.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewACtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewACtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewBCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewBCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewBaseCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewBaseCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/UIImageViewWithTouch.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/UIImageViewWithTouch.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/UIViewWithTouchesDelegate.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/UIViewWithTouchesDelegate.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/Util.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/Util.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/Utilities.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/Utilities.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/WePublishAppDelegate.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/WePublishAppDelegate.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/WePublishViewController.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/WePublishViewController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/XMLController.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/XMLController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ZipArchive.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/ZipArchive.mm normal armv7 objective-c++ com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ioapi.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/ioapi.c normal armv7 c com.apple.compilers.gcc.4_2
+s305294009.719493
+e305294009.837554
+r1
+xCompileC
+xbuild/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ioapi.o
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/ioapi.c
+xnormal
+xarmv7
+xc
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@84"Compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/ioapi.c305294009#305294009#0(0"0(0#0#76"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/ioapi.c8648735744#1914"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-generated-files.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-own-target-headers.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-all-target-headers.hmap -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-project-headers.hmap -F/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources/armv7 -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources -include /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-fppakowlfbmxowcyyxacakmunand/WePublish_Prefix.pch -c /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/ioapi.c -o /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/ioapi.o0#
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/main.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/main.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/mztools.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/mztools.c normal armv7 c com.apple.compilers.gcc.4_2
+s305294009.720446
+e305294009.860650
+r1
+xCompileC
+xbuild/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/mztools.o
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/mztools.c
+xnormal
+xarmv7
+xc
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@86"Compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/mztools.c305294009#305294009#0(0"0(0#0#78"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/mztools.c8642564672#1918"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-generated-files.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-own-target-headers.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-all-target-headers.hmap -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-project-headers.hmap -F/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources/armv7 -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources -include /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-fppakowlfbmxowcyyxacakmunand/WePublish_Prefix.pch -c /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/mztools.c -o /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/mztools.o0#
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/unzip.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.c normal armv7 c com.apple.compilers.gcc.4_2
+s305294009.721299
+e305294009.920671
+r1
+xCompileC
+xbuild/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/unzip.o
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.c
+xnormal
+xarmv7
+xc
+xcom.apple.compilers.gcc.4_2
+o/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.c: In function 'unzGetGlobalComment':
+o/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.c:1537: warning: unused variable 'err'
+lSLF07#2@84"Compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.c305294009#305294009#0(227"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.c: In function 'unzGetGlobalComment':/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.c:1537: warning: unused variable 'err'1(22@21"Unused variable 'err'305294009#113#114#0(6@76"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.c305291578#1537#0#1537#0#19"unused variable '*'0(0#0#76"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.c8641554336#1914"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-generated-files.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-own-target-headers.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-all-target-headers.hmap -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-project-headers.hmap -F/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources/armv7 -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources -include /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-fppakowlfbmxowcyyxacakmunand/WePublish_Prefix.pch -c /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.c -o /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/unzip.o0#
+
+CCompileC build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/zip.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/zip.c normal armv7 c com.apple.compilers.gcc.4_2
+s305294009.722333
+e305294009.910738
+r1
+xCompileC
+xbuild/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/zip.o
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/zip.c
+xnormal
+xarmv7
+xc
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@82"Compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/zip.c305294009#305294009#0(0"0(0#0#74"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/zip.c8640473760#1910"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-generated-files.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-own-target-headers.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-all-target-headers.hmap -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-project-headers.hmap -F/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources/armv7 -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources -include /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-fppakowlfbmxowcyyxacakmunand/WePublish_Prefix.pch -c /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/zip.c -o /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/Objects-normal/armv7/zip.o0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewA.xib
+s305294006.951687
+e305294007.403987
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewA.xib
+lSLF07#2@37"CompileXIB Resources/Xib/BuyViewA.xib305294006#305294007#0(0"0(0#0#68"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewA.xib8637872960#563"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/BuyViewA.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewA.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewB.xib
+s305294007.082691
+e305294007.512115
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewB.xib
+lSLF07#2@37"CompileXIB Resources/Xib/BuyViewB.xib305294007#305294007#0(0"0(0#0#68"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewB.xib8633194112#563"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/BuyViewB.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewB.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewA.xib
+s305294005.051920
+e305294005.826048
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewA.xib
+lSLF07#2@40"CompileXIB Resources/Xib/DetailViewA.xib305294005#305294005#0(0"0(0#0#71"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewA.xib8652439840#569"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/DetailViewA.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewA.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewB.xib
+s305294005.443195
+e305294006.042004
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewB.xib
+lSLF07#2@40"CompileXIB Resources/Xib/DetailViewB.xib305294005#305294006#0(0"0(0#0#71"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewB.xib8641220000#569"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/DetailViewB.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewB.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListCell.xib
+s305294006.465436
+e305294006.951560
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListCell.xib
+lSLF07#2@37"CompileXIB Resources/Xib/ListCell.xib305294006#305294006#0(0"0(0#0#68"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListCell.xib8643078880#563"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ListCell.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListCell.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewA.xib
+s305294006.743859
+e305294007.248718
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewA.xib
+lSLF07#2@38"CompileXIB Resources/Xib/ListViewA.xib305294006#305294007#0(0"0(0#0#69"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewA.xib8641930496#565"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ListViewA.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewA.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewB.xib
+s305294006.933762
+e305294007.435353
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewB.xib
+lSLF07#2@38"CompileXIB Resources/Xib/ListViewB.xib305294006#305294007#0(0"0(0#0#69"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewB.xib8640777664#565"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ListViewB.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewB.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LoginView.xib
+s305294007.248848
+e305294007.756252
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LoginView.xib
+lSLF07#2@38"CompileXIB Resources/Xib/LoginView.xib305294007#305294007#0(0"0(0#0#69"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LoginView.xib8632541312#565"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/LoginView.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LoginView.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LogoView.xib
+s305294004.935392
+e305294005.443081
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LogoView.xib
+lSLF07#2@37"CompileXIB Resources/Xib/LogoView.xib305294004#305294005#0(0"0(0#0#68"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LogoView.xib8654075712#563"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/LogoView.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LogoView.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/MainWindow.xib
+s305294004.501975
+e305294004.935272
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/MainWindow.xib
+lSLF07#2@39"CompileXIB Resources/Xib/MainWindow.xib305294004#305294004#0(0"0(0#0#70"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/MainWindow.xib8640561600#567"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/MainWindow.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/MainWindow.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadView.xib
+s305294005.826287
+e305294006.320187
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadView.xib
+lSLF07#2@37"CompileXIB Resources/Xib/ReadView.xib305294005#305294006#0(0"0(0#0#68"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadView.xib8612171488#563"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ReadView.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadView.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewA.xib
+s305294006.042138
+e305294006.441379
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewA.xib
+lSLF07#2@38"CompileXIB Resources/Xib/ReadViewA.xib305294006#305294006#0(0"0(0#0#69"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewA.xib8619040896#565"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ReadViewA.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewA.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewB.xib
+s305294006.320301
+e305294006.743737
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewB.xib
+lSLF07#2@38"CompileXIB Resources/Xib/ReadViewB.xib305294006#305294006#0(0"0(0#0#69"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewB.xib8653894944#565"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ReadViewB.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewB.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/WePublishViewController.xib
+s305294004.546824
+e305294005.051798
+r1
+xCompileXIB
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/WePublishViewController.xib
+lSLF07#2@52"CompileXIB Resources/Xib/WePublishViewController.xib305294004#305294005#0(0"0(0#0#83"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/WePublishViewController.xib8638099168#593"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/WePublishViewController.nib /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/WePublishViewController.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk0#
+
+CCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/bk_a.png Resources/Images/Parts/bk_a.png
+s305294004.228962
+e305294007.082565
+r1
+xCopyPNGFile
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/bk_a.png
+xResources/Images/Parts/bk_a.png
+lSLF07#2@87"CopyPNGFile build/Debug-iphoneos/WePublish.app/bk_a.png Resources/Images/Parts/bk_a.png305294004#305294007#0(0"0(0#0#73"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/bk_a.png8640953504#590"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv COPY_COMMAND /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/bk_a.png /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/bk_a.png0#
+
+CCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/bk_b.png Resources/Images/Parts/bk_b.png
+s305294004.237523
+e305294006.933638
+r1
+xCopyPNGFile
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/bk_b.png
+xResources/Images/Parts/bk_b.png
+lSLF07#2@87"CopyPNGFile build/Debug-iphoneos/WePublish.app/bk_b.png Resources/Images/Parts/bk_b.png305294004#305294006#0(0"0(0#0#73"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/bk_b.png8640636480#590"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv COPY_COMMAND /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/bk_b.png /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/bk_b.png0#
+
+CCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/dummy.png Resources/Images/Parts/dummy.png
+s305294006.441497
+e305294006.465325
+r1
+xCopyPNGFile
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/dummy.png
+xResources/Images/Parts/dummy.png
+lSLF07#2@89"CopyPNGFile build/Debug-iphoneos/WePublish.app/dummy.png Resources/Images/Parts/dummy.png305294006#305294006#0(0"0(0#0#74"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/dummy.png8648484992#592"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv COPY_COMMAND /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/dummy.png /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/dummy.png0#
+
+CCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/icon.png Resources/Images/Parts/icon.png
+s305294004.240478
+e305294004.501853
+r1
+xCopyPNGFile
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/icon.png
+xResources/Images/Parts/icon.png
+lSLF07#2@87"CopyPNGFile build/Debug-iphoneos/WePublish.app/icon.png Resources/Images/Parts/icon.png305294004#305294004#0(0"0(0#0#73"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/icon.png8653814240#590"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv COPY_COMMAND /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/icon.png /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/icon.png0#
+
+CCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/logo.png Resources/Images/Parts/logo.png
+s305294004.238312
+e305294004.546700
+r1
+xCopyPNGFile
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/logo.png
+xResources/Images/Parts/logo.png
+lSLF07#2@87"CopyPNGFile build/Debug-iphoneos/WePublish.app/logo.png Resources/Images/Parts/logo.png305294004#305294004#0(0"0(0#0#73"/Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/logo.png8599227360#590"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv COPY_COMMAND /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Images/Parts/logo.png /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/logo.png0#
+
+CCpResource build/Debug-iphoneos/WePublish.app/ResourceRules.plist /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+s305294004.214111
+e305294004.228848
+r1
+xCpResource
+xbuild/Debug-iphoneos/WePublish.app/ResourceRules.plist
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+lSLF07#2@94"Copy /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist305294004#305294004#0(0"0(0#0#89"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist8642216704#488"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app0#
+
+CGenerateDSYMFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app.dSYM /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/WePublish
+r0
+
+CLd /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/WePublish normal armv7
+r0
+
+CProcessInfoPlistFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/Info.plist WePublish-Info.plist
+s305294004.214896
+e305294004.218345
+r1
+xProcessInfoPlistFile
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/Info.plist
+xWePublish-Info.plist
+lSLF07#2@28"Process WePublish-Info.plist305294004#305294004#0(0"0(0#0#62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish-Info.plist8641820672#582"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility WePublish-Info.plist -genpkginfo /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/PkgInfo -expandbuildsettings -format binary -platform iphoneos -resourcerulesfile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/ResourceRules.plist -o /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/Info.plist0#
+
+CProcessPCH /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-dxvypdfzklncpaaehrfrwvzktgph/WePublish_Prefix.pch.gch WePublish_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
+s305398489.391981
+e305398490.258667
+r0
+xProcessPCH
+x/var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-dxvypdfzklncpaaehrfrwvzktgph/WePublish_Prefix.pch.gch
+xWePublish_Prefix.pch
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/limits.h:64,
+o                 from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h:17,
+o                 from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:6,
+o                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/machine/limits.h:10:2: error: #error architecture not supported
+oIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h:19,
+o                 from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:6,
+o                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/math.h:30:2: error: #error Unknown architecture
+oIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:8,
+o                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:
+o/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObjCRuntime.h:167: error: 'LONG_MAX' undeclared here (not in a function)
+oIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:20,
+o                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:7:
+o/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDataDetectors.h:15: error: 'ULONG_MAX' undeclared here (not in a function)
+lSLF07#2@31"Precompile WePublish_Prefix.pch305398489#305398490#0(2171"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/limits.h:64,                 from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h:17,                 from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:6,                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/machine/limits.h:10:2: error: #error architecture not supportedIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h:19,                 from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:6,                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/math.h:30:2: error: #error Unknown architectureIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:8,                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObjCRuntime.h:167: error: 'LONG_MAX' undeclared here (not in a function)In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:20,                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:7:/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDataDetectors.h:15: error: 'ULONG_MAX' undeclared here (not in a function)4(4@33"#error architecture not supported305398489#554#160#5(7@84"In file included from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305398489#18446744073709551615#0#0(6@62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305291578#6#0#6#0#0"0(7@159"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h305398489#18446744073709551615#0#0(6@137"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h296784305#6#0#6#0#0"0(7@167"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h305398489#18446744073709551615#0#0(6@145"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h296783892#17#0#17#0#0"0(7@126"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/limits.h305398489#18446744073709551615#0#0(6@104"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/limits.h217634993#64#0#64#0#0"0(13@149"#error architecture not supported in /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/machine/limits.h305398489#18446744073709551615#0#0(6@112"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/machine/limits.h217634994#10#0#10#0#0"0(6@112"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/machine/limits.h217634994#10#0#10#0#8"#error *0(4@27"#error Unknown architecture305398489#1137#144#4(7@84"In file included from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305398489#18446744073709551615#0#0(6@62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305291578#6#0#6#0#0"0(7@159"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h305398489#18446744073709551615#0#0(6@137"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h296784305#6#0#6#0#0"0(7@167"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h305398489#18446744073709551615#0#0(6@145"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h296783892#19#0#19#0#0"0(13@133"#error Unknown architecture in /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/math.h305398489#18446744073709551615#0#0(6@102"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/math.h217634950#30#0#30#0#0"0(6@102"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/math.h217634950#30#0#30#0#8"#error *0(4@46"'LONG_MAX' undeclared here (not in a function)305398489#1532#200#3(7@84"In file included from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305398489#18446744073709551615#0#0(6@62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305291578#6#0#6#0#0"0(7@159"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h305398489#18446744073709551615#0#0(6@137"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h296784305#8#0#8#0#0"0(13@190"'LONG_MAX' undeclared here (not in a function) in /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObjCRuntime.h305398489#18446744073709551615#0#0(6@140"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObjCRuntime.h296784305#167#0#167#0#0"0(6@140"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObjCRuntime.h296784305#167#0#167#0#39"'*' undeclared here (not in a function)0(4@47"'ULONG_MAX' undeclared here (not in a function)305398489#1974#197#3(7@84"In file included from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305398489#18446744073709551615#0#0(6@62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305291578#7#0#7#0#0"0(7@149"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h305398489#18446744073709551615#0#0(6@127"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h296786860#20#0#20#0#0"0(13@188"'ULONG_MAX' undeclared here (not in a function) in /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDataDetectors.h305398489#18446744073709551615#0#0(6@137"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDataDetectors.h296786860#15#0#15#0#0"0(6@137"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDataDetectors.h296786860#15#0#15#0#39"'*' undeclared here (not in a function)0(0#0#62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch8607421824#1788"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-generated-files.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-own-target-headers.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-all-target-headers.hmap -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-project-headers.hmap -F/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources/armv7 -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources -c /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch -o /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-dxvypdfzklncpaaehrfrwvzktgph/WePublish_Prefix.pch.gch1#
+
+CProcessPCH /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-fppakowlfbmxowcyyxacakmunand/WePublish_Prefix.pch.gch WePublish_Prefix.pch normal armv7 c com.apple.compilers.gcc.4_2
+s305294007.757227
+e305294008.866336
+r1
+xProcessPCH
+x/var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-fppakowlfbmxowcyyxacakmunand/WePublish_Prefix.pch.gch
+xWePublish_Prefix.pch
+xnormal
+xarmv7
+xc
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@31"Precompile WePublish_Prefix.pch305294007#305294008#0(0"0(0#0#62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch8652724000#1778"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x c-header -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-generated-files.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-own-target-headers.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-all-target-headers.hmap -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-project-headers.hmap -F/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources/armv7 -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources -c /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch -o /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-fppakowlfbmxowcyyxacakmunand/WePublish_Prefix.pch.gch0#
+
+CProcessPCH++ /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-hbwclzswzgtcvceqzmnbfcsweuat/WePublish_Prefix.pch.gch WePublish_Prefix.pch normal armv7 objective-c++ com.apple.compilers.gcc.4_2
+s305398489.393046
+e305398490.390431
+r0
+xProcessPCH++
+x/var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-hbwclzswzgtcvceqzmnbfcsweuat/WePublish_Prefix.pch.gch
+xWePublish_Prefix.pch
+xnormal
+xarmv7
+xobjective-c++
+xcom.apple.compilers.gcc.4_2
+oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/limits.h:64,
+o                 from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h:17,
+o                 from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:6,
+o                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/machine/limits.h:10:2: error: #error architecture not supported
+oIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h:19,
+o                 from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:6,
+o                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:
+o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/math.h:30:2: error: #error Unknown architecture
+oIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:8,
+o                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:
+o/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObjCRuntime.h:167: error: 'LONG_MAX' was not declared in this scope
+oIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:14,
+o                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:
+o/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCalendar.h:92: error: 'LONG_MAX' was not declared in this scope
+oIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:20,
+o                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:7:
+o/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDataDetectors.h:15: error: 'ULONG_MAX' was not declared in this scope
+oIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:46,
+o                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:7:
+o/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIPopoverController.h:25: error: 'ULONG_MAX' was not declared in this scope
+lSLF07#2@31"Precompile WePublish_Prefix.pch305398489#305398490#0(3042"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/limits.h:64,                 from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h:17,                 from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:6,                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/machine/limits.h:10:2: error: #error architecture not supportedIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h:19,                 from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:6,                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/math.h:30:2: error: #error Unknown architectureIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:8,                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObjCRuntime.h:167: error: 'LONG_MAX' was not declared in this scopeIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:14,                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:6:/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCalendar.h:92: error: 'LONG_MAX' was not declared in this scopeIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:20,                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:7:/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDataDetectors.h:15: error: 'ULONG_MAX' was not declared in this scopeIn file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:46,                 from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch:7:/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIPopoverController.h:25: error: 'ULONG_MAX' was not declared in this scope6(4@33"#error architecture not supported305398489#554#160#5(7@84"In file included from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305398489#18446744073709551615#0#0(6@62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305291578#6#0#6#0#0"0(7@159"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h305398489#18446744073709551615#0#0(6@137"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h296784305#6#0#6#0#0"0(7@167"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h305398489#18446744073709551615#0#0(6@145"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h296783892#17#0#17#0#0"0(7@126"In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/limits.h305398489#18446744073709551615#0#0(6@104"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/limits.h217634993#64#0#64#0#0"0(13@149"#error architecture not supported in /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/machine/limits.h305398489#18446744073709551615#0#0(6@112"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/machine/limits.h217634994#10#0#10#0#0"0(6@112"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/machine/limits.h217634994#10#0#10#0#8"#error *0(4@27"#error Unknown architecture305398489#1137#144#4(7@84"In file included from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305398489#18446744073709551615#0#0(6@62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305291578#6#0#6#0#0"0(7@159"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h305398489#18446744073709551615#0#0(6@137"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h296784305#6#0#6#0#0"0(7@167"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h305398489#18446744073709551615#0#0(6@145"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h296783892#19#0#19#0#0"0(13@133"#error Unknown architecture in /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/math.h305398489#18446744073709551615#0#0(6@102"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/math.h217634950#30#0#30#0#0"0(6@102"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/math.h217634950#30#0#30#0#8"#error *0(4@41"'LONG_MAX' was not declared in this scope305398489#1532#195#3(7@84"In file included from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305398489#18446744073709551615#0#0(6@62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305291578#6#0#6#0#0"0(7@159"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h305398489#18446744073709551615#0#0(6@137"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h296784305#8#0#8#0#0"0(13@185"'LONG_MAX' was not declared in this scope in /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObjCRuntime.h305398489#18446744073709551615#0#0(6@140"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObjCRuntime.h296784305#167#0#167#0#0"0(6@140"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObjCRuntime.h296784305#167#0#167#0#34"'*' was not declared in this scope0(4@41"'LONG_MAX' was not declared in this scope305398489#1979#191#3(7@84"In file included from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305398489#18446744073709551615#0#0(6@62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305291578#6#0#6#0#0"0(7@159"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h305398489#18446744073709551615#0#0(6@137"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h296784305#14#0#14#0#0"0(13@182"'LONG_MAX' was not declared in this scope in /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCalendar.h305398489#18446744073709551615#0#0(6@137"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCalendar.h296784305#92#0#92#0#0"0(6@137"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSCalendar.h296784305#92#0#92#0#34"'*' was not declared in this scope0(4@42"'ULONG_MAX' was not declared in this scope305398489#2412#192#3(7@84"In file included from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305398489#18446744073709551615#0#0(6@62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305291578#7#0#7#0#0"0(7@149"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h305398489#18446744073709551615#0#0(6@127"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h296786860#20#0#20#0#0"0(13@183"'ULONG_MAX' was not declared in this scope in /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDataDetectors.h305398489#18446744073709551615#0#0(6@137"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDataDetectors.h296786860#15#0#15#0#0"0(6@137"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDataDetectors.h296786860#15#0#15#0#34"'*' was not declared in this scope0(4@42"'ULONG_MAX' was not declared in this scope305398489#2846#196#3(7@84"In file included from /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305398489#18446744073709551615#0#0(6@62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch305291578#7#0#7#0#0"0(7@149"In file included from /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h305398489#18446744073709551615#0#0(6@127"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h296786860#46#0#46#0#0"0(13@187"'ULONG_MAX' was not declared in this scope in /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIPopoverController.h305398489#18446744073709551615#0#0(6@141"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIPopoverController.h296786860#25#0#25#0#0"0(6@141"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIPopoverController.h296786860#25#0#25#0#34"'*' was not declared in this scope0(0#0#62"/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch8611719744#1809"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c++-header -arch armv7 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk -fvisibility=hidden -fvisibility-inlines-hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-generated-files.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-own-target-headers.hmap -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-all-target-headers.hmap -iquote /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish-project-headers.hmap -F/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/include -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources/armv7 -I/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/DerivedSources -c /Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish_Prefix.pch -o /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-hbwclzswzgtcvceqzmnbfcsweuat/WePublish_Prefix.pch.gch1#
+
+CProcessProductPackaging "/Users/kaerbtuo/Library/MobileDevice/Provisioning Profiles/4378A2CA-96DA-4F71-ACDB-D5CBFBE45ED4.mobileprovision" /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/embedded.mobileprovision
+s305294009.920904
+e305294009.944840
+r1
+xProcessProductPackaging
+x/Users/kaerbtuo/Library/MobileDevice/Provisioning Profiles/4378A2CA-96DA-4F71-ACDB-D5CBFBE45ED4.mobileprovision
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/embedded.mobileprovision
+lSLF07#2@197"ProcessProductPackaging "/Users/kaerbtuo/Library/MobileDevice/Provisioning Profiles/4378A2CA-96DA-4F71-ACDB-D5CBFBE45ED4.mobileprovision" build/Debug-iphoneos/WePublish.app/embedded.mobileprovision305294009#305294009#0(0"0(0#0#101"/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/embedded.mobileprovision8613627712#434"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> "/Users/kaerbtuo/Library/MobileDevice/Provisioning Profiles/4378A2CA-96DA-4F71-ACDB-D5CBFBE45ED4.mobileprovision" -o /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app/embedded.mobileprovision0#
+
+CProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish.xcent
+s305294009.945089
+e305294009.962979
+r1
+xProcessProductPackaging
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist
+x/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish.xcent
+lSLF07#2@181"ProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish.xcent305294009#305294009#0(0"0(0#0#110"/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish.xcent8652554944#444"    cd /Users/kaerbtuo/Workspace/Cocoa/WePublish    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist -entitlements -format xml -o /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Debug-iphoneos/WePublish.build/WePublish.xcent0#
+
+CTouch /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Debug-iphoneos/WePublish.app
+r0
+

@@ -16,24 +16,69 @@
 enum {
   page_mode_none,
   page_mode_curl_start,
+  page_mode_curling,
+  page_mode_release,
   page_mode_curl_right,
   page_mode_curl_left,
   page_mode_zoom,
   page_mode_wait
 };
 
+enum {
+  left,
+  right
+};
+
+enum {
+  right_page,
+  left_page,
+  middle_page,
+  bottom_page
+};
+
 @interface ReadViewACtrl : ReadViewBaseCtrl <UIScrollViewDelegate> {
 	MyScrollView *_scrollView;
 
+	UIView * _bookView;
 	UIView * _rightView;
 	UIView * _leftView;
 	UIViewWithTouchesDelegate * _pageCurlView;
 
+	float image_width, image_height;
+
 	NSInteger _mode;
+	NSInteger _curl_side;
+	NSInteger _curl_from;
+	NSInteger _curl_to;
+	float _curl_ratio;
+
+	NSMutableArray * fingers;
 
 	CGPoint touchStartPoint;
+	
+	CAGradientLayer * centerPageShadow;
+	CAGradientLayer * middlePageRightShadowLayer;
+	CAGradientLayer * middlePageLeftShadowLayer;
+
+	CAGradientLayer * topPageRightShadowLayer;
+	CAGradientLayer * topPageCurlShadowLayer;
+	CAGradientLayer * topPageLeftShadowLayer;
 
 	CAGradientLayer * rightPageShadow;
+
+	CALayer *bottomLayer;
+	CALayer *leftPageLayer;
+	CALayer *leftPageImageLayer;
+	CALayer *rightPageLayer;
+	CALayer *rightPageImageLayer;
+
+	CALayer *middleLayer;
+	CALayer *middlePageLayer;
+	CALayer *middlePageImageLayer;
+
+	CALayer *topLayer;
+	CALayer *topPageLayer;
+	CALayer *topPageImageLayer;
 
 	CALayer *curlingPageR;
 	CALayer *curlingPageRImage;
@@ -52,11 +97,24 @@ enum {
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 
+- (void)initLayers:(UIView *)targetView;
 - (void)scrollViewDidScroll:(UIScrollView *)sender;
-- (void)setPage:(NSInteger)selectPage;
+- (void)resetContentsSize;
+- (void)setPage:(NSInteger)selectPage windowMode:(NSInteger)windowMode;
+- (void)setPageForSingleFace:(NSInteger)selectPage;
+- (void)setPageForDoubleFace:(NSInteger)selectPage;
 - (void)releaseFarBooks:(NSInteger)targetPage;
-- (CGRect) getAspectFittingImageRect:(UIImage *)im0;
-- (void) curlPageToLeft:(float)curlRatio;
-- (void) curlPageToRight:(float)curlRatio;
+- (CGRect)getAspectFittingImageRect:(UIImage *)im0;
+- (void)curlPageToLeft:(float)curlRatio;
+- (void)curlPageToRight:(float)curlRatio;
+- (void)initCurlPageToLeft;
+- (void)initCurlPageToRight;
+- (void)beginToCurlLeft;
+- (void)beginToCurlRight;
+- (void)notifyGoToNextPage;
+- (void)notifyGoToPrevPage;
+- (float) getAnotherSide:(NSInteger) side;
+- (void)setModeToNone;
+- (CGImageRef)getImageRefFromUIImage:(UIImage *)im0;
 
 @end

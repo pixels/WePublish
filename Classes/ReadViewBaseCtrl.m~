@@ -32,6 +32,9 @@
 	_maxPage = pageNum;
 }
 
+- (void)loadPages:(NSInteger)selectPage windowMode:(NSInteger)windowMode {
+}
+
 - (void)setPage:(NSInteger)selectPage windowMode:(NSInteger)windowMode {
 	_currentPage = selectPage;
 	
