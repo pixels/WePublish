@@ -50,7 +50,8 @@
 #define AUTH_PASSWORD @"ka08tbj3hZfa"
 
 // Message
-#define STATUS_START_TO_UPDATE @"最新情報を取得中"
+#define STATUS_START_TO_UPDATE @"本棚を更新しています。"
+#define STATUS_DOWNLOADING_BOOKS @"本をダウンロード中..."
 #define WARNING_TITLE @"警告"
 #define BOOKMARK_MESSAGE @"続きから読みますか？"
 #define TRASH_WARNING_MESSAGE @"iPadに保存されたアカウントと本を削除します。アカウントを再設定後、本を再ダウンロードします。\nよろしいですか？"

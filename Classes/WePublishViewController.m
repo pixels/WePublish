@@ -316,7 +316,7 @@
 		BookInfo *info;
 		for (id key in _tmpDlDic) {
 			updateTotalDownloadCount_++;
-			[statusLabel_ setText:[NSString stringWithFormat:@"%d / %d", updateTotalDownloadCount_, updateRequestFileCount_]];
+			[statusLabel_ setText:[NSString stringWithFormat:@"%@ %3d / %3d", STATUS_DOWNLOADING_BOOKS, updateTotalDownloadCount_, updateRequestFileCount_]];
 			info = [_tmpDlDic objectForKey:key];
 			FileDownloader *fd = [[FileDownloader alloc] init];
 			[fd download:info.uuid url:info.url];
