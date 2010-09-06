@@ -379,26 +379,81 @@
 }
 
 - (void) autoCurlAnimation {
+  if ( _curl_from == right ) {
+    NSLog(@"right");
+  } else {
+    NSLog(@"left");
+  }
   if ( _mode == page_mode_release ) {
-    if ( _curl_ratio < 0.5f ) {
-      if ( (_curl_ratio -= CURL_SPAN) > 0.0f ) {
-	[self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
-	[self performSelector:@selector(autoCurlAnimation)
-		   withObject:nil 
-		   afterDelay:PAGING_WAIT_TIME];
+    if ( _windowMode == MODE_A ) {
+      if (( _direction != DIRECTION_LEFT & _curl_from == left ) | (_direction == DIRECTION_LEFT & _curl_from == right) ) {
+	NSLog(@"A");
+	if ( _curl_ratio < 0.5f ) {
+	  if ( (_curl_ratio -= CURL_SPAN) > 0.0f ) {
+	    [self curlFor:_curl_side from:_curl_from ratio:-1.0f * _curl_ratio];
+	    [self performSelector:@selector(autoCurlAnimation)
+		       withObject:nil 
+		       afterDelay:PAGING_WAIT_TIME];
+	  } else {
+	    [self endFor:_curl_side from:_curl_from to:_curl_to];
+	    [self setPages];
+	  }
+	} else {
+	  if ( (_curl_ratio += CURL_SPAN) < 1.0f ) {
+	    [self curlFor:_curl_side from:_curl_from ratio:-1.0f * _curl_ratio];
+	    [self performSelector:@selector(autoCurlAnimation)
+		       withObject:nil 
+		       afterDelay:PAGING_WAIT_TIME];
+	  } else {
+	    [self endFor:_curl_side from:_curl_from to:_curl_to];
+	    [self setPages];
+	  }
+	}
       } else {
-	[self endFor:_curl_side from:_curl_from to:_curl_to];
-	[self setPages];
+	NSLog(@"B");
+	if ( _curl_ratio >= 0.5f ) {
+	  if ( (_curl_ratio += CURL_SPAN) < 1.0f ) {
+	    [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
+	    [self performSelector:@selector(autoCurlAnimation)
+		       withObject:nil 
+		       afterDelay:PAGING_WAIT_TIME];
+	  } else {
+	    [self endFor:_curl_side from:_curl_from to:_curl_to];
+	    [self setPages];
+	  }
+	} else {
+	  if ( (_curl_ratio -= CURL_SPAN) > 0.0f ) {
+	    [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
+	    [self performSelector:@selector(autoCurlAnimation)
+		       withObject:nil 
+		       afterDelay:PAGING_WAIT_TIME];
+	  } else {
+	    [self endFor:_curl_side from:_curl_from to:_curl_to];
+	    [self setPages];
+	  }
+	}
       }
-    } else if ( _curl_ratio >= 0.5f ) {
-      if ( (_curl_ratio += CURL_SPAN) < 1.0f ) {
-	[self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
-	[self performSelector:@selector(autoCurlAnimation)
-		   withObject:nil 
-		   afterDelay:PAGING_WAIT_TIME];
+    } else {
+      if ( _curl_ratio < 0.5f ) {
+	if ( (_curl_ratio -= CURL_SPAN) > 0.0f ) {
+	  [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
+	  [self performSelector:@selector(autoCurlAnimation)
+		     withObject:nil 
+		     afterDelay:PAGING_WAIT_TIME];
+	} else {
+	  [self endFor:_curl_side from:_curl_from to:_curl_to];
+	  [self setPages];
+	}
       } else {
-	[self endFor:_curl_side from:_curl_from to:_curl_to];
-	[self setPages];
+	if ( (_curl_ratio += CURL_SPAN) < 1.0f ) {
+	  [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
+	  [self performSelector:@selector(autoCurlAnimation)
+		     withObject:nil 
+		     afterDelay:PAGING_WAIT_TIME];
+	} else {
+	  [self endFor:_curl_side from:_curl_from to:_curl_to];
+	  [self setPages];
+	}
       }
     }
   }
@@ -1148,6 +1203,7 @@
      if([self isNext]) [self beginToCurlLeft];
      */
 
+  NSLog(@"ratio : %f", _curl_ratio);
   [CATransaction commit];
 }
 
@@ -1439,15 +1495,15 @@ if ( MAX_ZOOM_SCALE != MIN_ZOOM_SCALE ) [_scrollView setScrollEnabled:YES];
 
   curlingPageLShadow.colors = [NSArray arrayWithObjects:
     (id)[[UIColor clearColor] CGColor],
-      (id)[[[UIColor alloc] initWithRed:SHADOW_RED green:SHADOW_GREEN blue:SHADOW_BLUE alpha:SHADOW_ALPHA] CGColor], 
+    (id)[[[UIColor alloc] initWithRed:SHADOW_RED green:SHADOW_GREEN blue:SHADOW_BLUE alpha:SHADOW_ALPHA] CGColor], 
     (id)[[UIColor clearColor] CGColor], nil];
   curlingPageLShadow.startPoint = CGPointMake(1,0.5);
   curlingPageLShadow.endPoint = CGPointMake(0,0.5);
 
   leftPageShadow.opacity = 0.0f;
   leftPageShadow.colors = [NSArray arrayWithObjects:
-      (id)[[[UIColor alloc] initWithRed:SHADOW_RED green:SHADOW_GREEN blue:SHADOW_BLUE alpha:SHADOW_ALPHA] CGColor], 
-   (id)[[UIColor clearColor] CGColor], nil];
+		  (id)[[[UIColor alloc] initWithRed:SHADOW_RED green:SHADOW_GREEN blue:SHADOW_BLUE alpha:SHADOW_ALPHA] CGColor], 
+    (id)[[UIColor clearColor] CGColor], nil];
   leftPageShadow.startPoint = CGPointMake(1,0.5);
   leftPageShadow.endPoint = CGPointMake(0,0.5);
 
@@ -1566,8 +1622,8 @@ if ( MAX_ZOOM_SCALE != MIN_ZOOM_SCALE ) [_scrollView setScrollEnabled:YES];
 
   leftPageShadow.opacity = 0.0f;
   leftPageShadow.colors = [NSArray arrayWithObjects:
-    (id)[[[UIColor alloc] initWithRed:SHADOW_RED green:SHADOW_GREEN blue:SHADOW_BLUE alpha:SHADOW_ALPHA] CGColor], 
-   (id)[[UIColor clearColor] CGColor], nil];
+		  (id)[[[UIColor alloc] initWithRed:SHADOW_RED green:SHADOW_GREEN blue:SHADOW_BLUE alpha:SHADOW_ALPHA] CGColor], 
+    (id)[[UIColor clearColor] CGColor], nil];
   leftPageShadow.startPoint = CGPointMake(1,0.5);
   leftPageShadow.endPoint = CGPointMake(0,0.5);
 
