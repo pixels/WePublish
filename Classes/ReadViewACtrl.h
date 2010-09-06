@@ -80,24 +80,11 @@ enum {
 	CALayer *topPageLayer;
 	CALayer *topPageImageLayer;
 
-	CALayer *curlingPageR;
-	CALayer *curlingPageRImage;
-	CALayer *curlingPageRImageOverlay;
-	CAGradientLayer * curlingPageRShadow;
-
-	CALayer *curlingPageL;
-	CALayer *curlingPageLImage;
-	CALayer *curlingPageLImageOverlay;
-	CAGradientLayer * curlingPageLShadow;
-
-	CAGradientLayer * leftPageShadow;
-
 	float image_margin_x, image_margin_y;
 }
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 
-- (void)initLayers:(UIView *)targetView;
 - (void)scrollViewDidScroll:(UIScrollView *)sender;
 - (void)resetContentsSize;
 - (void)setPage:(NSInteger)selectPage windowMode:(NSInteger)windowMode;
@@ -107,14 +94,9 @@ enum {
 - (CGRect)getAspectFittingImageRect:(UIImage *)im0;
 - (void)curlPageToLeft:(float)curlRatio;
 - (void)curlPageToRight:(float)curlRatio;
-- (void)initCurlPageToLeft;
-- (void)initCurlPageToRight;
-- (void)beginToCurlLeft;
-- (void)beginToCurlRight;
 - (void)notifyGoToNextPage;
 - (void)notifyGoToPrevPage;
 - (float) getAnotherSide:(NSInteger) side;
-- (void)setModeToNone;
 - (CGImageRef)getImageRefFromUIImage:(UIImage *)im0;
 
 @end
