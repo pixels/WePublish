@@ -222,6 +222,9 @@
   [CATransaction begin];
   [CATransaction setDisableActions:YES]; 
 
+  [CATransaction begin];
+  [CATransaction setValue:[NSNumber numberWithFloat:0.0f]
+		   forKey:kCATransactionAnimationDuration];
   float center;
   if ( _windowMode == MODE_A ) {
     center = 0;
@@ -334,8 +337,18 @@
   }
   middlePageLayer.frame = CGRectMake(image_width + 1, 0, image_width, image_height);
 
+  [CATransaction commit];
+  [CATransaction commit];
+
+  [CATransaction begin];
+  [CATransaction setDisableActions:YES]; 
+
+  [CATransaction begin];
+  [CATransaction setValue:[NSNumber numberWithFloat:0.0f]
+		   forKey:kCATransactionAnimationDuration];
   topPageLayer.opacity = 1.0f;
   middlePageLayer.opacity = 1.0f;
+  [CATransaction commit];
   [CATransaction commit];
 }
 
@@ -379,18 +392,12 @@
 }
 
 - (void) autoCurlAnimation {
-  if ( _curl_from == right ) {
-    NSLog(@"right");
-  } else {
-    NSLog(@"left");
-  }
   if ( _mode == page_mode_release ) {
     if ( _windowMode == MODE_A ) {
       if (( _direction != DIRECTION_LEFT & _curl_from == left ) | (_direction == DIRECTION_LEFT & _curl_from == right) ) {
-	NSLog(@"A");
 	if ( _curl_ratio < 0.5f ) {
 	  if ( (_curl_ratio -= CURL_SPAN) > 0.0f ) {
-	    [self curlFor:_curl_side from:_curl_from ratio:-1.0f * _curl_ratio];
+	    [self curlFor:_curl_side from:_curl_from ratio:1.0f - _curl_ratio];
 	    [self performSelector:@selector(autoCurlAnimation)
 		       withObject:nil 
 		       afterDelay:PAGING_WAIT_TIME];
@@ -400,7 +407,7 @@
 	  }
 	} else {
 	  if ( (_curl_ratio += CURL_SPAN) < 1.0f ) {
-	    [self curlFor:_curl_side from:_curl_from ratio:-1.0f * _curl_ratio];
+	    [self curlFor:_curl_side from:_curl_from ratio:1.0f - _curl_ratio];
 	    [self performSelector:@selector(autoCurlAnimation)
 		       withObject:nil 
 		       afterDelay:PAGING_WAIT_TIME];
@@ -410,7 +417,6 @@
 	  }
 	}
       } else {
-	NSLog(@"B");
 	if ( _curl_ratio >= 0.5f ) {
 	  if ( (_curl_ratio += CURL_SPAN) < 1.0f ) {
 	    [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
@@ -460,17 +466,13 @@
 }
 
 - (void) endFor:(int)curling from:(int)from to:(int)to{
-  if ( from == to ) {
-    NSLog(@"reverse");
-  } else {
-    NSLog(@"curl");
-  }
+  [CATransaction begin];
+  [CATransaction setDisableActions:YES]; 
 
-  if ( curling == left ) {
-    NSLog(@"end left curl");
-  } else {
-    NSLog(@"end right curl");
-  }
+  [CATransaction begin];
+  [CATransaction setValue:[NSNumber numberWithFloat:0.0f]
+		   forKey:kCATransactionAnimationDuration];
+
   if (_windowMode == MODE_A) {
     if ( from == to) {
       if ( curling == right && curling == from ) {
@@ -494,6 +496,16 @@
       }
     }
   }
+
+  [CATransaction commit];
+  [CATransaction commit];
+
+  [CATransaction begin];
+  [CATransaction setDisableActions:YES]; 
+
+  [CATransaction begin];
+  [CATransaction setValue:[NSNumber numberWithFloat:0.0f]
+		   forKey:kCATransactionAnimationDuration];
   topPageLayer.opacity = 0.0f;
   middlePageLayer.opacity = 0.0f;
 
@@ -503,6 +515,11 @@
   topPageLeftShadowLayer.opacity = 0.0f;
   topPageCurlShadowLayer.opacity = 0.0f;
   topPageRightShadowLayer.opacity = 0.0f;
+
+  [CATransaction commit];
+  [CATransaction commit];
+
+  _mode = page_mode_none
 }
 
 - (NSInteger) getRightPageNumberWithDistance:(NSInteger)d {
@@ -624,10 +641,8 @@
   NSInteger targetPage;
   if ( _windowMode == MODE_A ) { //TODO
     targetPage = _currentPage + 1;
-    NSLog(@"plus 1");
   } else {
     targetPage = _currentPage + 2;
-    NSLog(@"plus 2");
   }
 
   if (targetPage > _maxPage)
@@ -1076,6 +1091,15 @@
 }
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
+  if ( _mode == page_mode_none ) {
+    NSLog(@"mode none");
+  } else if ( _mode == page_mode_release ) {
+    NSLog(@"mode release");
+  } else if ( _mode == page_mode_curl_start ) {
+    NSLog(@"mode start");
+  } else if ( _mode == page_mode_curling ) {
+    NSLog(@"mode curling");
+  }
 	touchStartPoint = [[touches anyObject] locationInView:self.view];
 	if ( _mode == page_mode_release ) {
 	  [self endFor:_curl_side from:_curl_from to:_curl_to];
@@ -1129,6 +1153,7 @@
       }
     }
 
+    [self setPages];
     [self startFor:_curl_side from:_curl_from];
   } else if ( _mode == page_mode_curling ) {
     if ( _curl_from == right) {
@@ -1144,6 +1169,7 @@
 	}
 
 	_curl_from = left;
+	[self setPages];
 	[self startFor:_curl_side from:_curl_from];
       } else {
 	if ( _windowMode == MODE_A ) {
@@ -1177,6 +1203,7 @@
 	}
 
 	_curl_from = right;
+	[self setPages];
 	[self startFor:_curl_side from:_curl_from];
       } else {
 	if ( _windowMode == MODE_A ) {
@@ -1203,7 +1230,6 @@
      if([self isNext]) [self beginToCurlLeft];
      */
 
-  NSLog(@"ratio : %f", _curl_ratio);
   [CATransaction commit];
 }
 
@@ -1266,19 +1292,6 @@
 	_curl_ratio = -1.0f * delta_x * CURL_BOOST / WINDOW_BW;
 	_curl_side = right;
       }
-    }
-
-    if ( _curl_from == left ) {
-      NSLog(@"left");
-    } else {
-      NSLog(@"right");
-    }
-    NSLog(@"ratio %f", _curl_ratio * CURL_BOOST);
-
-    if (_curl_side == left ) {
-      NSLog(@"left side");
-    } else {
-      NSLog(@"right side");
     }
 
     if ( _curl_ratio > 0.5f) {
@@ -1976,13 +1989,10 @@ if ( MAX_ZOOM_SCALE != MIN_ZOOM_SCALE ) [_scrollView setScrollEnabled:YES];
   UIImage * im = im0;
 
   if ( (image_width / image_height) > (im.size.width / im.size.height) ) {
-    NSLog(@"original aspect %f",(im.size.width / im.size.height));
-    NSLog(@"aspect %f",(image_width / image_height));
     image_margin_y = 0;
     image_margin_x = (image_width - (image_height * (im.size.width / im.size.height))) / 2;
     return CGRectMake(image_margin_x, 0, floor(image_height * (im.size.width / im.size.height)) , image_height);
   } else {
-    NSLog(@"aspect 2");
     image_margin_x = 0;
     image_margin_y = (image_height - (image_width * (im.size.height / im.size.width))) / 2;
     return CGRectMake(0, image_margin_y, image_width, floor(image_width * (im.size.height / im.size.width)));
