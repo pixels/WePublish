@@ -28,6 +28,7 @@
 #define SHADOW_BLUE 1.0f
 #define SHADOW_ALPHA 0.4f
 #define TOP_SHADOW_ALPHA 0.4f
+#define TOP_OVERLAY_ALPHA 0.6f
 
 // Max scale
 #define MAX_ZOOM_SCALE 1.0f

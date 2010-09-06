@@ -296,9 +296,9 @@ s705
 i"MyScrollView.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewACtrl.h
-c000000004C83D6D10000000000000AB5
-t1283708625
-s2741
+c000000004C8474AC00000000000008E3
+t1283749036
+s2275
 i<UIKit/UIKit.h>
 i<QuartzCore/QuartzCore.h>
 i"Utilities.h"
@@ -307,9 +307,9 @@ i"UIViewWithTouchesDelegate.h"
 i"MyScrollView.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewACtrl.m
-c000000004C8458A90000000000012CB0
-t1283741865
-s76976
+c000000004C848591000000000000A0DE
+t1283753361
+s41182
 i"ReadViewACtrl.h"
 i"WindowModeType.h"
 i"Util.h"

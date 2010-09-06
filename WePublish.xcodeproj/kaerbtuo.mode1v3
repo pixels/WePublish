@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>D1138AD31234BD9D00174CC5</string>
+						<string>D1138B7A1234DECB00174CC5</string>
 						<key>history</key>
 						<array>
 							<string>D1BC2085123493A900147D46</string>
@@ -366,7 +366,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D1138AD21234BD9D00174CC5</string>
+										<string>D1138B791234DECB00174CC5</string>
 										<key>history</key>
 										<array>
 											<string>D1BC2084123493A900147D46</string>
@@ -569,11 +569,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>D1138AE31234C04D00174CC5</string>
+		<string>D1138AD91234BE6300174CC5</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>D19E439D1232619000E95232</string>
-		<string>/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish.xcodeproj</string>
 		<string>D1A9F98E12331B1B00AD724B</string>
+		<string>D19E439D1232619000E95232</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>446 425 788 504 0 0 1680 1028 </string>
@@ -606,7 +608,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {500, 218}}</string>
 								<key>RubberWindowFrame</key>
-								<string>713 261 500 500 0 0 1680 1028 </string>
+								<string>963 237 500 500 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -614,6 +616,8 @@
 							<string>218pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -630,7 +634,7 @@
 								<key>Frame</key>
 								<string>{{0, 223}, {500, 236}}</string>
 								<key>RubberWindowFrame</key>
-								<string>713 261 500 500 0 0 1680 1028 </string>
+								<string>963 237 500 500 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
@@ -662,11 +666,11 @@
 			<key>WindowContentMinSize</key>
 			<string>486 300</string>
 			<key>WindowString</key>
-			<string>713 261 500 500 0 0 1680 1028 </string>
+			<string>963 237 500 500 0 0 1680 1028 </string>
 			<key>WindowToolGUID</key>
 			<string>D19E439D1232619000E95232</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
