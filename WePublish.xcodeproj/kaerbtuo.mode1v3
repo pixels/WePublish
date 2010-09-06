@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>D1138A571234ADB400174CC5</string>
+						<string>D1138ACB1234BCD500174CC5</string>
 						<key>history</key>
 						<array>
 							<string>D1BC2085123493A900147D46</string>
@@ -366,7 +366,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D1138A561234ADB400174CC5</string>
+										<string>D1138ACA1234BCD500174CC5</string>
 										<key>history</key>
 										<array>
 											<string>D1BC2084123493A900147D46</string>
@@ -572,8 +572,8 @@
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>D19E439D1232619000E95232</string>
 		<string>D1A9F98E12331B1B00AD724B</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish.xcodeproj</string>
+		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
 	<string>446 425 788 504 0 0 1680 1028 </string>

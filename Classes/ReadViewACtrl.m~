@@ -222,9 +222,6 @@
   [CATransaction begin];
   [CATransaction setDisableActions:YES]; 
 
-  [CATransaction begin];
-  [CATransaction setValue:[NSNumber numberWithFloat:0.0f]
-		   forKey:kCATransactionAnimationDuration];
   float center;
   if ( _windowMode == MODE_A ) {
     center = 0;
@@ -242,8 +239,6 @@
 	topPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:0]]];
 	middlePageLayer.frame = CGRectMake(center + 1, 0, image_width , image_height);
 	topPageLayer.frame = CGRectMake(center + image_width, 0, 0, image_height);
-
-	rightPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:1]]];
 
 	middlePageRightShadowLayer.opacity = 1;
 
@@ -263,18 +258,19 @@
 	middlePageLeftShadowLayer.opacity = 1;
       }
     } else {
-      middlePageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:0]]];
-      topPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:1]]];
-      rightPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:2]]];
-
-      middlePageLayer.frame = CGRectMake(center + 1, 0, image_width , image_height);
+      middlePageLayer.frame = CGRectMake(center + 1, 0, image_width, image_height);
+      middlePageImageLayer.frame = CGRectMake(center, 0, image_width , image_height);
       topPageLayer.frame = CGRectMake(center + image_width, 0, 0, image_height);
+      topPageImageLayer.frame = CGRectMake(center + image_width, 0, 0, image_height);
 
       topPageRightShadowLayer.frame = CGRectMake(center + image_width, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
       topPageCurlShadowLayer.frame = CGRectMake(center + image_width, image_margin_y, TOP_SHADOW_WIDTH, image_height - (2 * image_margin_y));
       topPageLeftShadowLayer.frame = CGRectMake(center - BOTTOM_SHADOW_WIDTH * 1.2, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 
       middlePageRightShadowLayer.opacity = 1;
+      
+      middlePageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:0]]];
+      topPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:1]]];
     }
   } else if ( curling == left ) {
     middlePageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:0]]];
@@ -285,7 +281,6 @@
       if ( curling == from ) {
 	middlePageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:0]]];
 	topPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:0]]];
-	leftPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:1]]];
 
 	middlePageLayer.frame = CGRectMake(center - image_width, 0, image_width , image_height);
 	topPageLayer.frame = CGRectMake(center - image_width, 0, 0, image_height);
@@ -311,7 +306,6 @@
     } else {
       middlePageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:0]]];
       topPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:1]]];
-      leftPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:2]]];
 
       middlePageLayer.frame = CGRectMake(center - image_width, 0, image_width , image_height);
       topPageLayer.frame = CGRectMake(center - image_width, 0, 0, image_height);
@@ -328,27 +322,39 @@
   middlePageImageLayer.frame = [self getAspectFittingImageRect:[[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage]] image]];
   topPageImageLayer.frame = [self getAspectFittingImageRect:[[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage]] image]];
 
-  topPageLayer.frame = CGRectMake(0, 0, image_width, image_height);
-
   if ( _windowMode == MODE_A ) {
     topPageImageLayer.transform = CATransform3DMakeScale(-1, 1, 1);
   } else {
     topPageImageLayer.transform = CATransform3DMakeScale(1, 1, 1);
   }
-  middlePageLayer.frame = CGRectMake(image_width + 1, 0, image_width, image_height);
 
-  [CATransaction commit];
   [CATransaction commit];
 
   [CATransaction begin];
   [CATransaction setDisableActions:YES]; 
-
-  [CATransaction begin];
-  [CATransaction setValue:[NSNumber numberWithFloat:0.0f]
-		   forKey:kCATransactionAnimationDuration];
-  topPageLayer.opacity = 1.0f;
-  middlePageLayer.opacity = 1.0f;
+  topLayer.opacity = 1.0f;
+  middleLayer.opacity = 1.0f;
   [CATransaction commit];
+  
+  [CATransaction begin];
+  [CATransaction setDisableActions:YES]; 
+  if ( curling == right ) {
+    if ( _windowMode == MODE_A ) {
+      if ( curling == from ) {
+	rightPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:1]]];
+      }
+    } else {
+      rightPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:2]]];
+    }
+  } else if ( curling == left ) {
+    if ( _windowMode == MODE_A ) {
+      if ( curling == from ) {
+	leftPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:1]]];
+      }
+    } else {
+      leftPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:2]]];
+    }
+  }
   [CATransaction commit];
 }
 
@@ -469,45 +475,41 @@
   [CATransaction begin];
   [CATransaction setDisableActions:YES]; 
 
-  [CATransaction begin];
-  [CATransaction setValue:[NSNumber numberWithFloat:0.0f]
-		   forKey:kCATransactionAnimationDuration];
-
   if (_windowMode == MODE_A) {
     if ( from == to) {
       if ( curling == right && curling == from ) {
-	rightPageImageLayer.contents = middlePageImageLayer.contents;
+	rightPageImageLayer.contents = topPageImageLayer.contents;
       } else if ( curling == left && curling == left) {
-	leftPageImageLayer.contents = middlePageImageLayer.contents;
+	leftPageImageLayer.contents = topPageImageLayer.contents;
       }
     }
   } else {
     if ( curling == left ) {
       if ( from != to ) {
-	rightPageImageLayer.contents = middlePageImageLayer.contents;
+	rightPageImageLayer.contents = topPageImageLayer.contents;
       } else {
-	leftPageImageLayer.contents = middlePageImageLayer.contents;
+	leftPageImageLayer.contents = topPageImageLayer.contents;
       }
     } else {
       if ( from == to ) {
-	rightPageImageLayer.contents = middlePageImageLayer.contents;
+	rightPageImageLayer.contents = topPageImageLayer.contents;
       } else {
-	leftPageImageLayer.contents = middlePageImageLayer.contents;
+	leftPageImageLayer.contents = topPageImageLayer.contents;
       }
     }
   }
 
   [CATransaction commit];
+
+  [CATransaction begin];
+  [CATransaction setDisableActions:YES]; 
+  topLayer.opacity = 0.0f;
   [CATransaction commit];
 
   [CATransaction begin];
   [CATransaction setDisableActions:YES]; 
 
-  [CATransaction begin];
-  [CATransaction setValue:[NSNumber numberWithFloat:0.0f]
-		   forKey:kCATransactionAnimationDuration];
-  topPageLayer.opacity = 0.0f;
-  middlePageLayer.opacity = 0.0f;
+  middleLayer.opacity = 0.0f;
 
   middlePageLeftShadowLayer.opacity = 1.0f;
   middlePageRightShadowLayer.opacity = 1.0f;
@@ -516,7 +518,6 @@
   topPageCurlShadowLayer.opacity = 0.0f;
   topPageRightShadowLayer.opacity = 0.0f;
 
-  [CATransaction commit];
   [CATransaction commit];
 
   _mode = page_mode_none;
@@ -1007,8 +1008,6 @@
   /*
      if([self isNext]) [self beginToCurlLeft];
      */
-
-  [CATransaction commit];
 }
 
 - (float) getAnotherSide:(NSInteger) side {
@@ -1098,111 +1097,6 @@
   } else {
     _mode = page_mode_none;
   }
-  /*j
-    if ( _mode == page_mode_curl_start ) {
-    if ( point.x < self.view.frame.size.width / 2 ) {
-    if ( _direction == DIRECTION_LEFT ) {
-//[self notifyGoToNextPage];
-} else {
-  //[self notifyGoToPrevPage];
-  }
-  } else {
-  if ( _direction == DIRECTION_LEFT ) {
-//[self notifyGoToPrevPage];
-} else {
-  //[self notifyGoToNextPage];
-  }
-  }
-  _mode = page_mode_none;
-  } else {
-  if ( _mode == page_mode_curl_right ) {
-  if ( _windowMode == MODE_A ) {
-  if ( -1.0f * delta_x / WINDOW_AW > 0.5f) {
-  if ( _direction == DIRECTION_LEFT && [self isPrev]) {
-  page_change_flag = true;
-  [self performSelector:@selector(notifyGoToPrevPage)
-	     withObject:nil 
-	     afterDelay:PAGING_WAIT_TIME + 0.05f];
-	     } else if ( _direction == DIRECTION_RIGHT && [self isNext]) {
-	     page_change_flag = true;
-	     [self performSelector:@selector(notifyGoToNextPage)
-			withObject:nil 
-			afterDelay:PAGING_WAIT_TIME + 0.05f];
-			}
-			}
-			} else {
-			if ( -1.0f * delta_x / WINDOW_BW > 0.5f) {
-			if ( _direction == DIRECTION_LEFT && [self isPrev]) {
-			page_change_flag = true;
-			[self performSelector:@selector(notifyGoToPrevPage)
-				   withObject:nil 
-				   afterDelay:PAGING_WAIT_TIME + 0.05f];
-				   } else if ( _direction == DIRECTION_RIGHT && [self isNext]) {
-				   page_change_flag = true;
-				   [self performSelector:@selector(notifyGoToNextPage)
-					      withObject:nil 
-					      afterDelay:PAGING_WAIT_TIME + 0.05f];
-					      }
-					      }
-					      }
-
-					      [CATransaction begin];
-					      [CATransaction setValue:[NSNumber numberWithFloat:PAGING_WAIT_TIME]
-							       forKey:kCATransactionAnimationDuration];
-							       if ( page_change_flag ) {
-							       [self curlPageToRight:1.0f];
-							       } else {
-							       [self curlPageToRight:0];
-							       }
-							       [CATransaction commit];
-							       } else if ( _mode == page_mode_curl_left ) {
-							       if ( _windowMode == MODE_A ) {
-							       if ( delta_x / WINDOW_AW > 0.5f) {
-							       page_change_flag = true;
-							       if ( _direction == DIRECTION_LEFT && [self isNext]) {
-							       [self performSelector:@selector(notifyGoToNextPage)
-									  withObject:nil 
-									  afterDelay:PAGING_WAIT_TIME + 0.05f];
-									  } else if ( _direction == DIRECTION_RIGHT && [self isPrev]) {
-									  [self performSelector:@selector(notifyGoToPrevPage)
-										     withObject:nil 
-										     afterDelay:PAGING_WAIT_TIME + 0.05f];
-										     }
-										     }
-} else {
-  if ( delta_x / WINDOW_BW > 0.5f) {
-    page_change_flag = true;
-    if ( _direction == DIRECTION_LEFT && [self isNext]) {
-      [self performSelector:@selector(notifyGoToNextPage)
-		 withObject:nil 
-		 afterDelay:PAGING_WAIT_TIME + 0.05f];
-    } else if ( _direction == DIRECTION_RIGHT && [self isPrev]) {
-      [self performSelector:@selector(notifyGoToPrevPage)
-		 withObject:nil 
-		 afterDelay:PAGING_WAIT_TIME + 0.05f];
-    }
-  }
-}
-
-[CATransaction begin];
-[CATransaction setValue:[NSNumber numberWithFloat:PAGING_WAIT_TIME]
-		 forKey:kCATransactionAnimationDuration];
-		 if ( page_change_flag ) {
-		   [self curlPageToLeft:1.0f];
-		 } else {
-		   [self curlPageToLeft:0];
-		 }
-[CATransaction commit];
-}
-[self performSelector:@selector(endToCurl)
-	   withObject:nil 
-	   afterDelay:PAGING_WAIT_TIME + 0.1f];
-
-[self performSelector:@selector(setModeToNone)
-	   withObject:nil 
-	   afterDelay:PAGING_WAIT_TIME + 0.15f];
-	   }
-*/
 
 if ( MAX_ZOOM_SCALE != MIN_ZOOM_SCALE ) [_scrollView setScrollEnabled:YES];
 [_scrollView setCanCancelContentTouches:YES];

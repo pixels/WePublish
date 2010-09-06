@@ -195,9 +195,9 @@ i"BuyViewCtrl.h"
 i"Define.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/Define.h
-c000000004C8229C90000000000000B6B
-t1283598793
-s2923
+c000000004C83E2EC0000000000000CA5
+t1283711724
+s3237
 i<UIKit/UIKit.h>
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/DetailViewCtrl.h
@@ -302,9 +302,9 @@ s705
 i"MyScrollView.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewACtrl.h
-c000000004C8231130000000000000779
-t1283600659
-s1913
+c000000004C8474AC00000000000008E3
+t1283749036
+s2275
 i<UIKit/UIKit.h>
 i<QuartzCore/QuartzCore.h>
 i"Utilities.h"
@@ -313,9 +313,9 @@ i"UIViewWithTouchesDelegate.h"
 i"MyScrollView.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewACtrl.m
-c000000004C8231C8000000000000C862
-t1283600840
-s51298
+c000000004C847631000000000000AF28
+t1283749425
+s44840
 i"ReadViewACtrl.h"
 i"WindowModeType.h"
 i"Util.h"
@@ -347,21 +347,21 @@ s1138
 i<UIKit/UIKit.h>
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewBaseCtrl.m
-c000000004C8229C90000000000000EDF
-t1283598793
-s3807
+c000000004C832DCE0000000000000F2D
+t1283665358
+s3885
 i"ReadViewBaseCtrl.h"
 i"Define.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewCtrl.h
-c000000004C8229C900000000000004B5
-t1283598793
+c000000004C825E9C00000000000004B5
+t1283612316
 s1205
 i<UIKit/UIKit.h>
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewCtrl.m
-c000000004C8229C90000000000002156
-t1283598793
+c000000004C8330400000000000002156
+t1283665984
 s8534
 i"ReadViewCtrl.h"
 i"WindowModeType.h"

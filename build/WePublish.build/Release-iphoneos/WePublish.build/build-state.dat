@@ -1,66 +1,8 @@
 TWePublish
 v7
 r0
-t305435023.609942
+t305441981.235417
 cCheck dependencies
-cCpResource build/Release-iphoneos/WePublish.app/ResourceRules.plist /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
-cProcessInfoPlistFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/Info.plist WePublish-Info.plist
-cCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/bk_a.png Resources/Images/Parts/bk_a.png
-cCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/bk_b.png Resources/Images/Parts/bk_b.png
-cCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/logo.png Resources/Images/Parts/logo.png
-cCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/icon.png Resources/Images/Parts/icon.png
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/MainWindow.xib
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/WePublishViewController.xib
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LogoView.xib
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewA.xib
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/DetailViewB.xib
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadView.xib
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewA.xib
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ReadViewB.xib
-cCopyPNGFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/dummy.png Resources/Images/Parts/dummy.png
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListCell.xib
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewA.xib
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/ListViewB.xib
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewA.xib
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/BuyViewB.xib
-cCompileXIB /Users/kaerbtuo/Workspace/Cocoa/WePublish/Resources/Xib/LoginView.xib
-cProcessPCH /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-gdgqltbqgiwpvpchojyjsmzxuamz/WePublish_Prefix.pch.gch WePublish_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
-cProcessPCH /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-gczmmgwywcvngldcqskhiycrarva/WePublish_Prefix.pch.gch WePublish_Prefix.pch normal armv7 c com.apple.compilers.gcc.4_2
-cProcessPCH++ /var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-gqfobqeokxtndubuxwjctzjlfaho/WePublish_Prefix.pch.gch WePublish_Prefix.pch normal armv7 objective-c++ com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/main.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/main.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/WePublishAppDelegate.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/WePublishAppDelegate.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/WePublishViewController.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/WePublishViewController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/DetailViewCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/DetailViewCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewACtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewACtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewBCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewBCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewBaseCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewBaseCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ListViewCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ListViewCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/BookInfo.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/BookInfo.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/BookCollection.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/BookCollection.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/UIImageViewWithTouch.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/UIImageViewWithTouch.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/LogoViewCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/LogoViewCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ListCellCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ListCellCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/BuyViewCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/BuyViewCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/XMLController.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/XMLController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/Util.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/Util.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/FileDownloader.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/FileDownloader.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ioapi.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/ioapi.c normal armv7 c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/mztools.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/mztools.c normal armv7 c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/unzip.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/unzip.c normal armv7 c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/zip.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/minizip/zip.c normal armv7 c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ZipArchive.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ZipArchive/ZipArchive.mm normal armv7 objective-c++ com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/LoginViewCtrl.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/LoginViewCtrl.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/UIViewWithTouchesDelegate.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/UIViewWithTouchesDelegate.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/MyScrollView.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/MyScrollView.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/Utilities.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/Utilities.m normal armv7 objective-c com.apple.compilers.gcc.4_2
-cLd /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/WePublish normal armv7
-cGenerateDSYMFile /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app.dSYM /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/WePublish
-cProcessProductPackaging "/Users/kaerbtuo/Library/MobileDevice/Provisioning Profiles/4378A2CA-96DA-4F71-ACDB-D5CBFBE45ED4.mobileprovision" /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/embedded.mobileprovision
-cTouch /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app
-cProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/WePublish.xcent
-cCodeSign /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app
-cValidate /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app
 
 N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk
 c000000004C5A53C10000000000000110
@@ -324,9 +266,9 @@ s705
 i"MyScrollView.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewACtrl.h
-c000000004C83D6D10000000000000AB5
-t1283708625
-s2741
+c000000004C8474AC00000000000008E3
+t1283749036
+s2275
 i<UIKit/UIKit.h>
 i<QuartzCore/QuartzCore.h>
 i"Utilities.h"
@@ -335,9 +277,9 @@ i"UIViewWithTouchesDelegate.h"
 i"MyScrollView.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewACtrl.m
-c000000004C845A090000000000012C8B
-t1283742217
-s76939
+c000000004C847631000000000000AF28
+t1283749425
+s44840
 i"ReadViewACtrl.h"
 i"WindowModeType.h"
 i"Util.h"
@@ -713,225 +655,225 @@ i<Foundation/Foundation.h>
 i<UIKit/UIKit.h>
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app
-t1283742223
-s952
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app.dSYM
-t1283742223
-s102
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/BuyViewA.nib
-t1283598855
-s951
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/BuyViewB.nib
-t1283598855
-s951
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/DetailViewA.nib
-t1283598853
-s3392
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/DetailViewB.nib
-t1283598854
-s3389
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/Info.plist
-t1283598852
-s975
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/ListCell.nib
-t1283598855
-s1902
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/ListViewA.nib
-t1283598855
-s2227
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/ListViewB.nib
-t1283598855
-s2229
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/LoginView.nib
-t1283598855
-s3107
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/LogoView.nib
-t1283598853
-s1091
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/MainWindow.nib
-t1283598852
-s1127
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/PkgInfo
-t1283598852
-s8
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/ReadView.nib
-t1283598854
-s2257
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/ReadViewA.nib
-t1283598854
-s766
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/ReadViewB.nib
-t1283598854
-s976
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/ResourceRules.plist
-t1283598852
-s485
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/WePublish
-t1283742223
-s216464
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/WePublishViewController.nib
-t1283598852
-s2026
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/bk_a.png
-t1283598854
-s1080273
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/bk_b.png
-t1283598854
-s1010605
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/dummy.png
-t1283598854
-s240
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/embedded.mobileprovision
-t1283598858
-s7218
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/icon.png
-t1283598852
-s4878
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app/logo.png
-t1283598852
-s11621
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/BookCollection.o
-t1283598857
-s18688
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/BookInfo.o
-t1283598857
-s17748
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/BuyViewCtrl.o
-t1283741915
-s47500
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/DetailViewCtrl.o
-t1283741914
-s44200
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/FileDownloader.o
-t1283741915
-s20328
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ListCellCtrl.o
-t1283598857
-s20448
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ListViewCtrl.o
-t1283741915
-s51024
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/LoginViewCtrl.o
-t1283741915
-s46556
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/LogoViewCtrl.o
-t1283741915
-s39064
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/MyScrollView.o
-t1283598858
-s14548
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewACtrl.o
-t1283742223
-s137696
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewBCtrl.o
-t1283741915
-s47480
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewBaseCtrl.o
-t1283741915
-s49484
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ReadViewCtrl.o
-t1283741914
-s57540
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/UIImageViewWithTouch.o
-t1283598857
-s14676
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/UIViewWithTouchesDelegate.o
-t1283598858
-s13252
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/Util.o
-t1283741915
-s13900
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/Utilities.o
-t1283598858
-s6132
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/WePublish.LinkFileList
-c000000004C822A040000000000000E07
-t1283598852
-s3591
+c00000000000000000000000000000000
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/WePublishAppDelegate.o
-t1283741914
-s46632
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/WePublishViewController.o
-t1283741915
-s110100
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/XMLController.o
-t1283741915
-s42032
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ZipArchive.o
-t1283598858
-s27764
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/ioapi.o
-t1283598857
-s7864
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/main.o
-t1283598856
-s6424
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/mztools.o
-t1283598857
-s7820
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/unzip.o
-t1283598858
-s28864
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/Objects-normal/armv7/zip.o
-t1283598858
-s27700
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/WePublish.xcent
-t1283598858
-s424
+t2
+s0
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/build/WePublish.build/Release-iphoneos/WePublish.build/com.apple.build-tools.platform.validate
 t2
@@ -944,16 +886,16 @@ s352
 i<UIKit/UIKit.h>
 
 N/var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-gczmmgwywcvngldcqskhiycrarva/WePublish_Prefix.pch.gch
-t1283598855
-s1716452
+t2
+s0
 
 N/var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-gdgqltbqgiwpvpchojyjsmzxuamz/WePublish_Prefix.pch.gch
-t1283598856
-s9228948
+t2
+s0
 
 N/var/folders/CO/CO4Gu1CXHN8rnXJ83PAdLU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WePublish_Prefix-gqfobqeokxtndubuxwjctzjlfaho/WePublish_Prefix.pch.gch
-t1283598856
-s9982500
+t2
+s0
 
 NWePublish-Info.plist
 c000000004C8229BA00000000000004B2
@@ -962,7 +904,7 @@ s1202
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies305435021#305435021#0(0"0(0#1#0"8620867008#0"0#
+lSLF07#2@18"Check dependencies305441980#305441981#0(0"0(0#1#0"8609511648#0"0#
 
 CCodeSign /Users/kaerbtuo/Workspace/Cocoa/WePublish/build/Release-iphoneos/WePublish.app
 s305435023.365005
