@@ -66,9 +66,9 @@
   [middlePageLayer addSublayer:middlePageImageLayer];
 
   middlePageLeftShadowLayer = [[CAGradientLayer alloc] init];
-  [middleLayer addSublayer:middlePageLeftShadowLayer];
+  [middlePageLayer addSublayer:middlePageLeftShadowLayer];
   middlePageRightShadowLayer = [[CAGradientLayer alloc] init];
-  [middleLayer addSublayer:middlePageRightShadowLayer];
+  [middlePageLayer addSublayer:middlePageRightShadowLayer];
 
   topLayer = [[CALayer alloc] init];
   topLayer.masksToBounds = YES;
@@ -255,6 +255,7 @@
 	topPageLayer.frame = CGRectMake(center, 0, 0, image_height);
 
 	middlePageRightShadowLayer.opacity = 1;
+	middlePageRightShadowLayer.frame = CGRectMake(0, image_margin_y, CENTER_SHADOW_WIDTH / 2, image_height - (2 * image_margin_y));
 
 	topPageRightShadowLayer.frame = CGRectMake(center + image_width, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 	topPageCurlShadowLayer.frame = CGRectMake(center + image_width, image_margin_y, TOP_SHADOW_WIDTH, image_height - (2 * image_margin_y));
@@ -286,6 +287,7 @@
       topPageCurlShadowLayer.frame = CGRectMake(center + image_width, image_margin_y, TOP_SHADOW_WIDTH, image_height - (2 * image_margin_y));
       topPageLeftShadowLayer.frame = CGRectMake(center - BOTTOM_SHADOW_WIDTH * 1.2, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 
+      middlePageRightShadowLayer.frame = CGRectMake(0, image_margin_y, CENTER_SHADOW_WIDTH / 2, image_height - (2 * image_margin_y));
       middlePageRightShadowLayer.opacity = 1;
 
       middlePageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:0]]];
@@ -399,13 +401,18 @@
 
   float center = image_width;
 
+  ratio = MIN(1.0f, ratio);
+  ratio = MAX(0.0f, ratio);
 
   topPageRightShadowLayer.opacity = MAX((0.25f - (ratio - 0.5)*(ratio - 0.5)), 0);
   topPageCurlShadowLayer.opacity = MAX((0.25f - (ratio - 0.5)*(ratio - 0.5)), 0);
   topPageLeftShadowLayer.opacity = MAX((0.25f - (ratio - 0.5)*(ratio - 0.5)), 0);
+
   if ( curling == left ) {
     middlePageLayer.frame = CGRectMake(center - image_width + image_width * ratio, 0, image_width * (1.0f - ratio) , image_height);
     middlePageImageLayer.frame = CGRectMake(-1.0f * image_width * ratio + image_margin_x, image_margin_y, middlePageImageLayer.frame.size.width , middlePageImageLayer.frame.size.height);
+
+    middlePageLeftShadowLayer.frame = CGRectMake(image_width * (1.0f - ratio) - CENTER_SHADOW_WIDTH / 2, image_margin_y, CENTER_SHADOW_WIDTH / 2, image_height - (2 * image_margin_y));
 
     topPageLayer.frame = CGRectMake(center - image_width + image_width * ratio, 0, image_width * ratio, image_height);
     topPageImageLayer.frame = CGRectMake((image_width * (ratio - 1.0f)) + image_margin_x, image_margin_y, topPageImageLayer.frame.size.width, topPageImageLayer.frame.size.height);
@@ -416,6 +423,8 @@
   } else {
     middlePageLayer.frame = CGRectMake(center + 1, 0, image_width * (1.0f - ratio) , image_height);
     middlePageImageLayer.frame = CGRectMake(image_margin_x, image_margin_y, middlePageImageLayer.frame.size.width , middlePageImageLayer.frame.size.height);
+
+    middlePageRightShadowLayer.frame = CGRectMake(0, image_margin_y, CENTER_SHADOW_WIDTH / 2, image_height - (2 * image_margin_y));
 
     topPageLayer.frame = CGRectMake(center + image_width * (1.0f - 2.0f * ratio), 0, image_width * ratio, image_height);
     topPageImageLayer.frame = CGRectMake(image_margin_x, image_margin_y, topPageImageLayer.frame.size.width, topPageImageLayer.frame.size.height);
@@ -944,18 +953,17 @@
   if ( _mode == page_mode_curl_start ) {
     _mode = page_mode_curling;
     if ( delta_x >= 0) {
-      _curl_from = left;
+	_curl_from = left;
 
-      if ( _windowMode == MODE_A ) {
-	if ( _direction == DIRECTION_LEFT ) {
-	  _curl_side = left;
+	if ( _windowMode == MODE_A ) {
+	  if ( _direction == DIRECTION_LEFT ) {
+	    _curl_side = left;
+	  } else {
+	    _curl_side = right;
+	  }
 	} else {
-	  _curl_side = right;
+	  _curl_side = left;
 	}
-      } else {
-	_curl_side = left;
-      }
-
     } else {
       _curl_from = right;
 
@@ -1005,7 +1013,9 @@
 	  _curl_side = right;
 	  _curl_ratio = -1.0f * CURL_BOOST * delta_x / WINDOW_BW;
 	}
-	[self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
+	if ( (_direction != DIRECTION_LEFT & [self isNext]) | (_direction == DIRECTION_LEFT & [self isPrev])) {
+	  [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
+	}
       }
     } else {
       if ( delta_x < 0) {
@@ -1039,7 +1049,9 @@
 	  _curl_side = left;
 	  _curl_ratio = delta_x * CURL_BOOST / WINDOW_BW;
 	}
-	[self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
+	if ( (_direction == DIRECTION_LEFT & [self isNext]) | (_direction != DIRECTION_LEFT & [self isPrev])) {
+	  [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
+	}
       }
     }
   }
