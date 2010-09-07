@@ -12,9 +12,9 @@
 #import "DirectionType.h"
 #import "UIImageViewWithTouch.h"
 
-#define PAGE_MARGIN_W  8
-#define PAGE_MARGIN_WC 4
-#define PAGE_MARGIN_H  4
+#define PAGE_MARGIN_W  2
+#define PAGE_MARGIN_WC 2
+#define PAGE_MARGIN_H  0
 
 @implementation ReadViewBCtrl
 @synthesize scrollView = _scrollView;

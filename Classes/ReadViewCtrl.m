@@ -36,10 +36,12 @@
   _readViewACtrl = [[ReadViewACtrl alloc] initWithNibName:@"ReadViewA" bundle:0];
 
   [self.view insertSubview:_readViewACtrl.view atIndex:0];
+  // [self.view setBackgroundColor:[UIColor blueColor]]; // FOR DEBUG
   [_readViewACtrl.view setAlpha:0];
   [_readViewACtrl setup:_uuid selectPage:_selectPage pageNum:maxPage direction:_direction windowMode:_windowMode];
-	
+
   [self initAnimation:CHANGE_ORIENTATION_ANIM_ID duration:0.25f];
+
   [_readViewACtrl.view setAlpha:1];
   [UIView commitAnimations];
 
@@ -71,6 +73,14 @@
 - (void)changeOrientation {
 	NSInteger maxPage;
 
+	if ( _windowMode == MODE_A ) {
+	  NSLog(@"change to mode a");
+	  self.view.frame = CGRectMake(0, 0, WINDOW_AH, WINDOW_AW);
+	} else {
+	  NSLog(@"change to mode b");
+	  self.view.frame = CGRectMake(0, 0, WINDOW_BH, WINDOW_BW);
+	}
+
 //	[_readViewACtrl changeOrientation:_windowMode];
 	maxPage = _pageNum - _fakePage;
 	
@@ -81,8 +91,8 @@
 
 	[_readViewACtrl.view setAlpha:0];
 	[_readViewACtrl setup:_uuid selectPage:_selectPage pageNum:maxPage direction:_direction windowMode:_windowMode];
-	
 	[self initAnimation:CHANGE_ORIENTATION_ANIM_ID duration:0.25f];
+
 	[_readViewACtrl.view setAlpha:1];
 	[UIView commitAnimations];
 }
@@ -157,6 +167,7 @@
 	
 	if (requireMode != _windowMode)
 	{
+	  NSLog(@"not!!!");
 		_windowMode = requireMode;
 		[self changeOrientation];
 	}
@@ -164,64 +175,63 @@
 }
 
 -(void)onAnimationEnd:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
-	
 	if ([animationID isEqualToString:CHANGE_ORIENTATION_ANIM_ID]) {
-		CGRect frame;
-		if (_windowMode == MODE_A) {
-			//[_lButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 20 : 408, 844, 340, 140)];
-			//[_rButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 408 : 20, 844, 340, 140)];
-			frame = _slider.frame;
-//			frame.origin.x = WINDOW_AW - frame.size.width - 20;
-			frame.origin.y = 30;
-			_slider.frame = frame;
-			
-			//[self cleanupCurrentView:MODE_B];
-		} else {
-			//[_lButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 20 : 664, 588, 340, 140)];
-			//[_rButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 664 : 20, 588, 340, 140)];
-			frame = _slider.frame;
-//			frame.origin.x = WINDOW_BW - frame.size.width - 20;
-			frame.origin.y = 30;
-			_slider.frame = frame;
-			
-			//[self cleanupCurrentView:MODE_A];
-		
-		  endLabel_.text = (_direction == DIRECTION_LEFT) ? @"始め" : @"終わり";
-		  startLabel_.text = (_direction == DIRECTION_LEFT) ? @"終わり" : @"始め";
-		  if (_direction == DIRECTION_LEFT) {
-			  CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI * 180 / 180.0f);
-			  _slider.transform = trans;
-		  }
-		}
+	  CGRect frame;
+	  if (_windowMode == MODE_A) {
+	    //[_lButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 20 : 408, 844, 340, 140)];
+	    //[_rButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 408 : 20, 844, 340, 140)];
+	    frame = _slider.frame;
+	    //			frame.origin.x = WINDOW_AW - frame.size.width - 20;
+	    frame.origin.y = 30;
+	    _slider.frame = frame;
+
+	    //[self cleanupCurrentView:MODE_B];
+	  } else {
+	    //[_lButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 20 : 664, 588, 340, 140)];
+	    //[_rButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 664 : 20, 588, 340, 140)];
+	    frame = _slider.frame;
+	    //			frame.origin.x = WINDOW_BW - frame.size.width - 20;
+	    frame.origin.y = 30;
+	    _slider.frame = frame;
+
+	    //[self cleanupCurrentView:MODE_A];
+
+	    endLabel_.text = (_direction == DIRECTION_LEFT) ? @"始め" : @"終わり";
+	    startLabel_.text = (_direction == DIRECTION_LEFT) ? @"終わり" : @"始め";
+	    if (_direction == DIRECTION_LEFT) {
+	      CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI * 180 / 180.0f);
+	      _slider.transform = trans;
+	    }
+	  }
 	}
 }
 
 - (IBAction)onBackClick:(id)sender {
-	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-	[notificationCenter postNotificationName:READ_TO_SELECT_EVENT object:nil userInfo:nil];
+  NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+  [notificationCenter postNotificationName:READ_TO_SELECT_EVENT object:nil userInfo:nil];
 }
 
 - (void)onTouchImage:(NSNotification *)notification {
 	//	NSLog(@"touchesEnded tapCount: %d x: %f y: %f", tapCount, point.x, point.y);
-	NSArray *dic = [notification object];
-	NSNumber *index = [dic objectAtIndex:0];
-	NSNumber *px = [dic objectAtIndex:1];
-//	NSNumber *py = [dic objectAtIndex:2];
-//	NSLog(@"onTouchImage index: %d px: %f py: %f", [index intValue], [px floatValue], [py floatValue]);
-	
-		if ([px floatValue] < (self.view.frame.size.width / 2)) {
-			if (_direction == DIRECTION_LEFT) {
-				[self pageNext];
-			} else {
-				[self pagePrev];
-			}
-		} else {
-			if (_direction == DIRECTION_LEFT) {
-				[self pagePrev];
-			} else {
-				[self pageNext];
-			}
-		}
+  NSArray *dic = [notification object];
+  NSNumber *index = [dic objectAtIndex:0];
+  NSNumber *px = [dic objectAtIndex:1];
+  //	NSNumber *py = [dic objectAtIndex:2];
+  //	NSLog(@"onTouchImage index: %d px: %f py: %f", [index intValue], [px floatValue], [py floatValue]);
+
+  if ([px floatValue] < (self.view.frame.size.width / 2)) {
+    if (_direction == DIRECTION_LEFT) {
+      [self pageNext];
+    } else {
+      [self pagePrev];
+    }
+  } else {
+    if (_direction == DIRECTION_LEFT) {
+      [self pagePrev];
+    } else {
+      [self pageNext];
+    }
+  }
 }
 
 - (void)onGoToNextPage:(NSNotification *)notification {

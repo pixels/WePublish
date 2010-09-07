@@ -33,6 +33,7 @@
 
   _bookView = [[UIView alloc] init];
   [_bookView setUserInteractionEnabled:NO];
+  // [_scrollView setBackgroundColor:[UIColor blueColor]];
   [_scrollView addSubview:_bookView];
 
   bottomLayer = [[CALayer alloc] init];
@@ -601,13 +602,14 @@
 }
 
 - (void)setup:(NSString *)uuid selectPage:(NSUInteger)selectPage pageNum:(NSInteger)pageNum direction:(NSInteger)direction windowMode:(NSInteger)windowMode {
+  NSLog(@"set up");
  [super setup:uuid selectPage:selectPage pageNum:pageNum direction:direction windowMode:windowMode];
 
  _windowMode = windowMode;
 
- [self loadPages:selectPage windowMode:_windowMode];
-
  [self initLayout];
+
+ [self loadPages:selectPage windowMode:_windowMode];
 
  [self setPages];
 
@@ -916,6 +918,7 @@
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
   /* mode check
+  */
   if ( _mode == page_mode_none ) {
     NSLog(@"mode none");
   } else if ( _mode == page_mode_release ) {
@@ -925,7 +928,6 @@
   } else if ( _mode == page_mode_curling ) {
     NSLog(@"mode curling");
   }
-  */
   touchStartPoint = [[touches anyObject] locationInView:self.view];
   if ( _mode == page_mode_release ) {
     [self endFor:_curl_side from:_curl_from to:_curl_to];
