@@ -216,10 +216,10 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>D19FE07E1238E10700F92453</string>
+						<string>D19FD4BE1239290A00A05D8A</string>
 						<key>history</key>
 						<array>
-							<string>D1F2F0F912379BC700BCCF15</string>
+							<string>D19FD3891238FBF100A05D8A</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -270,6 +270,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -312,6 +314,9 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>10</integer>
+									<integer>4</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -351,7 +356,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ReadViewBaseCtrl.m</string>
+								<string>ReadViewACtrl.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -359,18 +364,18 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ReadViewBaseCtrl.m</string>
+										<string>ReadViewACtrl.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D19FE07D1238E10700F92453</string>
+										<string>D19FD4BD1239290A00A05D8A</string>
 										<key>history</key>
 										<array>
 											<string>D19FDFD21238CB2C00F92453</string>
 											<string>D19FDFD31238CB2C00F92453</string>
 											<string>D19FDFD41238CB2C00F92453</string>
-											<string>D19FE07B1238E10700F92453</string>
-											<string>D19FE07C1238E10700F92453</string>
+											<string>D19FD3801238FB4100A05D8A</string>
+											<string>D19FD498123925BD00A05D8A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -382,14 +387,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {580, 176}}</string>
+								<string>{{0, 0}, {580, 163}}</string>
 								<key>RubberWindowFrame</key>
 								<string>446 424 788 504 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>176pt</string>
+							<string>163pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -402,14 +407,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 181}, {580, 282}}</string>
+								<string>{{0, 168}, {580, 295}}</string>
 								<key>RubberWindowFrame</key>
 								<string>446 424 788 504 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>282pt</string>
+							<string>295pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -428,9 +433,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>D19FDFC81238C7F000F92453</string>
+				<string>D19FD3821238FB4100A05D8A</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>D19FDFC91238C7F000F92453</string>
+				<string>D19FD3831238FB4100A05D8A</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -568,13 +573,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>D19FDFDF1238CB2C00F92453</string>
-		<string>D19FDFE01238CB2C00F92453</string>
+		<string>D19FD39C1238FE8E00A05D8A</string>
+		<string>D19FD39D1238FE8E00A05D8A</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish.xcodeproj</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>D1A9F98E12331B1B00AD724B</string>
 		<string>D19E439D1232619000E95232</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>/Users/kaerbtuo/Workspace/Cocoa/WePublish/WePublish.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>446 424 788 504 0 0 1680 1028 </string>
@@ -598,7 +603,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ReadViewBaseCtrl.m</string>
+								<string>ReadViewACtrl.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -656,7 +661,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>D19E439D1232619000E95232</string>
-				<string>D19FDFCB1238C7F000F92453</string>
+				<string>D19FD3851238FB4100A05D8A</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -778,13 +783,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>D19FDFD71238CB2C00F92453</string>
+				<string>D19FD3941238FE8E00A05D8A</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>D19FDFD81238CB2C00F92453</string>
-				<string>D19FDFD91238CB2C00F92453</string>
-				<string>D19FDFDA1238CB2C00F92453</string>
-				<string>D19FDFDB1238CB2C00F92453</string>
-				<string>D19FDFDC1238CB2C00F92453</string>
+				<string>D19FD3951238FE8E00A05D8A</string>
+				<string>D19FD3961238FE8E00A05D8A</string>
+				<string>D19FD3971238FE8E00A05D8A</string>
+				<string>D19FD3981238FE8E00A05D8A</string>
+				<string>D19FD3991238FE8E00A05D8A</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -948,7 +953,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>D19FDFDD1238CB2C00F92453</string>
+				<string>D19FD39A1238FE8E00A05D8A</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

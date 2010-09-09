@@ -56,7 +56,8 @@ enum {
 
 	CGPoint touchStartPoint;
 	
-	CAGradientLayer * centerPageShadow;
+	CAGradientLayer * centerPageRightShadow;
+	CAGradientLayer * centerPageLeftShadow;
 	CAGradientLayer * middlePageRightShadowLayer;
 	CAGradientLayer * middlePageLeftShadowLayer;
 

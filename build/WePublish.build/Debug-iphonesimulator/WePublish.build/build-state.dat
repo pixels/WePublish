@@ -1,7 +1,7 @@
 TWePublish
 v7
 r0
-t305617181.565200
+t305735932.428613
 cCheck dependencies
 
 N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk
@@ -144,9 +144,9 @@ i"BuyViewCtrl.h"
 i"Define.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/Define.h
-c000000004C8720250000000000000CC4
-t1283924005
-s3268
+c000000004C88D2FC0000000000000CE4
+t1284035324
+s3300
 i<UIKit/UIKit.h>
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/DetailViewCtrl.h
@@ -251,9 +251,9 @@ s705
 i"MyScrollView.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewACtrl.h
-c000000004C848928000000000000090B
-t1283754280
-s2315
+c000000004C88C7D80000000000000997
+t1284032472
+s2455
 i<UIKit/UIKit.h>
 i<QuartzCore/QuartzCore.h>
 i"Utilities.h"
@@ -262,9 +262,9 @@ i"UIViewWithTouchesDelegate.h"
 i"MyScrollView.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewACtrl.m
-c000000004C8720C1000000000000AD7E
-t1283924161
-s44414
+c000000004C88F13D000000000000CC63
+t1284043069
+s52323
 i"ReadViewACtrl.h"
 i"WindowModeType.h"
 i"Util.h"
@@ -296,22 +296,22 @@ s1138
 i<UIKit/UIKit.h>
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewBaseCtrl.m
-c000000004C8639290000000000000F2D
-t1283864873
-s3885
+c000000004C88D3680000000000000F31
+t1284035432
+s3889
 i"ReadViewBaseCtrl.h"
 i"Define.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewCtrl.h
-c000000004C825E9C00000000000004B5
-t1283612316
+c000000004C88A19800000000000004B5
+t1284022680
 s1205
 i<UIKit/UIKit.h>
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewCtrl.m
-c000000004C864E4600000000000022D0
-t1283870278
-s8912
+c000000004C88D3290000000000002267
+t1284035369
+s8807
 i"ReadViewCtrl.h"
 i"WindowModeType.h"
 i"ReadViewBaseCtrl.h"
@@ -873,7 +873,7 @@ s1202
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies305617181#305617181#0(0"0(0#1#0"8604561952#0"0#
+lSLF07#2@18"Check dependencies305735932#305735932#0(0"0(0#1#0"8695016576#0"0#
 
 CCompileC build/WePublish.build/Debug-iphonesimulator/WePublish.build/Objects-normal/i386/BookCollection.o /Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/BookCollection.m normal i386 objective-c com.apple.compilers.gcc.4_2
 s305616815.716985

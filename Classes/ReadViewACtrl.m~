@@ -13,7 +13,6 @@
 #import "DirectionType.h"
 #import "UIImageViewWithTouch.h"
 
-#define CENTER_SHADOW_WIDTH 64
 
 @implementation ReadViewACtrl
 @synthesize scrollView = _scrollView;
@@ -52,8 +51,10 @@
   leftPageImageLayer = [[CALayer alloc] init];
   [leftPageLayer addSublayer:leftPageImageLayer];
 
-  centerPageShadow = [[CAGradientLayer alloc] init];
-  [bottomLayer addSublayer:centerPageShadow];
+  centerPageRightShadow = [[CAGradientLayer alloc] init];
+  [bottomLayer addSublayer:centerPageRightShadow];
+  centerPageLeftShadow = [[CAGradientLayer alloc] init];
+  [bottomLayer addSublayer:centerPageLeftShadow];
 
   middleLayer = [[CALayer alloc] init];
   middleLayer.masksToBounds = YES;
@@ -141,8 +142,6 @@
       rightPageLayer.opacity = 1.0f;
     }
 
-    centerPageShadow.opacity = 0;
-
     image_width = WINDOW_AW - PAGE_MARGIN_LEFT - PAGE_MARGIN_RIGHT;
     image_height = WINDOW_AH - PAGE_MARGIN_TOP - PAGE_MARGIN_BOTTOM;
 
@@ -181,15 +180,22 @@
     leftPageLayer.frame = CGRectMake(0, 0, image_width, image_height);
   }
   //(id)[[[UIColor alloc] initWithRed:SHADOW_RED green:SHADOW_GREEN blue:SHADOW_BLUE alpha:SHADOW_ALPHA] CGColor], 
-  centerPageShadow.opacity = 1;
-  centerPageShadow.colors = [NSArray arrayWithObjects:
+  centerPageRightShadow.colors = [NSArray arrayWithObjects:
     (id)[[UIColor clearColor] CGColor],
+    (id)[[[UIColor blackColor] colorWithAlphaComponent:SHADOW_ALPHA] CGColor],
+    nil];
+  centerPageRightShadow.startPoint = CGPointMake(1, 0.5);
+  centerPageRightShadow.endPoint = CGPointMake(0, 0.5);
+  centerPageRightShadow.frame = CGRectMake(image_width - CENTER_SHADOW_WIDTH, 0, CENTER_SHADOW_WIDTH, WINDOW_BH);
+
+  centerPageLeftShadow.colors = [NSArray arrayWithObjects:
     (id)[[[UIColor blackColor] colorWithAlphaComponent:SHADOW_ALPHA] CGColor],
     (id)[[UIColor clearColor] CGColor],
     nil];
-  centerPageShadow.startPoint = CGPointMake(1, 0.5);
-  centerPageShadow.endPoint = CGPointMake(0, 0.5);
-  centerPageShadow.frame = CGRectMake(image_width - (CENTER_SHADOW_WIDTH / 2), 0, CENTER_SHADOW_WIDTH, WINDOW_BH);
+  centerPageLeftShadow.startPoint = CGPointMake(1, 0.5);
+  centerPageLeftShadow.endPoint = CGPointMake(0, 0.5);
+  centerPageLeftShadow.frame = CGRectMake(CENTER_SHADOW_WIDTH, 0, CENTER_SHADOW_WIDTH, WINDOW_BH);
+
 
   middlePageRightShadowLayer.colors = [NSArray arrayWithObjects:
     (id)[[UIColor clearColor] CGColor],
@@ -265,6 +271,8 @@
     if ( _windowMode == MODE_A ) {
       topPageRightShadowLayer.opacity = 0.0f;
       topPageLeftShadowLayer.opacity = 0.0f;
+      middlePageRightShadowLayer.opacity = 0.0f;
+      middlePageLeftShadowLayer.opacity = 0.0f;
       if ( curling == from ) {
 	if ( _direction == DIRECTION_LEFT ) {
 	  middlePageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:0]]];
@@ -277,8 +285,8 @@
 	middlePageLayer.frame = CGRectMake(center, 0, image_width , image_height);
 	topPageLayer.frame = CGRectMake(center, 0, 0, image_height);
 
-	middlePageRightShadowLayer.opacity = 1;
-	middlePageRightShadowLayer.frame = CGRectMake(0, image_margin_y, CENTER_SHADOW_WIDTH / 2, image_height - (2 * image_margin_y));
+	//middlePageRightShadowLayer.opacity = 1;
+	middlePageRightShadowLayer.frame = CGRectMake(0, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 
 	topPageRightOutShadowLayer.frame = CGRectMake(center + image_width, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 	topPageCurlShadowLayer.frame = CGRectMake(center + image_width, image_margin_y, TOP_SHADOW_WIDTH, image_height - (2 * image_margin_y));
@@ -298,12 +306,89 @@
 	topPageCurlShadowLayer.frame = CGRectMake(center - image_width, image_margin_y, TOP_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 	topPageLeftOutShadowLayer.frame = CGRectMake(center - image_width - BOTTOM_SHADOW_WIDTH * 1.2, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 
-	middlePageLeftShadowLayer.opacity = 1;
+	//middlePageLeftShadowLayer.opacity = 1;
       }
     } else {
-      topPageRightShadowLayer.opacity = 0.0f;
-      topPageLeftShadowLayer.opacity = 1.0f;
-      topPageLeftShadowLayer.frame = CGRectMake(image_width - (CENTER_SHADOW_WIDTH / 2), 0, CENTER_SHADOW_WIDTH / 2, image_height - (2 * image_margin_y));
+      if ( _direction == DIRECTION_LEFT ) {
+	if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ((_currentPage < _maxPage - 2) &&  (_currentPage > 3))) {
+	  centerPageLeftShadow.opacity = 1.0f;
+	  centerPageRightShadow.opacity = 1.0f;
+
+	  middlePageLeftShadowLayer.opacity = 0.0f;
+	  middlePageRightShadowLayer.opacity = 1.0f;
+
+	  topPageLeftShadowLayer.opacity = 1.0f;
+	  topPageRightShadowLayer.opacity = 0.0f;
+	} else if (_currentPage < 4){
+	  centerPageLeftShadow.opacity = 1.0f;
+	  centerPageRightShadow.opacity = 0.0f;
+
+	  middlePageLeftShadowLayer.opacity = 0.0f;
+	  middlePageRightShadowLayer.opacity = 1.0f;
+
+	  topPageLeftShadowLayer.opacity = 0.0f;
+	  topPageRightShadowLayer.opacity = 0.0f;
+	} else if (_currentPage > _maxPage - 1){
+	  centerPageLeftShadow.opacity = 0.0f;
+	  centerPageRightShadow.opacity = 1.0f;
+
+	  middlePageLeftShadowLayer.opacity = 0.0f;
+	  middlePageRightShadowLayer.opacity = 0.0f;
+
+	  topPageLeftShadowLayer.opacity = 1.0f;
+	  topPageRightShadowLayer.opacity = 0.0f;
+	} else {
+	  centerPageLeftShadow.opacity = 1.0f;
+	  centerPageRightShadow.opacity = 1.0f;
+
+	  middlePageLeftShadowLayer.opacity = 0.0f;
+	  middlePageRightShadowLayer.opacity = 1.0f;
+
+	  topPageLeftShadowLayer.opacity = 1.0f;
+	  topPageRightShadowLayer.opacity = 0.0f;
+	}
+      } else {
+	if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ((_currentPage < _maxPage - 1) &&  (_currentPage > 3))) {
+	  centerPageLeftShadow.opacity = 1.0f;
+	  centerPageRightShadow.opacity = 1.0f;
+
+	  middlePageLeftShadowLayer.opacity = 0.0f;
+	  middlePageRightShadowLayer.opacity = 1.0f;
+
+	  topPageLeftShadowLayer.opacity = 1.0f;
+	  topPageRightShadowLayer.opacity = 0.0f;
+	} else if (_currentPage < 2){
+	  centerPageLeftShadow.opacity = 0.0f;
+	  centerPageRightShadow.opacity = 1.0f;
+
+	  middlePageLeftShadowLayer.opacity = 0.0f;
+	  middlePageRightShadowLayer.opacity = 0.0f;
+
+	  topPageLeftShadowLayer.opacity = 1.0f;
+	  topPageRightShadowLayer.opacity = 0.0f;
+	} else if (_currentPage > _maxPage - 3){
+	  centerPageLeftShadow.opacity = 1.0f;
+	  centerPageRightShadow.opacity = 0.0f;
+
+	  middlePageLeftShadowLayer.opacity = 0.0f;
+	  middlePageRightShadowLayer.opacity = 1.0f;
+
+	  topPageLeftShadowLayer.opacity = 0.0f;
+	  topPageRightShadowLayer.opacity = 0.0f;
+	} else {
+	  centerPageLeftShadow.opacity = 1.0f;
+	  centerPageRightShadow.opacity = 1.0f;
+
+	  middlePageLeftShadowLayer.opacity = 0.0f;
+	  middlePageRightShadowLayer.opacity = 1.0f;
+
+	  topPageLeftShadowLayer.opacity = 1.0f;
+	  topPageRightShadowLayer.opacity = 0.0f;
+	}
+
+      }
+
+      topPageLeftShadowLayer.frame = CGRectMake(image_width - CENTER_SHADOW_WIDTH, 0, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 
       middlePageLayer.frame = CGRectMake(center + 1, 0, image_width, image_height);
       middlePageImageLayer.frame = CGRectMake(center, 0, image_width , image_height);
@@ -314,13 +399,12 @@
       topPageCurlShadowLayer.frame = CGRectMake(center + image_width, image_margin_y, TOP_SHADOW_WIDTH, image_height - (2 * image_margin_y));
       topPageLeftOutShadowLayer.frame = CGRectMake(center - BOTTOM_SHADOW_WIDTH * 1.2, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 
-      middlePageRightShadowLayer.frame = CGRectMake(0, image_margin_y, CENTER_SHADOW_WIDTH / 2, image_height - (2 * image_margin_y));
-      middlePageRightShadowLayer.opacity = 1;
+      middlePageRightShadowLayer.frame = CGRectMake(0, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 
       middlePageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:0]]];
       topPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:1]]];
     }
-  } else if ( curling == left ) {
+  } else if ( curling == left ) { // TODO
     middlePageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:0]]];
 
     middlePageLayer.frame = CGRectMake(center - image_width, 0, image_width , image_height);
@@ -328,6 +412,8 @@
     if ( _windowMode == MODE_A ) {
       topPageRightShadowLayer.opacity = 0.0f;
       topPageLeftShadowLayer.opacity = 0.0f;
+      middlePageRightShadowLayer.opacity = 0.0f;
+      middlePageLeftShadowLayer.opacity = 0.0f;
       if ( curling == from ) {
 	if ( _direction != DIRECTION_LEFT ) {
 	  middlePageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:0]]];
@@ -346,8 +432,6 @@
 	topPageRightOutShadowLayer.frame = CGRectMake(center - image_width, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 	topPageCurlShadowLayer.frame = CGRectMake(center - image_width, image_margin_y, TOP_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 	topPageLeftOutShadowLayer.frame = CGRectMake(center - image_width - BOTTOM_SHADOW_WIDTH * 1.2, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
-
-	middlePageLeftShadowLayer.opacity = 1;
       } else {
 	if ( _direction != DIRECTION_LEFT ) {
 	  middlePageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:0]]];
@@ -364,12 +448,89 @@
 	topPageCurlShadowLayer.frame = CGRectMake(center + image_width, image_margin_y, TOP_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 	topPageLeftOutShadowLayer.frame = CGRectMake(center + image_width - BOTTOM_SHADOW_WIDTH * 1.2, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 
-	middlePageRightShadowLayer.opacity = 1;
+//	middlePageRightShadowLayer.opacity = 1;
       }
     } else {
-      topPageRightShadowLayer.opacity = 1.0f;
-      topPageLeftShadowLayer.opacity = 0.0f;
-      topPageRightShadowLayer.frame = CGRectMake(0, 0, CENTER_SHADOW_WIDTH / 2, image_height - (2 * image_margin_y));
+      if ( _direction != DIRECTION_LEFT ) {
+	if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ((_currentPage < _maxPage - 2) &&  (_currentPage > 3))) {
+	  centerPageRightShadow.opacity = 1.0f;
+	  centerPageLeftShadow.opacity = 1.0f;
+
+	  middlePageRightShadowLayer.opacity = 0.0f;
+	  middlePageLeftShadowLayer.opacity = 1.0f;
+
+	  topPageRightShadowLayer.opacity = 1.0f;
+	  topPageLeftShadowLayer.opacity = 0.0f;
+	} else if (_currentPage < 4){
+	  centerPageRightShadow.opacity = 1.0f;
+	  centerPageLeftShadow.opacity = 0.0f;
+
+	  middlePageRightShadowLayer.opacity = 0.0f;
+	  middlePageLeftShadowLayer.opacity = 1.0f;
+
+	  topPageRightShadowLayer.opacity = 0.0f;
+	  topPageLeftShadowLayer.opacity = 0.0f;
+	} else if (_currentPage > _maxPage - 1){
+	  centerPageRightShadow.opacity = 0.0f;
+	  centerPageLeftShadow.opacity = 1.0f;
+
+	  middlePageRightShadowLayer.opacity = 0.0f;
+	  middlePageLeftShadowLayer.opacity = 0.0f;
+
+	  topPageRightShadowLayer.opacity = 1.0f;
+	  topPageLeftShadowLayer.opacity = 0.0f;
+	} else {
+	  centerPageRightShadow.opacity = 1.0f;
+	  centerPageLeftShadow.opacity = 1.0f;
+
+	  middlePageRightShadowLayer.opacity = 0.0f;
+	  middlePageLeftShadowLayer.opacity = 1.0f;
+
+	  topPageRightShadowLayer.opacity = 1.0f;
+	  topPageLeftShadowLayer.opacity = 0.0f;
+	}
+      } else {
+	if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ((_currentPage < _maxPage - 2) &&  (_currentPage > 3))) {
+	  centerPageRightShadow.opacity = 1.0f;
+	  centerPageLeftShadow.opacity = 1.0f;
+
+	  middlePageRightShadowLayer.opacity = 0.0f;
+	  middlePageLeftShadowLayer.opacity = 1.0f;
+
+	  topPageRightShadowLayer.opacity = 1.0f;
+	  topPageLeftShadowLayer.opacity = 0.0f;
+	} else if (_currentPage < 2){
+	  centerPageRightShadow.opacity = 0.0f;
+	  centerPageLeftShadow.opacity = 1.0f;
+
+	  middlePageRightShadowLayer.opacity = 0.0f;
+	  middlePageLeftShadowLayer.opacity = 0.0f;
+
+	  topPageRightShadowLayer.opacity = 1.0f;
+	  topPageLeftShadowLayer.opacity = 0.0f;
+	} else if (_currentPage > _maxPage - 3){
+	  centerPageRightShadow.opacity = 1.0f;
+	  centerPageLeftShadow.opacity = 0.0f;
+
+	  middlePageRightShadowLayer.opacity = 0.0f;
+	  middlePageLeftShadowLayer.opacity = 1.0f;
+
+	  topPageRightShadowLayer.opacity = 0.0f;
+	  topPageLeftShadowLayer.opacity = 0.0f;
+	} else {
+	  centerPageRightShadow.opacity = 1.0f;
+	  centerPageLeftShadow.opacity = 1.0f;
+
+	  middlePageRightShadowLayer.opacity = 0.0f;
+	  middlePageLeftShadowLayer.opacity = 1.0f;
+
+	  topPageRightShadowLayer.opacity = 1.0f;
+	  topPageLeftShadowLayer.opacity = 0.0f;
+	}
+      }
+
+
+      topPageRightShadowLayer.frame = CGRectMake(0, 0, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 
       middlePageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:0]]];
       topPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:1]]];
@@ -380,8 +541,6 @@
       topPageRightOutShadowLayer.frame = CGRectMake(center - image_width, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
       topPageCurlShadowLayer.frame = CGRectMake(center - image_width, image_margin_y, TOP_SHADOW_WIDTH, image_height - (2 * image_margin_y));
       topPageLeftOutShadowLayer.frame = CGRectMake(center - image_width - BOTTOM_SHADOW_WIDTH * 1.2, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
-
-      middlePageLeftShadowLayer.opacity = 1;
     }
   }
 
@@ -445,7 +604,7 @@
     middlePageLayer.frame = CGRectMake(center - image_width + image_width * ratio, 0, image_width * (1.0f - ratio) , image_height);
     middlePageImageLayer.frame = CGRectMake(-1.0f * image_width * ratio + image_margin_x, image_margin_y, middlePageImageLayer.frame.size.width , middlePageImageLayer.frame.size.height);
 
-    middlePageLeftShadowLayer.frame = CGRectMake(image_width * (1.0f - ratio) - CENTER_SHADOW_WIDTH / 2, image_margin_y, CENTER_SHADOW_WIDTH / 2, image_height - (2 * image_margin_y));
+    middlePageLeftShadowLayer.frame = CGRectMake(image_width * (1.0f - ratio) - CENTER_SHADOW_WIDTH, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 
     topPageLayer.frame = CGRectMake(center - image_width + image_width * ratio, 0, image_width * ratio, image_height);
     topPageImageLayer.frame = CGRectMake((image_width * (ratio - 1.0f)) + image_margin_x, image_margin_y, topPageImageLayer.frame.size.width, topPageImageLayer.frame.size.height);
@@ -457,7 +616,7 @@
     middlePageLayer.frame = CGRectMake(center + 1, 0, image_width * (1.0f - ratio) , image_height);
     middlePageImageLayer.frame = CGRectMake(image_margin_x, image_margin_y, middlePageImageLayer.frame.size.width , middlePageImageLayer.frame.size.height);
 
-    middlePageRightShadowLayer.frame = CGRectMake(0, image_margin_y, CENTER_SHADOW_WIDTH / 2, image_height - (2 * image_margin_y));
+    middlePageRightShadowLayer.frame = CGRectMake(0, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 
     topPageLayer.frame = CGRectMake(center + image_width * (1.0f - 2.0f * ratio), 0, image_width * ratio, image_height);
     topPageImageLayer.frame = CGRectMake(image_margin_x, image_margin_y, topPageImageLayer.frame.size.width, topPageImageLayer.frame.size.height);
@@ -582,15 +741,14 @@
   [CATransaction begin];
   [CATransaction setDisableActions:YES]; 
   topLayer.opacity = 0.0f;
+  middlePageLeftShadowLayer.opacity = 1.0f;
+  middlePageRightShadowLayer.opacity = 1.0f;
   [CATransaction commit];
 
   [CATransaction begin];
   [CATransaction setDisableActions:YES]; 
 
   middleLayer.opacity = 0.0f;
-
-  middlePageLeftShadowLayer.opacity = 1.0f;
-  middlePageRightShadowLayer.opacity = 1.0f;
 
   topPageLeftOutShadowLayer.opacity = 0.0f;
   topPageCurlShadowLayer.opacity = 0.0f;
@@ -602,23 +760,37 @@
 }
 
 - (NSInteger) getRightPageNumberWithDistance:(NSInteger)d {
-  if ( _direction == DIRECTION_LEFT ) {
-    return _currentPage - d - 1;
+  NSInteger page_num;
+  if ( _windowMode == MODE_A ) {
+    page_num = _currentPage;
   } else {
-    return _currentPage + d;
+    page_num = 2 * floor(_currentPage / 2) + 1;
+  }
+
+  if ( _direction == DIRECTION_LEFT ) {
+    return page_num - d - 1;
+  } else {
+    return page_num + d;
   }
 }
 
 - (NSInteger) getLeftPageNumberWithDistance:(NSInteger)d {
-  if ( _direction == DIRECTION_LEFT ) {
-    return _currentPage + d;
+  NSInteger page_num;
+  if ( _windowMode == MODE_A ) {
+    page_num = _currentPage;
   } else {
-    return _currentPage - d - 1;
+    page_num = 2 * floor(_currentPage / 2) + 1;
+  }
+
+  if ( _direction == DIRECTION_LEFT ) {
+    return page_num + d;
+  } else {
+    return page_num - d - 1;
   }
 }
 
 - (void)setup:(NSString *)uuid selectPage:(NSUInteger)selectPage pageNum:(NSInteger)pageNum direction:(NSInteger)direction windowMode:(NSInteger)windowMode {
-  NSLog(@"set up");
+ // NSLog(@"set up");
  [super setup:uuid selectPage:selectPage pageNum:pageNum direction:direction windowMode:windowMode];
 
  _windowMode = windowMode;
@@ -628,14 +800,9 @@
  [self loadPages:selectPage windowMode:_windowMode];
 
  [self setPages];
-
- // if (windowMode == MODE_A) {
- // [centerPageShadow removeFromSuperlayer];
- // }
 }
 
 - (BOOL)isNext {
-  NSLog(@"is next");
   if (_currentPage < _maxPage)
     return YES;
 
@@ -667,7 +834,7 @@
 }
 
 - (BOOL)isPrev {
-  if (_currentPage > 0)
+  if (_currentPage > 1)
     return YES;
 
   return NO;
@@ -829,13 +996,13 @@
 - (void)releaseFarBooks:(NSInteger)targetPage {
   for (NSInteger i = 1; i < _maxPage + 1; i++) {
     if ((_windowMode == MODE_A && (i < (targetPage - 1) || (targetPage + 1) < i)) ||
-	(_windowMode == MODE_B && (i < (targetPage - 3) || (targetPage + 2) < i))) {
+	(_windowMode == MODE_B && (i < (targetPage - 3) || (targetPage + 3) < i))) {
       NSNumber *number = [NSNumber numberWithInteger:i];
       if ([_pageList objectForKey:number]) {
 	       [super releaseBook:number removeFromList:YES];
       }
       if ([_imageList objectForKey:number]) {
-	NSLog(@"release image");
+	//NSLog(@"release image");
 	[super releaseImage:number removeFromList:YES];
       }
     }
@@ -860,7 +1027,7 @@
    //[super loadPages:selectPage windowMode:_windowMode];
 
    NSInteger selectPageWithOffset;
-   for (NSInteger i = 0; i < 6; i++) {
+   for (NSInteger i = 0; i < 7; i++) {
      selectPageWithOffset = selectPage + (i - 3);
 
      NSNumber *number = [NSNumber numberWithInteger:selectPageWithOffset];
@@ -887,7 +1054,7 @@
   [CATransaction begin];
   [CATransaction setDisableActions:YES]; 
 
-  // NSLog(@"set pages");
+ //  NSLog(@"set pages %d", _currentPage);
   leftPageImageLayer.opacity = 1.0f;
   leftPageImageLayer.transform = CATransform3DMakeScale(1, 1, 1); //TODO
   leftPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:0]]];
@@ -898,16 +1065,30 @@
   rightPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:0]]];
   rightPageImageLayer.frame = [self getAspectFittingImageRect:[[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage]] image]];
 
+  if (_windowMode == MODE_B) {
+    if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ([self isNext] && [self isPrev])) {
+      centerPageRightShadow.opacity = 1.0f;
+      centerPageLeftShadow.opacity = 1.0f;
+    } else {
+      centerPageLeftShadow.opacity = 0.0f;
+      centerPageRightShadow.opacity = 0.0f;
+    }
+  } else {
+    centerPageLeftShadow.opacity = 0.0f;
+    centerPageRightShadow.opacity = 0.0f;
+  }
+
   [CATransaction commit];
 
   [CATransaction begin];
   [CATransaction setDisableActions:YES]; 
 
-  centerPageShadow.frame = CGRectMake(image_width - (CENTER_SHADOW_WIDTH / 2), image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
+  centerPageLeftShadow.frame = CGRectMake(image_width - CENTER_SHADOW_WIDTH, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
+  centerPageRightShadow.frame = CGRectMake(image_width, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
   middlePageLeftShadowLayer.opacity = 0.0f;
-  middlePageLeftShadowLayer.frame = CGRectMake(image_width - (CENTER_SHADOW_WIDTH / 2), image_margin_y, CENTER_SHADOW_WIDTH / 2, image_height - (2 * image_margin_y));
+  middlePageLeftShadowLayer.frame = CGRectMake(image_width - CENTER_SHADOW_WIDTH, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
   middlePageRightShadowLayer.opacity = 0.0f;
-  middlePageRightShadowLayer.frame = CGRectMake(image_width, image_margin_y, CENTER_SHADOW_WIDTH / 2, image_height - (2 * image_margin_y));
+  middlePageRightShadowLayer.frame = CGRectMake(image_width, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 
   [CATransaction commit];
 }
@@ -933,6 +1114,7 @@
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
   /* mode check
   */
+  /*
   if ( _mode == page_mode_none ) {
     NSLog(@"mode none");
   } else if ( _mode == page_mode_release ) {
@@ -942,6 +1124,7 @@
   } else if ( _mode == page_mode_curling ) {
     NSLog(@"mode curling");
   }
+  */
   touchStartPoint = [[touches anyObject] locationInView:self.view];
   if ( _mode == page_mode_release ) {
     [self endFor:_curl_side from:_curl_from to:_curl_to];
@@ -980,6 +1163,11 @@
 	} else {
 	  _curl_side = left;
 	}
+
+      if (((_direction == DIRECTION_LEFT) && [self isNext]) || ((_direction != DIRECTION_LEFT) && [self isPrev])) {
+	[self setPages];
+	[self startFor:_curl_side from:_curl_from];
+      }
     } else {
       _curl_from = right;
 
@@ -992,10 +1180,12 @@
       } else {
 	_curl_side = right;
       }
-    }
 
-    [self setPages];
-    [self startFor:_curl_side from:_curl_from];
+      if (((_direction != DIRECTION_LEFT) && [self isNext]) || ((_direction == DIRECTION_LEFT) && [self isPrev])) {
+	[self setPages];
+	[self startFor:_curl_side from:_curl_from];
+      }
+    }
   } else if ( _mode == page_mode_curling ) {
     if ( _curl_from == right) {
       if ( delta_x >= 0) {
@@ -1011,7 +1201,9 @@
 
 	_curl_from = left;
 	[self setPages];
-	[self startFor:_curl_side from:_curl_from];
+	if (((_direction == DIRECTION_LEFT) && [self isNext]) || ((_direction != DIRECTION_LEFT) && [self isPrev])) {
+	  [self startFor:_curl_side from:_curl_from];
+	}
       } else {
 	if ( _windowMode == MODE_A ) {
 	  if ( _direction == DIRECTION_LEFT ) {
@@ -1029,7 +1221,7 @@
 	  _curl_side = right;
 	  _curl_ratio = -1.0f * CURL_BOOST * delta_x / WINDOW_BW;
 	}
-	if ( (_direction != DIRECTION_LEFT && [self isNext]) || (_direction == DIRECTION_LEFT && [self isPrev])) {
+	if ( ((_direction != DIRECTION_LEFT) && [self isNext]) || ((_direction == DIRECTION_LEFT) && [self isPrev])) {
 	  [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
 	}
       }
@@ -1047,7 +1239,9 @@
 
 	_curl_from = right;
 	[self setPages];
-	[self startFor:_curl_side from:_curl_from];
+	if ( ((_direction != DIRECTION_LEFT) && [self isNext]) || ((_direction == DIRECTION_LEFT) && [self isPrev])) {
+	  [self startFor:_curl_side from:_curl_from];
+	}
       } else {
 	if ( _windowMode == MODE_A ) {
 	  if ( _direction == DIRECTION_LEFT ) {
@@ -1065,7 +1259,7 @@
 	  _curl_side = left;
 	  _curl_ratio = delta_x * CURL_BOOST / WINDOW_BW;
 	}
-	if ( (_direction == DIRECTION_LEFT && [self isNext]) || (_direction != DIRECTION_LEFT && [self isPrev])) {
+	if (((_direction == DIRECTION_LEFT) && [self isNext]) || ((_direction != DIRECTION_LEFT) && [self isPrev])) {
 	  [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
 	}
       }

@@ -140,9 +140,6 @@
 
 - (void)onUpdateSlider:(UISlider *)aSlider {
 	int number = floor(_slider.value);
-	if ( _windowMode == MODE_B ) {
-	  number = 2 * floor(number / 2) + 1;
-	}
 
 //	if (_direction == DIRECTION_LEFT)
 //		number = _pageNum - number + 1;
