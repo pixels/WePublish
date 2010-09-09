@@ -195,8 +195,8 @@ i"BuyViewCtrl.h"
 i"Define.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/Define.h
-c000000004C84CB250000000000000CC4
-t1283771173
+c000000004C8720250000000000000CC4
+t1283924005
 s3268
 i<UIKit/UIKit.h>
 
@@ -313,8 +313,8 @@ i"UIViewWithTouchesDelegate.h"
 i"MyScrollView.h"
 
 N/Users/kaerbtuo/Workspace/Cocoa/WePublish/Classes/ReadViewACtrl.m
-c000000004C864E47000000000000AD7E
-t1283870279
+c000000004C8720C1000000000000AD7E
+t1283924161
 s44414
 i"ReadViewACtrl.h"
 i"WindowModeType.h"

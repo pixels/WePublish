@@ -38,10 +38,10 @@
 - (void)setPage:(NSInteger)selectPage windowMode:(NSInteger)windowMode {
 	_currentPage = selectPage;
 	
-	if (_currentPage > _maxPage) {
-		_currentPage = _maxPage;
+	if ( _currentPage > _maxPage + 1 ) {
+	  _currentPage = _maxPage + 1;
 	} else if (_currentPage < 1) {
-		_currentPage = 1;
+	  _currentPage = 1;
 	}
 	
 //	NSLog(@"setPage selectPage: %d", selectPage);

@@ -60,10 +60,13 @@ enum {
 	CAGradientLayer * middlePageRightShadowLayer;
 	CAGradientLayer * middlePageLeftShadowLayer;
 
-	CAGradientLayer * topPageRightShadowLayer;
+	CAGradientLayer * topPageRightOutShadowLayer;
 	CAGradientLayer * topPageCurlShadowLayer;
-	CAGradientLayer * topPageLeftShadowLayer;
+	CAGradientLayer * topPageLeftOutShadowLayer;
 	CAGradientLayer * topPageOverlayLayer;
+
+	CAGradientLayer * topPageRightShadowLayer;
+	CAGradientLayer * topPageLeftShadowLayer;
 
 	CAGradientLayer * rightPageShadow;
 

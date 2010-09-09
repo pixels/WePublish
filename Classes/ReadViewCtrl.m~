@@ -28,7 +28,7 @@
   _windowMode = MODE_NONE;
   [_slider addTarget:self action:@selector(onUpdateSlider:) forControlEvents:UIControlEventValueChanged];
   _slider.minimumValue = 1;
-  _slider.maximumValue = _pageNum;
+  _slider.maximumValue = _pageNum - _fakePage;
   _slider.value = _pageNum;
 	
   NSInteger maxPage = _pageNum - _fakePage;
@@ -72,14 +72,6 @@
 
 - (void)changeOrientation {
 	NSInteger maxPage;
-
-	if ( _windowMode == MODE_A ) {
-	  NSLog(@"change to mode a");
-	  self.view.frame = CGRectMake(0, 0, WINDOW_AH, WINDOW_AW);
-	} else {
-	  NSLog(@"change to mode b");
-	  self.view.frame = CGRectMake(0, 0, WINDOW_BH, WINDOW_BW);
-	}
 
 //	[_readViewACtrl changeOrientation:_windowMode];
 	maxPage = _pageNum - _fakePage;
@@ -148,6 +140,9 @@
 
 - (void)onUpdateSlider:(UISlider *)aSlider {
 	int number = floor(_slider.value);
+	if ( _windowMode == MODE_B ) {
+	  number = 2 * floor(number / 2) + 1;
+	}
 
 //	if (_direction == DIRECTION_LEFT)
 //		number = _pageNum - number + 1;
@@ -186,6 +181,7 @@
 	    _slider.frame = frame;
 
 	    //[self cleanupCurrentView:MODE_B];
+	    self.view.frame = CGRectMake(0, 0, WINDOW_AW, WINDOW_AH);
 	  } else {
 	    //[_lButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 20 : 664, 588, 340, 140)];
 	    //[_rButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 664 : 20, 588, 340, 140)];
@@ -195,13 +191,13 @@
 	    _slider.frame = frame;
 
 	    //[self cleanupCurrentView:MODE_A];
-
-	    endLabel_.text = (_direction == DIRECTION_LEFT) ? @"始め" : @"終わり";
-	    startLabel_.text = (_direction == DIRECTION_LEFT) ? @"終わり" : @"始め";
-	    if (_direction == DIRECTION_LEFT) {
-	      CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI * 180 / 180.0f);
-	      _slider.transform = trans;
-	    }
+	    self.view.frame = CGRectMake(0, 0, WINDOW_BW, WINDOW_BH);
+	  }
+	  endLabel_.text = (_direction == DIRECTION_LEFT) ? @"始め" : @"終わり";
+	  startLabel_.text = (_direction == DIRECTION_LEFT) ? @"終わり" : @"始め";
+	  if (_direction == DIRECTION_LEFT) {
+	    CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI * 180 / 180.0f);
+	    _slider.transform = trans;
 	  }
 	}
 }
