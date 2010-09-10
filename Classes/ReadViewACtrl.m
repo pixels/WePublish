@@ -1293,20 +1293,22 @@
      NSLog("%d", [fingers count]);
      */
   if ( _mode == page_mode_curl_start ) {
-    if ( point.x < self.view.frame.size.width / 2 ) {
-      if ( _direction == DIRECTION_LEFT ) {
-	[self notifyGoToNextPage];
+    if ( PAGING_BY_TAP ) {
+      if ( point.x < self.view.frame.size.width / 2 ) {
+	if ( _direction == DIRECTION_LEFT ) {
+	  [self notifyGoToNextPage];
+	} else {
+	  [self notifyGoToPrevPage];
+	}
       } else {
-	[self notifyGoToPrevPage];
+	if ( _direction == DIRECTION_LEFT ) {
+	  [self notifyGoToPrevPage];
+	} else {
+	  [self notifyGoToNextPage];
+	}
       }
-    } else {
-      if ( _direction == DIRECTION_LEFT ) {
-	[self notifyGoToPrevPage];
-      } else {
-	[self notifyGoToNextPage];
-      }
-    }
     [self setPages];
+    }
     _mode = page_mode_none;
   } else if ( _mode == page_mode_curling ) {
     if ( _windowMode == MODE_A ) {

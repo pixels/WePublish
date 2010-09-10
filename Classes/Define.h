@@ -10,6 +10,7 @@
 
 // Flag
 #define USE_WEBKIT false
+#define PAGING_BY_TAP false
 
 // Page size
 #define WINDOW_AW 768
