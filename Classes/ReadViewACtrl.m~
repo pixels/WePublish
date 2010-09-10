@@ -821,8 +821,8 @@
     targetPage = _currentPage + 2;
   }
 
-  if (targetPage > _maxPage)
-    return;
+  // if (targetPage > _maxPage)
+    // return;
 
   [self loadPages:targetPage windowMode:_windowMode];
 
@@ -995,14 +995,14 @@
 
 - (void)releaseFarBooks:(NSInteger)targetPage {
   for (NSInteger i = 1; i < _maxPage + 1; i++) {
-    if ((_windowMode == MODE_A && (i < (targetPage - 1) || (targetPage + 1) < i)) ||
-	(_windowMode == MODE_B && (i < (targetPage - 3) || (targetPage + 3) < i))) {
+    if (((_windowMode == MODE_A) && ((i < (targetPage - 1)) || ((targetPage + 1) < i))) ||
+	((_windowMode == MODE_B) && ((i < (targetPage - 3)) || ((targetPage + 3) < i)))) {
       NSNumber *number = [NSNumber numberWithInteger:i];
       if ([_pageList objectForKey:number]) {
 	       [super releaseBook:number removeFromList:YES];
       }
       if ([_imageList objectForKey:number]) {
-	//NSLog(@"release image");
+	NSLog(@"release image %d", i);
 	[super releaseImage:number removeFromList:YES];
       }
     }
@@ -1010,7 +1010,7 @@
 }
 
 - (void)releaseAllBooks:(NSInteger)targetPage {
-  // NSLog(@"release all");
+  //NSLog(@"release all");
   for (NSInteger i = 1; i < _maxPage + 1; i++) {
     NSNumber *number = [NSNumber numberWithInteger:i];
     if ([_pageList objectForKey:number]) {
@@ -1054,7 +1054,6 @@
   [CATransaction begin];
   [CATransaction setDisableActions:YES]; 
 
- //  NSLog(@"set pages %d", _currentPage);
   leftPageImageLayer.opacity = 1.0f;
   leftPageImageLayer.transform = CATransform3DMakeScale(1, 1, 1); //TODO
   leftPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getLeftPageNumberWithDistance:0]]];
@@ -1296,17 +1295,18 @@
   if ( _mode == page_mode_curl_start ) {
     if ( point.x < self.view.frame.size.width / 2 ) {
       if ( _direction == DIRECTION_LEFT ) {
-	//[self notifyGoToNextPage];
+	[self notifyGoToNextPage];
       } else {
-	//[self notifyGoToPrevPage];
+	[self notifyGoToPrevPage];
       }
     } else {
       if ( _direction == DIRECTION_LEFT ) {
-	//[self notifyGoToPrevPage];
+	[self notifyGoToPrevPage];
       } else {
-	//[self notifyGoToNextPage];
+	[self notifyGoToNextPage];
       }
     }
+    [self setPages];
     _mode = page_mode_none;
   } else if ( _mode == page_mode_curling ) {
     if ( _windowMode == MODE_A ) {

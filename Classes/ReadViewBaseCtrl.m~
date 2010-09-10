@@ -39,6 +39,7 @@
 	_currentPage = selectPage;
 	
 	if ( _currentPage > _maxPage ) {
+	  NSLog(@"over");
 	  _currentPage = _maxPage;
 	} else if (_currentPage < 1) {
 	  _currentPage = 1;
