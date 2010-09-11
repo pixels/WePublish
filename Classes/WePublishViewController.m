@@ -286,7 +286,7 @@
 	[path release];
 	
 	[self initDirectory];
-	[self showAlert:nil message:RELOAD_DATA_WARNING_MESSAGE btn1:@"NO" btn2:@"YES" tag:RELOAD_DATA_ALERT_TAG];
+	[self showAlert:nil message:RELOAD_DATA_WARNING_MESSAGE btn1:@"OK" btn2:nil tag:RELOAD_DATA_ALERT_TAG];
 }
 
 - (void)updateXML {
@@ -316,7 +316,7 @@
 		BookInfo *info;
 		for (id key in _tmpDlDic) {
 			updateTotalDownloadCount_++;
-			[statusLabel_ setText:[NSString stringWithFormat:@"%@ %3d / %3d", STATUS_DOWNLOADING_BOOKS, updateTotalDownloadCount_, updateRequestFileCount_]];
+			[statusLabel_ setText:[NSString stringWithFormat:@"%@ %3d / %3d 冊", STATUS_DOWNLOADING_BOOKS, updateTotalDownloadCount_, updateRequestFileCount_]];
 			info = [_tmpDlDic objectForKey:key];
 			FileDownloader *fd = [[FileDownloader alloc] init];
 			[fd download:info.uuid url:info.url];
@@ -965,7 +965,7 @@
 
 // 削除ボタンが選択されたとき
 - (IBAction)onMenuTrashClick:(id)sender {
-	[self showAlert:WARNING_TITLE message:TRASH_WARNING_MESSAGE btn1:@"Cancel" btn2:@"OK" tag:TRASH_ALERT_TAG];
+	[self showAlert:WARNING_TITLE message:TRASH_WARNING_MESSAGE btn1:@"OK" btn2:@"Cancel" tag:TRASH_ALERT_TAG];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -974,13 +974,13 @@
 	if ([alertView tag] == TRASH_ALERT_TAG) {
 		
 		// Trash
-		if (buttonIndex == 1) {
+		if (buttonIndex == 0) {
 			[self trashAllData];
 		}
 	}
 	
 	else if ([alertView tag] == RELOAD_DATA_ALERT_TAG) {
-		if (buttonIndex == 1) {
+		if (buttonIndex == 0) {
 			[self updateXML];
 		}
 	}
