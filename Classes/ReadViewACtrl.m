@@ -39,6 +39,10 @@
   bottomLayer.masksToBounds = YES;
   [_bookView.layer addSublayer:bottomLayer];
 
+  centerPageLine = [[CAGradientLayer alloc] init];
+  centerPageLine.backgroundColor = [[UIColor whiteColor] CGColor];
+  [bottomLayer addSublayer:centerPageLine];
+
   rightPageLayer = [[CALayer alloc] init];
   [bottomLayer addSublayer:rightPageLayer];
   rightPageLayer.masksToBounds = YES;
@@ -326,14 +330,14 @@
 	  middlePageLeftShadowLayer.opacity = 0.0f;
 	  middlePageRightShadowLayer.opacity = 1.0f;
 
-	  topPageLeftShadowLayer.opacity = 0.0f;
+	  topPageLeftShadowLayer.opacity = FACE_PAGE_SHADOW_ALPHA;
 	  topPageRightShadowLayer.opacity = 0.0f;
 	} else if (_currentPage > _maxPage - 1){
 	  centerPageLeftShadow.opacity = 0.0f;
 	  centerPageRightShadow.opacity = 1.0f;
 
 	  middlePageLeftShadowLayer.opacity = 0.0f;
-	  middlePageRightShadowLayer.opacity = 0.0f;
+	  middlePageRightShadowLayer.opacity = FACE_PAGE_SHADOW_ALPHA;
 
 	  topPageLeftShadowLayer.opacity = 1.0f;
 	  topPageRightShadowLayer.opacity = 0.0f;
@@ -362,7 +366,7 @@
 	  centerPageRightShadow.opacity = 1.0f;
 
 	  middlePageLeftShadowLayer.opacity = 0.0f;
-	  middlePageRightShadowLayer.opacity = 0.0f;
+	  middlePageRightShadowLayer.opacity = FACE_PAGE_SHADOW_ALPHA;
 
 	  topPageLeftShadowLayer.opacity = 1.0f;
 	  topPageRightShadowLayer.opacity = 0.0f;
@@ -373,7 +377,7 @@
 	  middlePageLeftShadowLayer.opacity = 0.0f;
 	  middlePageRightShadowLayer.opacity = 1.0f;
 
-	  topPageLeftShadowLayer.opacity = 0.0f;
+	  topPageLeftShadowLayer.opacity = FACE_PAGE_SHADOW_ALPHA;
 	  topPageRightShadowLayer.opacity = 0.0f;
 	} else {
 	  centerPageLeftShadow.opacity = 1.0f;
@@ -504,7 +508,7 @@
 	  centerPageLeftShadow.opacity = 1.0f;
 
 	  middlePageRightShadowLayer.opacity = 0.0f;
-	  middlePageLeftShadowLayer.opacity = 0.0f;
+	  middlePageLeftShadowLayer.opacity = FACE_PAGE_SHADOW_ALPHA;
 
 	  topPageRightShadowLayer.opacity = 1.0f;
 	  topPageLeftShadowLayer.opacity = 0.0f;
@@ -515,7 +519,7 @@
 	  middlePageRightShadowLayer.opacity = 0.0f;
 	  middlePageLeftShadowLayer.opacity = 1.0f;
 
-	  topPageRightShadowLayer.opacity = 0.0f;
+	  topPageRightShadowLayer.opacity = FACE_PAGE_SHADOW_ALPHA;
 	  topPageLeftShadowLayer.opacity = 0.0f;
 	} else {
 	  centerPageRightShadow.opacity = 1.0f;
@@ -1064,17 +1068,37 @@
   rightPageImageLayer.contents = [_imageList objectForKey:[NSNumber numberWithInteger:[self getRightPageNumberWithDistance:0]]];
   rightPageImageLayer.frame = [self getAspectFittingImageRect:[[_pageList objectForKey:[NSNumber numberWithInteger:_currentPage]] image]];
 
+  centerPageLine.frame = CGRectMake(image_width, image_margin_y, 1, image_height - (2 * image_margin_y));
   if (_windowMode == MODE_B) {
     if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ([self isNext] && [self isPrev])) {
       centerPageRightShadow.opacity = 1.0f;
       centerPageLeftShadow.opacity = 1.0f;
+
+      centerPageLine.opacity = 0.4f;
     } else {
-      centerPageLeftShadow.opacity = 0.0f;
-      centerPageRightShadow.opacity = 0.0f;
+      centerPageLine.opacity = 0.0f;
+      if (![self isNext]) {
+	if ( _direction == DIRECTION_LEFT ) {
+	  centerPageLeftShadow.opacity = 0.0f;
+	  centerPageRightShadow.opacity = FACE_PAGE_SHADOW_ALPHA;
+	} else {
+	  centerPageLeftShadow.opacity = FACE_PAGE_SHADOW_ALPHA;
+	  centerPageRightShadow.opacity = 0.0f;
+	}
+      } else if(![self isPrev]) {
+	if ( _direction != DIRECTION_LEFT ) {
+	  centerPageLeftShadow.opacity = 0.0f;
+	  centerPageRightShadow.opacity = FACE_PAGE_SHADOW_ALPHA;
+	} else {
+	  centerPageLeftShadow.opacity = FACE_PAGE_SHADOW_ALPHA;
+	  centerPageRightShadow.opacity = 0.0f;
+	}
+      }
     }
   } else {
     centerPageLeftShadow.opacity = 0.0f;
     centerPageRightShadow.opacity = 0.0f;
+    centerPageLine.opacity = 0.0f;
   }
 
   [CATransaction commit];
@@ -1083,7 +1107,7 @@
   [CATransaction setDisableActions:YES]; 
 
   centerPageLeftShadow.frame = CGRectMake(image_width - CENTER_SHADOW_WIDTH, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
-  centerPageRightShadow.frame = CGRectMake(image_width, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
+  centerPageRightShadow.frame = CGRectMake(image_width + 1, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
   middlePageLeftShadowLayer.opacity = 0.0f;
   middlePageLeftShadowLayer.frame = CGRectMake(image_width - CENTER_SHADOW_WIDTH, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
   middlePageRightShadowLayer.opacity = 0.0f;

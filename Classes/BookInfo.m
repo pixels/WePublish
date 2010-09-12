@@ -27,7 +27,8 @@
 @synthesize oldVersion = _oldVersion;
 
 - (void)setLength:(NSUInteger)pageLength {
-	_length = (pageLength % 2 == 0) ? pageLength : (pageLength + 1);
+	// _length = (pageLength % 2 == 0) ? pageLength : (pageLength + 1);
+	_length = pageLength;
 	_fake = pageLength % 2;
 }
 

@@ -71,6 +71,7 @@ enum {
 
 	CAGradientLayer * rightPageShadow;
 
+	CALayer *centerPageLine;
 	CALayer *bottomLayer;
 	CALayer *leftPageLayer;
 	CALayer *leftPageImageLayer;

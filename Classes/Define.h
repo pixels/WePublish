@@ -10,7 +10,7 @@
 
 // Flag
 #define USE_WEBKIT false
-#define PAGING_BY_TAP false
+#define PAGING_BY_TAP true
 
 // Page size
 #define WINDOW_AW 768
@@ -19,10 +19,10 @@
 #define WINDOW_BH 768
 
 // Page Margin
-#define PAGE_MARGIN_TOP 20
-#define PAGE_MARGIN_BOTTOM 20
-#define PAGE_MARGIN_LEFT 20
-#define PAGE_MARGIN_RIGHT 20
+#define PAGE_MARGIN_TOP 0
+#define PAGE_MARGIN_BOTTOM 0
+#define PAGE_MARGIN_LEFT 0
+#define PAGE_MARGIN_RIGHT 0
 
 #define SHADOW_RED 1.0f
 #define SHADOW_GREEN 1.0f
@@ -32,6 +32,11 @@
 #define TOP_SHADOW_ALPHA 0.2f
 #define TOP_OVERLAY_ALPHA 0.6f
 
+#define FACE_PAGE_SHADOW_ALPHA 0.4f
+
+// Set speed of curling page
+#define CURL_BOOST 2.5f
+
 // Max scale
 #define MAX_ZOOM_SCALE 1.0f
 #define MIN_ZOOM_SCALE 1.0f
@@ -39,8 +44,6 @@
 #define REVERSE_PAGE_OPACITY 0.5f
 
 #define PAGING_WAIT_TIME 0.003f
-
-#define CURL_BOOST 1.5f
 
 #define CURL_SPAN 0.01f
 
