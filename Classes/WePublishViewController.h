@@ -77,6 +77,7 @@
 - (void)releaseBuyView;
 - (void)changeOrientation:(BOOL)animation;
 - (void)releaseXML;
+- (void)networkActivityIndicator:(BOOL)hidden;
 
 - (IBAction)onMenuBookClick:(id)sender;
 - (IBAction)onMenuListClick:(id)sender;
