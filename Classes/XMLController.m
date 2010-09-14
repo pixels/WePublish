@@ -66,6 +66,17 @@
 	}
 }
 
+- (BOOL)loadLocalXml {
+	
+	if ([Util isExist:_outputFilePath]) {
+		_data = [_data initWithContentsOfFile:_outputFilePath];
+		[self parse:_data savedXMLLoad:NO];
+		return YES;
+	}
+	
+	return NO;
+}
+
 - (void)updateContinue {
 	
 	NSDictionary *userInfo = [[NSDictionary alloc] initWithContentsOfFile:_userFilePath];
@@ -104,9 +115,8 @@
 
 - (void)alertIfDontExistData:(NSString *)message {
 	// Load loacal xml if old xml file exist in the local.
-	if ([Util isExist:_outputFilePath]) {
-		_data = [_data initWithContentsOfFile:_outputFilePath];
-		[self parse:_data savedXMLLoad:NO];
+	BOOL loadLocalXmlFile = [self loadLocalXml];
+	if (loadLocalXmlFile) {
 	}
 	
 	// Show alert if old xml file don't exist in the local.

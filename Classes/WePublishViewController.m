@@ -653,7 +653,9 @@
 		[_logoView.view removeFromSuperview];
 		[_logoView release];
 		
-		[self updateXML];
+		if (![_xmlCtrl loadLocalXml]) {
+			[self updateXML];
+		}
 	}
 	
 	else if ([animationID isEqualToString:CHANGE_ORIENTATION_ANIM_ID]) {

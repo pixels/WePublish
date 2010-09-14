@@ -26,6 +26,7 @@
 }
 
 - (void)update:(NSString*)url;
+- (BOOL)loadLocalXml;
 - (void)updateContinue;
 - (void)saveXML;
 - (void)alertIfDontExistData:(NSString *)message;
