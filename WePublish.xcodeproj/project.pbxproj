@@ -557,8 +557,8 @@
 			buildSettings = {
 				"ARCHS[sdk=iphoneos*]" = armv7;
 				"ARCHS[sdk=iphonesimulator*]" = i386;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Naoya Karatsu (P52ZVS6MZ8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Naoya Karatsu (P52ZVS6MZ8)";
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -566,8 +566,8 @@
 				LIBRARY_SEARCH_PATHS = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/lib;
 				MACH_O_TYPE = mh_execute;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "4378A2CA-96DA-4F71-ACDB-D5CBFBE45ED4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4378A2CA-96DA-4F71-ACDB-D5CBFBE45ED4";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

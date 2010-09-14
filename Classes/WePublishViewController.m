@@ -44,8 +44,9 @@
 @synthesize activitiyView = _activitiyView;
 @synthesize bookBarButton = _bookBarButton;
 @synthesize listBarButton = _listBarButton;
-@synthesize trashBarButton = _trashBarButton;
 @synthesize buyBarButton = _buyBarButton;
+@synthesize refreshBarButton = _refreshBarButton;
+@synthesize trashBarButton = _trashBarButton;
 @synthesize statusLabel = statusLabel_;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -89,7 +90,7 @@
 	}
 //	NSLog(@"Bookmark path: %@", _bookmarkPath);
 	
-	[self setMenuBarItems:NO list:NO trash:NO buy:NO];
+	[self setMenuBarItems:NO list:NO buy:NO refresh:NO trash:NO];
 	[self logoToTop];
 }
 
@@ -278,7 +279,7 @@
 
 // 全てのデータを削除する
 - (void)trashAllData {
-	[self setMenuBarItems:NO list:NO trash:NO buy:NO];
+	[self setMenuBarItems:NO list:NO buy:NO refresh:NO trash:NO];
 	[self releaseBooks:NO];
 	
 	NSFileManager *fm = [NSFileManager defaultManager];
@@ -304,7 +305,7 @@
 // XMLの更新終了
 - (void)updateXMLFinish {
 	[self reloadBooks];
-	[self setMenuBarItems:NO list:YES trash:YES buy:YES];
+	[self setMenuBarItems:NO list:YES buy:YES refresh:YES trash:YES];
 	
 	[self networkActivityIndicator:YES];
 	[_activitiyView setHidden:YES];
@@ -525,7 +526,7 @@
 	_scrollView.scrollEnabled = YES;
 }
 
-- (void)setMenuBarItems:(BOOL)book list:(BOOL)list trash:(BOOL)trash buy:(BOOL)buy {
+- (void)setMenuBarItems:(BOOL)book list:(BOOL)list buy:(BOOL)buy refresh:(BOOL)refresh trash:(BOOL)trash{
 	
 	self.bookBarButton.style = (book == YES) ? UIBarButtonItemStyleBordered : UIBarButtonItemStylePlain;
 	self.bookBarButton.enabled = book;
@@ -533,11 +534,14 @@
 	self.listBarButton.style = (list == YES) ? UIBarButtonItemStyleBordered : UIBarButtonItemStylePlain;
 	self.listBarButton.enabled = list;
 	
-	self.trashBarButton.style = (trash == YES) ? UIBarButtonItemStyleBordered : UIBarButtonItemStylePlain;
-	self.trashBarButton.enabled = trash;
-	
 	self.buyBarButton.style = (buy == YES) ? UIBarButtonItemStyleBordered : UIBarButtonItemStylePlain;
 	self.buyBarButton.enabled = buy;
+	
+	self.refreshBarButton.style = (refresh == YES) ? UIBarButtonItemStyleBordered : UIBarButtonItemStylePlain;
+	self.refreshBarButton.enabled = refresh;
+	
+	self.trashBarButton.style = (trash == YES) ? UIBarButtonItemStyleBordered : UIBarButtonItemStylePlain;
+	self.trashBarButton.enabled = trash;
 }
 
 // 詳細の表示
@@ -891,7 +895,7 @@
 // 詳細画面から読む画面
 - (void)onDetailToReadSelect:(NSNotification *)notification {
 	
-	[self setMenuBarItems:NO list:YES trash:YES buy:YES];
+	[self setMenuBarItems:NO list:YES buy:YES refresh:YES trash:YES];
 	[self releaseListView];
 	[self releaseBackground:_windowMode];
 	[self releaseBooks:YES];
@@ -928,7 +932,7 @@
 	[self releaseBuyView];
 	[self releaseListView];
 	[self reloadBooks];
-	[self setMenuBarItems:NO list:YES trash:YES buy:YES];
+	[self setMenuBarItems:NO list:YES buy:YES refresh:YES trash:YES];
 }
 
 // 一覧ボタンが選択された時
@@ -945,7 +949,7 @@
 	[_listViewCtrl setBookCollection:_bookCollection];
 	[self.view insertSubview:ctrl.view atIndex:0];
 	[ctrl release];
-	[self setMenuBarItems:YES list:NO trash:NO buy:NO];
+	[self setMenuBarItems:YES list:NO buy:NO refresh:NO trash:NO];
 }
 
 // 購入ボタンが選択されたとき
@@ -962,7 +966,7 @@
 		_buyViewCtrl = [ctrl retain];
 		[self.view insertSubview:ctrl.view atIndex:0];
 		[ctrl release];
-		[self setMenuBarItems:YES list:NO trash:NO buy:NO];
+		[self setMenuBarItems:YES list:NO buy:NO refresh:NO trash:NO];
 	}
 	
 	else {
@@ -971,6 +975,13 @@
 		[app openURL:url];
 		[url release];
 	}
+}
+
+// 更新ボタンが選択されたとき
+- (IBAction)onMenuRefreshClick:(id)sender {
+	[self setMenuBarItems:NO list:NO buy:NO refresh:NO trash:NO];
+	[self releaseBooks:NO];
+	[self updateXML];
 }
 
 // 削除ボタンが選択されたとき
@@ -1023,8 +1034,9 @@
 	[_bookCollection release];
 	[self.bookBarButton release];
 	[self.listBarButton release];
-	[self.trashBarButton release];
 	[self.buyBarButton release];
+	[self.refreshBarButton release];
+	[self.trashBarButton release];
 	[self.scrollView release];
 	[self.activitiyView release];
 	[self.statusLabel release];
