@@ -174,7 +174,7 @@
 	    //[_rButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 408 : 20, 844, 340, 140)];
 	    frame = _slider.frame;
 	    //			frame.origin.x = WINDOW_AW - frame.size.width - 20;
-	    frame.origin.y = 30;
+//	    frame.origin.y = 30;
 	    _slider.frame = frame;
 
 	    //[self cleanupCurrentView:MODE_B];
@@ -184,7 +184,7 @@
 	    //[_rButton setFrame:CGRectMake((_direction == DIRECTION_LEFT) ? 664 : 20, 588, 340, 140)];
 	    frame = _slider.frame;
 	    //			frame.origin.x = WINDOW_BW - frame.size.width - 20;
-	    frame.origin.y = 30;
+//	    frame.origin.y = 30;
 	    _slider.frame = frame;
 
 	    //[self cleanupCurrentView:MODE_A];
