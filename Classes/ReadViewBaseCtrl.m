@@ -133,6 +133,7 @@
 		_uuid = nil;
 	}
 	[self releaseAllBooks];
+	[_imageList release];
 	[_pageList release];
     [super dealloc];
 }
