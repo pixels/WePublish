@@ -35,31 +35,40 @@
   // [_bookView setBackgroundColor:[UIColor redColor]];
   // [_scrollView setBackgroundColor:[UIColor blueColor]];
   [_scrollView addSubview:_bookView];
+  [_bookView release];
 
   bottomLayer = [[CALayer alloc] init];
   bottomLayer.masksToBounds = YES;
   [_bookView.layer addSublayer:bottomLayer];
+  [bottomLayer release];
 
   centerPageLine = [[CAGradientLayer alloc] init];
   centerPageLine.backgroundColor = [[UIColor whiteColor] CGColor];
   [bottomLayer addSublayer:centerPageLine];
+  [centerPageLine release];
 
   rightPageLayer = [[CALayer alloc] init];
   [bottomLayer addSublayer:rightPageLayer];
   rightPageLayer.masksToBounds = YES;
   rightPageImageLayer = [[CALayer alloc] init];
   [rightPageLayer addSublayer:rightPageImageLayer];
+  [rightPageImageLayer release];
+  [rightPageLayer release];
 
   leftPageLayer = [[CALayer alloc] init];
   [bottomLayer addSublayer:leftPageLayer];
   leftPageLayer.masksToBounds = YES;
   leftPageImageLayer = [[CALayer alloc] init];
   [leftPageLayer addSublayer:leftPageImageLayer];
+  [leftPageImageLayer release];
+  [leftPageLayer release];
 
   centerPageRightShadow = [[CAGradientLayer alloc] init];
   [bottomLayer addSublayer:centerPageRightShadow];
   centerPageLeftShadow = [[CAGradientLayer alloc] init];
   [bottomLayer addSublayer:centerPageLeftShadow];
+  [centerPageLeftShadow release];
+  [centerPageRightShadow release];
 
   middleLayer = [[CALayer alloc] init];
   middleLayer.masksToBounds = YES;
@@ -71,11 +80,16 @@
   middlePageImageLayer = [[CALayer alloc] init];
   middlePageImageLayer.masksToBounds = YES;
   [middlePageLayer addSublayer:middlePageImageLayer];
+  [middleLayer release];
+  [middlePageLayer release];
+  [middlePageImageLayer release];
 
   middlePageLeftShadowLayer = [[CAGradientLayer alloc] init];
   [middlePageLayer addSublayer:middlePageLeftShadowLayer];
   middlePageRightShadowLayer = [[CAGradientLayer alloc] init];
   [middlePageLayer addSublayer:middlePageRightShadowLayer];
+  [middlePageLeftShadowLayer release];
+  [middlePageRightShadowLayer release];
 
   topLayer = [[CALayer alloc] init];
   topLayer.masksToBounds = YES;
@@ -88,11 +102,15 @@
   topPageImageLayer.masksToBounds = YES;
   topPageImageLayer.backgroundColor = [[UIColor whiteColor] CGColor];
   [topPageLayer addSublayer:topPageImageLayer];
+  [topPageLayer release];
+  [topPageImageLayer release];
+  [topLayer release];
 
   topPageOverlayLayer = [[CALayer alloc] init];
   topPageOverlayLayer.masksToBounds = YES;
   topPageOverlayLayer.backgroundColor = [[UIColor whiteColor] CGColor];
   [topPageImageLayer addSublayer:topPageOverlayLayer];
+  [topPageOverlayLayer release];
 
   topPageLeftOutShadowLayer = [[CAGradientLayer alloc] init];
   [topLayer addSublayer:topPageLeftOutShadowLayer];
@@ -100,21 +118,29 @@
   [topLayer addSublayer:topPageCurlShadowLayer];
   topPageRightOutShadowLayer = [[CAGradientLayer alloc] init];
   [topLayer addSublayer:topPageRightOutShadowLayer];
+  [topPageLeftOutShadowLayer release];
+  [topPageCurlShadowLayer release];
+  [topPageRightOutShadowLayer release];
 
   topPageLeftShadowLayer = [[CAGradientLayer alloc] init];
   [topPageImageLayer addSublayer:topPageLeftShadowLayer];
   topPageRightShadowLayer = [[CAGradientLayer alloc] init];
   [topPageImageLayer addSublayer:topPageRightShadowLayer];
+  [topPageLeftShadowLayer release];
+  [topPageRightShadowLayer release];
 
   _leftView = [[UIView alloc] init];
   [_leftView setUserInteractionEnabled:NO];
   //[_scrollView addSubview:_leftView];
+  [_leftView release];
 
   _rightView = [[UIView alloc] init];
   [_rightView setUserInteractionEnabled:NO];
   //[_scrollView addSubview:_rightView];
+  [_rightView release];
 
   [self.view addSubview:_scrollView];
+  [_scrollView release];
 
   _pageCurlView = [[UIView alloc] initWithFrame:self.view.frame];
   //[_pageCurlView setBackgroundColor:[UIColor blueColor]];
@@ -130,8 +156,6 @@
 
   image_margin_x = 0;
   image_margin_y = 0;
-
-  fingers = [[NSMutableArray alloc] init];
 
   if ( PAGING_BY_BUTTON ) {
     _nextButton = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
@@ -1109,8 +1133,7 @@
   }
 }
 
-- (void)releaseAllBooks:(NSInteger)targetPage {
-  NSLog(@"release all");
+- (void)releaseAllBooks {
   for (NSInteger i = 1; i < _maxPage + 1; i++) {
     NSNumber *number = [NSNumber numberWithInteger:i];
     if ([_pageList objectForKey:number]) {
@@ -1127,7 +1150,7 @@
    //[super loadPages:selectPage windowMode:_windowMode];
 
    NSInteger selectPageWithOffset;
-   for (NSInteger i = 0; i < 7; i++) {
+   for (NSInteger i = 0; i < 6; i++) {
      selectPageWithOffset = selectPage + (i - 3);
 
      NSNumber *number = [NSNumber numberWithInteger:selectPageWithOffset];
@@ -1142,8 +1165,8 @@
 	 [_pageList setObject:imageView forKey:number];
 	 [_imageList setObject:[self getImageRefFromUIImage:image] forKey:number];
 	 [imageView release];
-	 [image release];
        }
+       [image release];
        [image_path release];
        [documentDir release];
      }
@@ -1227,8 +1250,45 @@
 }
 
 - (void)dealloc {
-  [_scrollView release];
+  [_nextButton release];
+  [_prevButton release];
+
+  // [self releaseAllLayers];
+  // [self releaseAllViews];
+
   [super dealloc];
+}
+
+- (void) releaseAllLayers {
+  [bottomLayer release];
+  [centerPageLine release];
+  [rightPageImageLayer release];
+  [rightPageLayer release];
+  [leftPageImageLayer release];
+  [leftPageLayer release];
+  [centerPageLeftShadow release];
+  [centerPageRightShadow release];
+  [middleLayer release];
+  [middlePageLayer release];
+  [middlePageImageLayer release];
+  [middlePageLeftShadowLayer release];
+  [middlePageRightShadowLayer release];
+  [topPageLayer release];
+  [topPageImageLayer release];
+  [topLayer release];
+  [topPageOverlayLayer release];
+  [topPageLeftOutShadowLayer release];
+  [topPageCurlShadowLayer release];
+  [topPageRightOutShadowLayer release];
+  [topPageLeftShadowLayer release];
+  [topPageRightShadowLayer release];
+}
+
+- (void) releaseAllViews {
+  [_bookView release];
+  [_leftView release];
+  [_rightView release];
+  [_scrollView release];
 }
 
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
@@ -1412,13 +1472,6 @@
 
   BOOL page_change_flag = false;
 
-  /*
-     for ( UITouch* touch in touches )
-     {
-     [fingers removeObject:touch];
-     }
-     NSLog("%d", [fingers count]);
-     */
   if ( _mode == page_mode_curl_start || _mode == page_mode_tap_on_zoom ) {
     if ( PAGING_BY_TAP && ((!PAGING_BY_BUTTON) || (_scrollView.zoomScale == 1.0f))) {
       if ( point.x < self.view.frame.size.width / 2 ) {
@@ -1512,13 +1565,6 @@
 
 - (void)touchesCanceled:(NSSet*)touches withEvent:(UIEvent*)event {
   _mode = page_mode_none;
-  /*
-     for ( UITouch* touch in touches )
-     {
-     [fingers removeObject:touch];
-     }
-     NSLog("%d", [fingers count]);
-     */
   [_scrollView setMaximumZoomScale:MAX_ZOOM_SCALE];
   if ( MAX_ZOOM_SCALE != MIN_ZOOM_SCALE ) [_scrollView setScrollEnabled:YES];
   [_scrollView setCanCancelContentTouches:YES];

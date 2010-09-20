@@ -23,6 +23,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+  NSLog(@"view did load");
   [super viewDidLoad];
 	
   _windowMode = MODE_NONE;
@@ -150,7 +151,6 @@
 	
 	if (requireMode != _windowMode)
 	{
-	  NSLog(@"not!!!");
 		_windowMode = requireMode;
 		[self changeOrientation];
 	}
