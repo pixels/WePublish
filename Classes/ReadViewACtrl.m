@@ -678,7 +678,7 @@
 
     middlePageLeftShadowLayer.frame = CGRectMake(image_width * (1.0f - ratio) - CENTER_SHADOW_WIDTH, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
 
-    topPageLayer.frame = CGRectMake(center - image_width + image_width * ratio, 0, image_width * ratio, image_height);
+    topPageLayer.frame = CGRectMake(center - image_width + image_width * ratio + 1, 0, image_width * ratio, image_height);
     topPageImageLayer.frame = CGRectMake((image_width * (ratio - 1.0f)) + image_margin_x, image_margin_y, topPageImageLayer.frame.size.width, topPageImageLayer.frame.size.height);
 
     topPageRightOutShadowLayer.frame = CGRectMake(center - image_width + 2 * image_width * ratio - image_margin_x, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
