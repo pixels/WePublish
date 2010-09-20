@@ -42,7 +42,7 @@
 #define FACE_PAGE_SHADOW_ALPHA 0.4f
 
 // Set speed of curling page
-#define CURL_BOOST 2.0f
+#define CURL_BOOST 1.25f
 
 // Max scale
 #define MAX_ZOOM_SCALE 1.0f
