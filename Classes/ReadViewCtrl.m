@@ -90,22 +90,13 @@
 }
 
 - (void)cleanupCurrentView:(NSInteger)requireMode {
-	if (requireMode == MODE_A) {
-		if (_readViewACtrl)
-		{
+	      if (_readViewACtrl)
+	      {
+			[_readViewACtrl releaseAllBooks];
 			[_readViewACtrl.view removeFromSuperview];
 			[_readViewACtrl release];
 			_readViewACtrl = nil;
 		}
-	}
-	else {
-		if (_readViewBCtrl)
-		{
-			[_readViewBCtrl.view removeFromSuperview];
-			[_readViewBCtrl release];
-			_readViewBCtrl = nil;
-		}
-	}
 }
 
 - (void)pageNext {

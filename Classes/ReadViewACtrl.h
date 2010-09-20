@@ -18,6 +18,7 @@ enum {
   page_mode_curl_start,
   page_mode_curling,
   page_mode_release,
+  page_mode_tap_on_zoom,
   page_mode_curl_right,
   page_mode_curl_left,
   page_mode_zoom,
@@ -51,6 +52,9 @@ enum {
 	NSInteger _curl_from;
 	NSInteger _curl_to;
 	float _curl_ratio;
+
+	UIButton * _nextButton;
+	UIButton * _prevButton;
 
 	NSMutableArray * fingers;
 

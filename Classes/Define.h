@@ -11,6 +11,8 @@
 // Flag
 #define USE_WEBKIT false
 #define PAGING_BY_TAP true
+#define PAGING_BY_BUTTON true
+#define TOP_ALIGN_ON_ZOOM true
 
 // Page size
 #define WINDOW_AW 768
@@ -24,6 +26,11 @@
 #define PAGE_MARGIN_LEFT 0
 #define PAGE_MARGIN_RIGHT 0
 
+// Button Size
+#define PAGING_BUTTON_WIDTH 40
+#define PAGING_BUTTON_HEIGHT 40
+#define PAGING_BUTTON_MARGIN 5
+
 #define SHADOW_RED 1.0f
 #define SHADOW_GREEN 1.0f
 #define SHADOW_BLUE 1.0f
@@ -35,7 +42,7 @@
 #define FACE_PAGE_SHADOW_ALPHA 0.4f
 
 // Set speed of curling page
-#define CURL_BOOST 1.5f
+#define CURL_BOOST 2.0f
 
 // Max scale
 #define MAX_ZOOM_SCALE 1.0f
