@@ -382,7 +382,8 @@
       }
     } else {
       if ( _direction == DIRECTION_LEFT ) {
-	if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ((_currentPage < _maxPage - 2) &&  (_currentPage > 3))) {
+	//if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ((_currentPage < _maxPage - 2) &&  (_currentPage > 3))) {
+	if (((_currentPage < _maxPage - 2) &&  (_currentPage > 3))) {
 	  centerPageLeftShadow.opacity = 1.0f;
 	  centerPageRightShadow.opacity = 1.0f;
 
@@ -420,7 +421,8 @@
 	  topPageRightShadowLayer.opacity = 0.0f;
 	}
       } else {
-	if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ((_currentPage < _maxPage - 1) &&  (_currentPage > 3))) {
+	//if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ((_currentPage < _maxPage - 1) &&  (_currentPage > 3))) {
+	if (((_currentPage < _maxPage - 2) &&  (_currentPage > 3))) {
 	  centerPageLeftShadow.opacity = 1.0f;
 	  centerPageRightShadow.opacity = 1.0f;
 
@@ -523,8 +525,11 @@
 //	middlePageRightShadowLayer.opacity = 1;
       }
     } else {
+      middlePageRightShadowLayer.frame = CGRectMake(0, image_margin_y, CENTER_SHADOW_WIDTH, image_height - (2 * image_margin_y));
+
       if ( _direction != DIRECTION_LEFT ) {
-	if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ((_currentPage < _maxPage - 2) &&  (_currentPage > 3))) {
+	// if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ((_currentPage < _maxPage - 2) &&  (_currentPage > 3))) {
+	if (((_currentPage < _maxPage - 2) &&  (_currentPage > 3))) {
 	  centerPageRightShadow.opacity = 1.0f;
 	  centerPageLeftShadow.opacity = 1.0f;
 
@@ -537,7 +542,7 @@
 	  centerPageRightShadow.opacity = 1.0f;
 	  centerPageLeftShadow.opacity = 0.0f;
 
-	  middlePageRightShadowLayer.opacity = 0.0f;
+	  middlePageRightShadowLayer.opacity = FACE_PAGE_SHADOW_ALPHA;
 	  middlePageLeftShadowLayer.opacity = 1.0f;
 
 	  topPageRightShadowLayer.opacity = 0.0f;
@@ -547,7 +552,7 @@
 	  centerPageLeftShadow.opacity = 1.0f;
 
 	  middlePageRightShadowLayer.opacity = 0.0f;
-	  middlePageLeftShadowLayer.opacity = 0.0f;
+	  middlePageLeftShadowLayer.opacity = FACE_PAGE_SHADOW_ALPHA;
 
 	  topPageRightShadowLayer.opacity = 1.0f;
 	  topPageLeftShadowLayer.opacity = 0.0f;
@@ -562,7 +567,8 @@
 	  topPageLeftShadowLayer.opacity = 0.0f;
 	}
       } else {
-	if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ((_currentPage < _maxPage - 2) &&  (_currentPage > 3))) {
+	// if ((![self isNext] && (2 * floor(_currentPage / 2) != _currentPage)) || ((_currentPage < _maxPage - 2) &&  (_currentPage > 3))) {
+	if (((_currentPage < _maxPage - 2) &&  (_currentPage > 3))) {
 	  centerPageRightShadow.opacity = 1.0f;
 	  centerPageLeftShadow.opacity = 1.0f;
 
@@ -580,7 +586,7 @@
 
 	  topPageRightShadowLayer.opacity = 1.0f;
 	  topPageLeftShadowLayer.opacity = 0.0f;
-	} else if (_currentPage > _maxPage - 3){
+	} else if (_currentPage > _maxPage - 1){
 	  centerPageRightShadow.opacity = 1.0f;
 	  centerPageLeftShadow.opacity = 0.0f;
 
@@ -698,6 +704,24 @@
     topPageLeftOutShadowLayer.frame = CGRectMake(center + image_width * (1.0f - 2.0f * ratio) + image_margin_x - BOTTOM_SHADOW_WIDTH, image_margin_y, BOTTOM_SHADOW_WIDTH, image_height - (2 * image_margin_y));
   }
   [CATransaction commit];
+
+  if ( _windowMode == MODE_B ) {
+    if (([self isNext] && [self isPrev])) {
+	centerPageLine.opacity = 0.4f;
+    } else if (![self isNext] && (_direction == DIRECTION_LEFT) && (curling == right) && (ratio > 0.5)) {
+	centerPageLine.opacity = 0.4f;
+    } else if ((_direction == DIRECTION_LEFT) && (curling != right) && (ratio > 0.5)) {
+	centerPageLine.opacity = 0.4f;
+    } else if (![self isNext] && (_direction != DIRECTION_LEFT) && (curling == left) && (ratio > 0.5)) {
+	centerPageLine.opacity = 0.4f;
+    } else if ((_direction != DIRECTION_LEFT) && (curling != left) && (ratio > 0.5)) {
+	centerPageLine.opacity = 0.4f;
+    } else {
+	centerPageLine.opacity = 0.0f;
+    }
+  } else {
+    centerPageLine.opacity = 0.0f;
+  }
 }
 
 - (void) autoCurlAnimation {
