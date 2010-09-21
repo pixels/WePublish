@@ -41,6 +41,9 @@
 
 #define FACE_PAGE_SHADOW_ALPHA 0.4f
 
+// Threshold value of page change
+#define PAGE_CHANGE_THRESHOLD 0.4f
+
 // Set speed of curling page
 #define CURL_BOOST 2.00f
 

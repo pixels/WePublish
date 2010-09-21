@@ -728,7 +728,7 @@
   if ( _mode == page_mode_release ) {
     if ( _windowMode == MODE_A ) {
       if (( _direction != DIRECTION_LEFT && _curl_from == left ) || (_direction == DIRECTION_LEFT && _curl_from == right) ) {
-	if ( _curl_ratio < 0.5f ) {
+	if ( _curl_ratio < PAGE_CHANGE_THRESHOLD ) {
 	  if ( (_curl_ratio -= CURL_SPAN) > 0.0f ) {
 	    [self curlFor:_curl_side from:_curl_from ratio:1.0f - _curl_ratio];
 	    [self performSelector:@selector(autoCurlAnimation)
@@ -750,7 +750,7 @@
 	  }
 	}
       } else {
-	if ( _curl_ratio >= 0.5f ) {
+	if ( _curl_ratio >= PAGE_CHANGE_THRESHOLD ) {
 	  if ( (_curl_ratio += CURL_SPAN) < 1.0f ) {
 	    [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
 	    [self performSelector:@selector(autoCurlAnimation)
@@ -773,7 +773,7 @@
 	}
       }
     } else {
-      if ( _curl_ratio < 0.5f ) {
+      if ( _curl_ratio < PAGE_CHANGE_THRESHOLD ) {
 	if ( (_curl_ratio -= CURL_SPAN) > 0.0f ) {
 	  [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
 	  [self performSelector:@selector(autoCurlAnimation)
@@ -1555,7 +1555,7 @@
       }
     }
 
-    if ( _curl_ratio > 0.5f) {
+    if ( _curl_ratio > PAGE_CHANGE_THRESHOLD) {
       _curl_to = [self getAnotherSide:_curl_from];
 
       if ( _direction == DIRECTION_LEFT ) {
