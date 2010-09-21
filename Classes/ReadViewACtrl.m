@@ -169,6 +169,9 @@
     [_nextButton setUserInteractionEnabled:YES];
     [_prevButton setUserInteractionEnabled:YES];
   }
+
+  page_change_threshold = PAGE_CHANGE_THRESHOLD_MODE_A;
+  curl_boost = CURL_BOOST_MODE_A;
 }
 
 - (void)initLayout {
@@ -728,7 +731,7 @@
   if ( _mode == page_mode_release ) {
     if ( _windowMode == MODE_A ) {
       if (( _direction != DIRECTION_LEFT && _curl_from == left ) || (_direction == DIRECTION_LEFT && _curl_from == right) ) {
-	if ( _curl_ratio < PAGE_CHANGE_THRESHOLD ) {
+	if ( _curl_ratio < page_change_threshold ) {
 	  if ( (_curl_ratio -= CURL_SPAN) > 0.0f ) {
 	    [self curlFor:_curl_side from:_curl_from ratio:1.0f - _curl_ratio];
 	    [self performSelector:@selector(autoCurlAnimation)
@@ -750,7 +753,7 @@
 	  }
 	}
       } else {
-	if ( _curl_ratio >= PAGE_CHANGE_THRESHOLD ) {
+	if ( _curl_ratio >= page_change_threshold ) {
 	  if ( (_curl_ratio += CURL_SPAN) < 1.0f ) {
 	    [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
 	    [self performSelector:@selector(autoCurlAnimation)
@@ -773,7 +776,7 @@
 	}
       }
     } else {
-      if ( _curl_ratio < PAGE_CHANGE_THRESHOLD ) {
+      if ( _curl_ratio < page_change_threshold ) {
 	if ( (_curl_ratio -= CURL_SPAN) > 0.0f ) {
 	  [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
 	  [self performSelector:@selector(autoCurlAnimation)
@@ -890,6 +893,13 @@
  [super setup:uuid selectPage:selectPage pageNum:pageNum direction:direction windowMode:windowMode];
 
  _windowMode = windowMode;
+ if ( _windowMode == MODE_A ) {
+  page_change_threshold = PAGE_CHANGE_THRESHOLD_MODE_A;
+  curl_boost = CURL_BOOST_MODE_A;
+ } else {
+  page_change_threshold = PAGE_CHANGE_THRESHOLD_MODE_B;
+  curl_boost = CURL_BOOST_MODE_B;
+ }
 
  [self initLayout];
 
@@ -1423,13 +1433,13 @@
 	  }
 
 	  if ( _curl_side  == _curl_from ) {
-	    _curl_ratio = -1.0f * CURL_BOOST * delta_x / WINDOW_AW;
+	    _curl_ratio = -1.0f * curl_boost * delta_x / WINDOW_AW;
 	  } else {
-	    _curl_ratio = 1.0f - ( -1.0f * CURL_BOOST * delta_x / WINDOW_AW);
+	    _curl_ratio = 1.0f - ( -1.0f * curl_boost * delta_x / WINDOW_AW);
 	  }
 	} else {
 	  _curl_side = right;
-	  _curl_ratio = -1.0f * CURL_BOOST * delta_x / WINDOW_BW;
+	  _curl_ratio = -1.0f * curl_boost * delta_x / WINDOW_BW;
 	}
 	if ( ((_direction != DIRECTION_LEFT) && [self isNext]) || ((_direction == DIRECTION_LEFT) && [self isPrev])) {
 	  [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
@@ -1461,13 +1471,13 @@
 	  }
 
 	  if ( _curl_side  == _curl_from ) {
-	    _curl_ratio = delta_x * CURL_BOOST / WINDOW_AW;
+	    _curl_ratio = delta_x * curl_boost / WINDOW_AW;
 	  } else {
-	    _curl_ratio = 1.0f - ( delta_x * CURL_BOOST / WINDOW_AW);
+	    _curl_ratio = 1.0f - ( delta_x * curl_boost / WINDOW_AW);
 	  }
 	} else {
 	  _curl_side = left;
-	  _curl_ratio = delta_x * CURL_BOOST / WINDOW_BW;
+	  _curl_ratio = delta_x * curl_boost / WINDOW_BW;
 	}
 	if (((_direction == DIRECTION_LEFT) && [self isNext]) || ((_direction != DIRECTION_LEFT) && [self isPrev])) {
 	  [self curlFor:_curl_side from:_curl_from ratio:_curl_ratio];
@@ -1541,21 +1551,21 @@
       }
 
       if ( _curl_from == left ) {
-	_curl_ratio = delta_x * CURL_BOOST / WINDOW_AW;
+	_curl_ratio = delta_x * curl_boost / WINDOW_AW;
       } else {
-	_curl_ratio = -1.0f * delta_x * CURL_BOOST / WINDOW_AW;
+	_curl_ratio = -1.0f * delta_x * curl_boost / WINDOW_AW;
       }
     } else {
       if ( _curl_from == left) {
-	_curl_ratio = delta_x * CURL_BOOST / WINDOW_BW;
+	_curl_ratio = delta_x * curl_boost / WINDOW_BW;
 	_curl_side = left;
       } else {
-	_curl_ratio = -1.0f * delta_x * CURL_BOOST / WINDOW_BW;
+	_curl_ratio = -1.0f * delta_x * curl_boost / WINDOW_BW;
 	_curl_side = right;
       }
     }
 
-    if ( _curl_ratio > PAGE_CHANGE_THRESHOLD) {
+    if ( _curl_ratio > page_change_threshold) {
       _curl_to = [self getAnotherSide:_curl_from];
 
       if ( _direction == DIRECTION_LEFT ) {

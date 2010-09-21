@@ -42,10 +42,12 @@
 #define FACE_PAGE_SHADOW_ALPHA 0.4f
 
 // Threshold value of page change
-#define PAGE_CHANGE_THRESHOLD 0.4f
+#define PAGE_CHANGE_THRESHOLD_MODE_A 0.4f
+#define PAGE_CHANGE_THRESHOLD_MODE_B 0.4f
 
 // Set speed of curling page
-#define CURL_BOOST 2.00f
+#define CURL_BOOST_MODE_A 2.00f
+#define CURL_BOOST_MODE_B 2.00f
 
 // Max scale
 #define MAX_ZOOM_SCALE 1.0f

@@ -91,6 +91,7 @@ enum {
 	CALayer *topPageImageLayer;
 
 	float image_margin_x, image_margin_y;
+	float curl_boost, page_change_threshold;
 }
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
