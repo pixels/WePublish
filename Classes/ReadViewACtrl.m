@@ -1174,7 +1174,7 @@
    //[super loadPages:selectPage windowMode:_windowMode];
 
    NSInteger selectPageWithOffset;
-   for (NSInteger i = 0; i < 6; i++) {
+   for (NSInteger i = 0; i < 7; i++) {
      selectPageWithOffset = selectPage + (i - 3);
 
      NSNumber *number = [NSNumber numberWithInteger:selectPageWithOffset];
