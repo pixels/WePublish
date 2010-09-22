@@ -146,6 +146,12 @@
 		info = [_bookCollection getAt:i];
 		savedInfo = [_savedBookCollection getByKey:info.uuid];
 		
+		if (!info || !savedInfo) {
+			NSLog(@"[INFO] XMLController.m checkVersion: this is the new item!!");
+			info.oldVersion = YES;
+			continue;
+		}
+		
 		date = [inputFormatter dateFromString:info.download];
 		savedDate = [inputFormatter dateFromString:savedInfo.download];
 		
