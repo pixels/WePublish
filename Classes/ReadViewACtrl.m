@@ -894,7 +894,7 @@
 
  _windowMode = windowMode;
  if ( _windowMode == MODE_A ) {
-  page_change_threshold = PAGE_CHANGE_THRESHOLD_MODE_A;
+  page_change_threshold = PAGE_CHANGE_THRESHOLD_MODE_A / 2;
   curl_boost = CURL_BOOST_MODE_A;
  } else {
   page_change_threshold = PAGE_CHANGE_THRESHOLD_MODE_B;
