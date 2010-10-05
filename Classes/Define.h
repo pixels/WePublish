@@ -116,5 +116,6 @@
 #define BOOKMARK_FILENAME @"bookmark.xml"
 #define USER_NAME @"name"
 #define USER_PASS @"pass"
+#define USER_ADMITTED @"admitted"
 #define BOOKMARK_UUID @"uuid"
 #define BOOKMARK_PAGE @"page"

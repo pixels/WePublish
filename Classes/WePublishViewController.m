@@ -291,15 +291,16 @@
 	[self showAlert:nil message:RELOAD_DATA_WARNING_MESSAGE btn1:@"OK" btn2:nil tag:RELOAD_DATA_ALERT_TAG];
 }
 
-- (void)updateXML {
+- (void)updateXML:(BOOL)checlToServer{
 	_updating = YES;
 
-	[_xmlCtrl update:UPDATE_URL];
-	[self networkActivityIndicator:NO];
-	[_activitiyView setHidden:NO];
-	[statusLabel_ setHidden:NO];
-	[statusLabel_ setText:STATUS_START_TO_UPDATE];
-	
+	[_xmlCtrl update:UPDATE_URL checlToServer:checlToServer];
+	if (checlToServer) {
+		[self networkActivityIndicator:NO];
+		[_activitiyView setHidden:NO];
+		[statusLabel_ setHidden:NO];
+		[statusLabel_ setText:STATUS_START_TO_UPDATE];
+	}
 }
 
 // XMLの更新終了
@@ -653,9 +654,7 @@
 		[_logoView.view removeFromSuperview];
 		[_logoView release];
 		
-		if (![_xmlCtrl loadLocalXml]) {
-			[self updateXML];
-		}
+		[self updateXML:NO];
 	}
 	
 	else if ([animationID isEqualToString:CHANGE_ORIENTATION_ANIM_ID]) {
@@ -692,43 +691,46 @@
 
 // Parseが完了したら
 - (void)onParseEndSelect:(NSNotification *)notification {
-	BookCollection *collection = (BookCollection *)[notification object];
 	BookInfo *info;
 	NSString *bookDir;
 	NSFileManager *fm = [NSFileManager defaultManager];
 	
-	NSInteger length = [collection count];
-	updateRequestFileCount_ = 0;
-	updateTotalDownloadCount_ = 0;
-	for (NSInteger i = 0; i < length; i++) {
-		info = [collection getAt:i];
-//		NSLog(@"uuid: %@ download: %@ url: %@ md5: %@ category: %@ title: %@ author: %@ length: %d direction: %d review: %@",
-//			  info.uuid,
-//			  info.download,
-//			  info.url,
-//			  info.md5,
-//			  info.category,
-//			  info.title,
-//			  info.author,
-//			  info.length,
-//			  info.direction,
-//			  info.review
-//			  );
+	NSNumber *checkToServerNum = [[notification userInfo] objectForKey:@"CHECK_TO_SERVER"];
+	BookCollection *collection = (BookCollection *)[[notification userInfo] objectForKey:@"BOOK_COLLECTION"];
+	if ([checkToServerNum boolValue]) {
+		NSInteger length = [collection count];
+		updateRequestFileCount_ = 0;
+		updateTotalDownloadCount_ = 0;
+		for (NSInteger i = 0; i < length; i++) {
+			info = [collection getAt:i];
+	//		NSLog(@"uuid: %@ download: %@ url: %@ md5: %@ category: %@ title: %@ author: %@ length: %d direction: %d review: %@",
+	//			  info.uuid,
+	//			  info.download,
+	//			  info.url,
+	//			  info.md5,
+	//			  info.category,
+	//			  info.title,
+	//			  info.author,
+	//			  info.length,
+	//			  info.direction,
+	//			  info.review
+	//			  );
 
-		bookDir = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], BOOK_DIRECTORY, info.uuid];
-//		NSLog(@"bookDir: %@", bookDir);
-		if ([fm fileExistsAtPath:bookDir] && !info.oldVersion) {
-			// Update length
-			NSArray * files = [[NSFileManager defaultManager] directoryContentsAtPath:bookDir];
-			[info setLength:[files count]];
+			bookDir = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], BOOK_DIRECTORY, info.uuid];
+	//		NSLog(@"bookDir: %@", bookDir);
+			if ([fm fileExistsAtPath:bookDir] && !info.oldVersion) {
+				// Update length
+				NSArray * files = [[NSFileManager defaultManager] directoryContentsAtPath:bookDir];
+				[info setLength:[files count]];
+			}
+			else {
+				// ここはDLしたいinfoを追加
+				NSLog(@"dl request name: %@", info.title);
+				[_tmpDlDic setValue:info forKey:info.uuid];
+				updateRequestFileCount_++;
+			}
+			[bookDir release];
 		}
-		else {
-			// ここはDLしたいinfoを追加
-			NSLog(@"dl request name: %@", info.title);
-			[_tmpDlDic setValue:info forKey:info.uuid];
-			updateRequestFileCount_++;
-		}
-		[bookDir release];
 	}
 	
 	_bookCollection = [collection retain];
@@ -983,7 +985,7 @@
 - (IBAction)onMenuRefreshClick:(id)sender {
 	[self setMenuBarItems:NO list:NO buy:NO refresh:NO trash:NO];
 	[self releaseBooks:NO];
-	[self updateXML];
+	[self updateXML:YES];
 }
 
 // 削除ボタンが選択されたとき
@@ -1004,7 +1006,7 @@
 	
 	else if ([alertView tag] == RELOAD_DATA_ALERT_TAG) {
 		if (buttonIndex == 0) {
-			[self updateXML];
+			[self updateXML:YES];
 		}
 	}
 	

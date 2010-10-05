@@ -34,13 +34,29 @@
 	return [super init];
 }
 
-- (void)update:(NSString*)url {
+- (void)update:(NSString*)url checlToServer:(BOOL)checlToServer {
 	
+	checlToServer_ = checlToServer;
 	[_data setLength:0];
 	[_bookCollection releaseAll];
 	
+	BOOL skippable = NO;
+	if (!checlToServer) {
+		if ([Util isExist:_userFilePath]) {
+			NSDictionary *userInfo = [[NSDictionary alloc] initWithContentsOfFile:_userFilePath];
+			if ([@"YES" isEqual:[userInfo objectForKey:USER_ADMITTED]]) {
+				skippable = YES;
+			}
+			else {
+				checlToServer_ = YES;
+			}
+		}
+		else {
+			checlToServer_ = YES;
+		}
+	}
 	// リトライ回数を超えた
-	if (_updateRetryCount > UPDATE_RETRY_COUNT) {
+	if (_updateRetryCount > UPDATE_RETRY_COUNT || skippable) {
 		[self alertIfDontExistData:AUTHENTICATION_ERROR_MESSAGE];
 	}
 	
@@ -241,13 +257,18 @@
 	
 	// 認証がうまくいった場合
 	if ([_data length] > 0 && ([str compare:@"NG"] != NSOrderedSame)) {
+		NSDictionary *userInfo = [[NSDictionary alloc] initWithContentsOfFile:_userFilePath];
+		[userInfo setValue:@"YES" forKey:USER_ADMITTED];
+		[userInfo writeToFile:_userFilePath atomically:YES];
+		[userInfo release];
+		
 		_updateRetryCount = 0;
 		[self saveXML];
 		[self parse:_data savedXMLLoad:NO];
 	}
 	
 	else {
-		[self update:_url];
+		[self update:_url checlToServer:YES];
 	}
 
 }
@@ -401,8 +422,16 @@
 			if (_savedData) {
 				[self checkVersion];
 			}
+			NSNumber *checkToServerNum = [NSNumber numberWithBool:checlToServer_];
+			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+								  _bookCollection,
+								  @"BOOK_COLLECTION",
+								  checkToServerNum,
+								  @"CHECK_TO_SERVER",
+								  nil];
 			NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-			[notificationCenter postNotificationName:PARSE_END_EVENT object:_bookCollection userInfo:nil];
+			[notificationCenter postNotificationName:PARSE_END_EVENT object:nil userInfo:dict];
+			[dict release];
 		}
 		else if (_savedData) {
 			[self parse:_savedData savedXMLLoad:YES];

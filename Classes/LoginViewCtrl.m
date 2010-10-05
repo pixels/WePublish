@@ -57,7 +57,7 @@
 
 	// Save user info.
 	NSString *save_path = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], XML_DIRECTORY, USER_FILENAME];
-	NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:_nameTI.text, USER_NAME, _passTI.text, USER_PASS, nil];
+	NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:_nameTI.text, USER_NAME, _passTI.text, USER_PASS, @"NO", USER_ADMITTED, nil];
 	[userInfo writeToFile:save_path atomically:YES];
 	[userInfo release];
 	[save_path release];

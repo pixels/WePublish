@@ -66,7 +66,7 @@
 - (void)logoToTop;
 - (void)showAlert:(NSString *)title message:(NSString *)message btn1:(NSString *)btn1 btn2:(NSString *)btn2 tag:(NSUInteger)tag;
 - (void)trashAllData;
-- (void)updateXML;
+- (void)updateXML:(BOOL)checlToServer;
 - (void)updateXMLFinish;
 - (void)setBooks:(BOOL)animation;
 - (void)reloadBooks;
