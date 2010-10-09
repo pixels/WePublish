@@ -581,6 +581,13 @@
 // 本の表示
 - (void)showBook:(NSUInteger)selectPage {
 	BookInfo *info = [_bookCollection getAt:_selectBookIndex];
+
+	// Create length info of the selected book.
+	NSString *bookDir = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], BOOK_DIRECTORY, info.uuid];
+	NSArray *files = [[NSFileManager defaultManager] directoryContentsAtPath:bookDir];
+	[info setLength:[files count]];
+	[bookDir release];
+	
 	ReadViewCtrl *ctrl = [[ReadViewCtrl alloc] initWithNibName:@"ReadView" bundle:nil];
 	_readViewCtrl = [ctrl retain];
 	[_readViewCtrl setup:info.uuid selectPage:selectPage pageNum:info.length fakePage:info.fake direction:info.direction windowMode:_windowMode];
@@ -719,9 +726,6 @@
 			bookDir = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], BOOK_DIRECTORY, info.uuid];
 	//		NSLog(@"bookDir: %@", bookDir);
 			if ([fm fileExistsAtPath:bookDir] && !info.oldVersion) {
-				// Update length
-				NSArray * files = [[NSFileManager defaultManager] directoryContentsAtPath:bookDir];
-				[info setLength:[files count]];
 			}
 			else {
 				// ここはDLしたいinfoを追加
@@ -800,12 +804,6 @@
 		count++;
 	}
 	outDir = nil;
-	
-	// Set length.
-	BookInfo *info = [_bookCollection getByKey:[fd uuid]];
-	if (info) {
-		[info setLength:(count - 1)];
-	}
 	
 	[tmpDir release];
 	[_tmpDlDic removeObjectForKey:[fd uuid]];
