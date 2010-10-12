@@ -75,6 +75,7 @@
 	[notificationCenter addObserver:self selector:@selector(onAuthenticationSelect:) name:AUTHENTICATION_EVENT object:nil];
 	[notificationCenter addObserver:self selector:@selector(onLoginFinishSelect:) name:LOGIN_FINISH_END_EVENT object:nil];
 	[notificationCenter addObserver:self selector:@selector(onBookmarkSaveSelect:) name:BOOKMARK_SAVE_EVENT object:nil];
+	[notificationCenter addObserver:self selector:@selector(onNetworkErrorSelect:) name:NETWORK_ERROR_LOGO_EVENT object:nil];
 
 	[self initDirectory];
 	
@@ -852,6 +853,13 @@
 	NSDictionary *userInfo = [notification userInfo];
 	[_bookmarkDic setObject:[userInfo objectForKey:BOOKMARK_PAGE] forKey:[userInfo objectForKey:BOOKMARK_UUID]];
 	[_bookmarkDic writeToFile:_bookmarkPath atomically:NO];
+}
+
+// login.xmlが無い状態でネットワークエラーの場合
+- (void)onNetworkErrorSelect:(NSNotification *)notification {
+	[self networkActivityIndicator:YES];
+	[_activitiyView setHidden:YES];
+	[self setMenuBarItems:NO list:NO buy:NO refresh:YES trash:NO];
 }
 
 // 本が選択されて詳細画面が表示
