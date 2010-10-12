@@ -48,6 +48,9 @@
 	NSUInteger currentPage_;
 	NSUInteger updateRequestFileCount_;
 	NSUInteger updateTotalDownloadCount_;
+	
+	NSString *loginUsername_;
+	NSString *loginPassword_;
 }
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;

@@ -48,7 +48,7 @@
 
 - (void)loginFinish {
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-	[notificationCenter postNotificationName:LOGIN_FINISH_END_EVENT object:nil userInfo:nil];
+	[notificationCenter postNotificationName:LOGIN_FINISH_END_EVENT object:self userInfo:nil];
 }
 
 - (IBAction)onOKButton:(id)sender {

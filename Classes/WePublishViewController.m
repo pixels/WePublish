@@ -60,6 +60,9 @@
 	_windowMode = MODE_NONE;
 	_xmlCtrl = [[XMLController alloc] init];
 	
+	loginUsername_ = @"";
+	loginPassword_ = @"";
+	
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 	[notificationCenter addObserver:self selector:@selector(onLogoEndSelect:) name:LOGO_END_EVENT object:nil];
 	[notificationCenter addObserver:self selector:@selector(onDetailDisappearSelect:) name:DETAIL_DISAPPEAR_EVENT object:nil];
@@ -831,11 +834,16 @@
 - (void)onAuthenticationSelect:(NSNotification *)notification {
 	LoginViewCtrl *ctrl = [[LoginViewCtrl alloc] initWithNibName:@"LoginView" bundle:nil];
 	[self presentModalViewController:ctrl animated:YES];
+	[ctrl.nameTI setText:loginUsername_];
+	[ctrl.passTI setText:loginPassword_];
 	[ctrl release];
 }
 
 // Login終了
 - (void)onLoginFinishSelect:(NSNotification *)notification {
+	LoginViewCtrl *ctrl = (LoginViewCtrl *)[notification object];
+	loginUsername_ = [ctrl.nameTI.text retain];
+	loginPassword_ = [ctrl.passTI.text retain];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
