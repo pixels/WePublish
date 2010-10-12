@@ -93,7 +93,7 @@
 #define BOOK_ACTIVITY_INDICATOR 200
 
 // Auth
-#define UPDATE_RETRY_COUNT 2
+#define UPDATE_RETRY_COUNT 999
 #define AUTH_USERNAME @"wpauth"
 #define AUTH_PASSWORD @"ka08tbj3hZfa"
 
