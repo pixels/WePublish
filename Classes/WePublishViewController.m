@@ -62,6 +62,13 @@
 	
 	loginUsername_ = @"";
 	loginPassword_ = @"";
+	NSString *userFile = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], XML_DIRECTORY, USER_FILENAME];
+	if ([Util isExist:userFile]) {
+		NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:userFile];
+		loginUsername_ = [[dict objectForKey:USER_NAME] retain];
+		loginPassword_ = [[dict objectForKey:USER_PASS] retain];
+	}
+	[userFile release];
 	
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 	[notificationCenter addObserver:self selector:@selector(onLogoEndSelect:) name:LOGO_END_EVENT object:nil];
@@ -857,9 +864,11 @@
 
 // login.xmlが無い状態でネットワークエラーの場合
 - (void)onNetworkErrorSelect:(NSNotification *)notification {
-	[self networkActivityIndicator:YES];
-	[_activitiyView setHidden:YES];
-	[self setMenuBarItems:NO list:NO buy:NO refresh:YES trash:NO];
+//	[self networkActivityIndicator:YES];
+//	[_activitiyView setHidden:YES];
+//	[self setMenuBarItems:NO list:NO buy:NO refresh:YES trash:NO];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:AUTHENTICATION_EVENT object:nil userInfo:nil];
 }
 
 // 本が選択されて詳細画面が表示

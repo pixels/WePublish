@@ -243,7 +243,7 @@
     NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSErrorFailingURLStringKey]);
 
     [connection release];
-	[self alertIfDontExistData:NETWORK_ERROR_LOGO_MESSAGE];
+//	[self alertIfDontExistData:NETWORK_ERROR_LOGO_MESSAGE];
 	[[NSNotificationCenter defaultCenter] postNotificationName:NETWORK_ERROR_LOGO_EVENT object:nil userInfo:nil];
 }
 
