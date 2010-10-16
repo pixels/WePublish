@@ -34,25 +34,26 @@
 	return [super init];
 }
 
-- (void)update:(NSString*)url checlToServer:(BOOL)checlToServer {
+- (void)update:(NSString*)url checkToServer:(BOOL)checkToServer force:(BOOL)force {
 	
-	checlToServer_ = checlToServer;
+	checkToServer_ = checkToServer | force;
+	force_ = force;
 	[_data setLength:0];
 	[_bookCollection releaseAll];
 	
 	BOOL skippable = NO;
-	if (!checlToServer) {
+	if (!checkToServer) {
 		if ([Util isExist:_userFilePath]) {
 			NSDictionary *userInfo = [[NSDictionary alloc] initWithContentsOfFile:_userFilePath];
 			if ([@"YES" isEqual:[userInfo objectForKey:USER_ADMITTED]]) {
 				skippable = YES;
 			}
 			else {
-				checlToServer_ = YES;
+				checkToServer_ = YES;
 			}
 		}
 		else {
-			checlToServer_ = YES;
+			checkToServer_ = YES;
 		}
 	}
 	// リトライ回数を超えた
@@ -244,7 +245,13 @@
 
     [connection release];
 //	[self alertIfDontExistData:NETWORK_ERROR_LOGO_MESSAGE];
-	[[NSNotificationCenter defaultCenter] postNotificationName:NETWORK_ERROR_LOGO_EVENT object:nil userInfo:nil];
+
+	if (force_) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:NETWORK_ERROR_LOGO_EVENT object:nil userInfo:nil];
+	}
+	else {
+		[self update:_url checkToServer:NO force:NO];
+	}
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -269,9 +276,8 @@
 	}
 	
 	else {
-		[self update:_url checlToServer:YES];
+		[self update:_url checkToServer:checkToServer_ force:force_];
 	}
-
 }
 
 - (void)onLoginFinishedAndXMLCheckSelect:(NSNotification *)notification {
@@ -423,7 +429,7 @@
 			if (_savedData) {
 				[self checkVersion];
 			}
-			NSNumber *checkToServerNum = [NSNumber numberWithBool:checlToServer_];
+			NSNumber *checkToServerNum = [NSNumber numberWithBool:checkToServer_];
 			NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
 								  _bookCollection,
 								  @"BOOK_COLLECTION",
@@ -433,6 +439,7 @@
 			NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 			[notificationCenter postNotificationName:PARSE_END_EVENT object:nil userInfo:dict];
 			[dict release];
+			_updateRetryCount = 0;
 		}
 		else if (_savedData) {
 			[self parse:_savedData savedXMLLoad:YES];
