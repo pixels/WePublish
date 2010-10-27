@@ -326,7 +326,7 @@
 }
 
 - (BOOL)startToDownloadBookFromQueue {
-	
+	NSLog(@"download from queue");
 	if ([_tmpDlDic count] > 0) {
 		
 		BookInfo *info;
@@ -736,6 +736,8 @@
 
 			bookDir = [[NSString alloc] initWithFormat:@"%@/%@/%@", [Util getLocalDocument], BOOK_DIRECTORY, info.uuid];
 	//		NSLog(@"bookDir: %@", bookDir);
+			if (![fm fileExistsAtPath:bookDir]) NSLog(@"file exist");
+			if (info.oldVersion) NSLog(@"old version");
 			if ([fm fileExistsAtPath:bookDir] && !info.oldVersion) {
 			}
 			else {

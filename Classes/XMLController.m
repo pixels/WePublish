@@ -35,6 +35,7 @@
 }
 
 - (void)update:(NSString*)url checkToServer:(BOOL)checkToServer force:(BOOL)force {
+	_savedData = [[NSData alloc] initWithContentsOfFile:_outputFilePath];
 	
 	checkToServer_ = checkToServer | force;
 	force_ = force;
