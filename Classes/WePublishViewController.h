@@ -45,6 +45,7 @@
 	NSInteger _selectBookIndex;
 	NSInteger _bookmarkPage;
 	BOOL _updating;
+	BOOL _showingDetail;
 	NSUInteger currentPage_;
 	NSUInteger updateRequestFileCount_;
 	NSUInteger updateTotalDownloadCount_;

@@ -60,10 +60,12 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+  // NSLog(@"did receive response");
     [_data setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+  // NSLog(@"did receive data");
     [_data appendData:data];
 }
 
@@ -94,10 +96,10 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 //	// Debug
-//	NSString* str;
-//	str = [[NSString alloc] initWithData:_data encoding:NSASCIIStringEncoding];
-//	NSLog(@"Connection connectionDidFinishLoading byte len: %d path: %@ data: %@", [_data length], _path, str);
-//	[str release];
+	// NSString* str;
+	// str = [[NSString alloc] initWithData:_data encoding:NSASCIIStringEncoding];
+	// NSLog(@"Connection connectionDidFinishLoading byte len: %d path: %@ data: %@", [_data length], _path, str);
+	// [str release];
 	
 	[connection release];
 	[_data writeToFile:_path atomically:YES];
