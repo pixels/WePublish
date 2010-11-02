@@ -149,12 +149,16 @@ NSInteger alphabeticCategorySort(BookInfo *obj1, BookInfo *obj2, void *reverse){
 
 - (void)releaseAll {
 	BookInfo *info;
+	NSLog(@"before");
 	for (info in _books) {
-		[info release];
+	  //[info release];
 	}
-	[_books removeAllObjects];
+	NSLog(@"after");
 	
+	[_books removeAllObjects];
+	NSLog(@"oops");
 	_booksDic = [[NSMutableDictionary alloc] init];
+	NSLog(@"end");
 }
 
 - (void)dealloc {

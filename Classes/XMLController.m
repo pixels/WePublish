@@ -35,13 +35,20 @@
 }
 
 - (void)update:(NSString*)url checkToServer:(BOOL)checkToServer force:(BOOL)force {
+	NSLog(@"point 1");
 	_savedData = [_savedData initWithContentsOfFile:_outputFilePath];
 	
+	NSLog(@"point 2");
 	checkToServer_ = checkToServer | force;
+	NSLog(@"point 2-1");
 	force_ = force;
+	NSLog(@"point 2-2");
 	[_data setLength:0];
+	NSLog(@"point 2-3");
 	[_bookCollection releaseAll];
+	NSLog(@"point 2-4");
 	
+	NSLog(@"point 3");
 	BOOL skippable = NO;
 	if (!checkToServer) {
 		if ([Util isExist:_userFilePath]) {
@@ -57,13 +64,16 @@
 			checkToServer_ = YES;
 		}
 	}
+	NSLog(@"point if1");
 	// リトライ回数を超えた
 	if (_updateRetryCount > UPDATE_RETRY_COUNT || skippable) {
+	NSLog(@"point if2");
 		[self alertIfDontExistData:AUTHENTICATION_ERROR_MESSAGE];
 	}
 	
 	// 更新作業
 	else {
+	NSLog(@"point else");
 		
 		// First access only.
 		if (!_url) {
@@ -82,6 +92,7 @@
 		
 		_updateRetryCount++;
 	}
+	NSLog(@"point 4");
 }
 
 - (BOOL)loadLocalXml {

@@ -307,7 +307,9 @@
 - (void)updateXML:(BOOL)checkToServer force:(BOOL)force {
 	_updating = YES;
 
+	NSLog(@"before update XML");
 	[_xmlCtrl update:UPDATE_URL checkToServer:checkToServer force:force];
+	NSLog(@"after update XML");
 	if (checkToServer) {
 		[self networkActivityIndicator:NO];
 		[_activitiyView setHidden:NO];
@@ -318,6 +320,7 @@
 
 // XMLの更新終了
 - (void)updateXMLFinish {
+	NSLog(@"update finish");
 	[self reloadBooks];
 	[self setMenuBarItems:NO list:YES buy:YES refresh:YES trash:YES];
 	
@@ -330,9 +333,11 @@
 - (BOOL)startToDownloadBookFromQueue {
 	NSLog(@"download from queue");
 	if ([_tmpDlDic count] > 0) {
+	  NSLog(@"book in dictionary");
 		
 		BookInfo *info;
 		for (id key in _tmpDlDic) {
+		  NSLog(@"temp dic");
 			updateTotalDownloadCount_++;
 			[statusLabel_ setText:[NSString stringWithFormat:@"%@ %3d / %3d 冊", STATUS_DOWNLOADING_BOOKS, updateTotalDownloadCount_, updateRequestFileCount_]];
 			info = [_tmpDlDic objectForKey:key];
