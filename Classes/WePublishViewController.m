@@ -194,6 +194,13 @@
 				if (image) {
 					CGSize imageSize = CGSizeMake(CGImageGetWidth(image.CGImage), CGImageGetHeight(image.CGImage));
 					imageSize = [Util makeAspectFitCGSize:imageSize target:btn.frame.size];
+					//サムネイル画像の圧縮
+					UIGraphicsBeginImageContext(CGSizeMake(imageSize.width, imageSize.height));
+					[image drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
+					result_image = UIGraphicsGetImageFromCurrentImageContext();
+					[result_image retain];
+					UIGraphicsEndImageContext();
+
 					if (_windowMode == MODE_A) {
 						h_line = (i % HxW) / W_COUNT_A;
 						btnY = 240 * h_line + 80;
@@ -203,9 +210,10 @@
 						btnY = 234 * h_line + 74;
 					}
 					offY = H_BOOK - imageSize.height;
-					[btn setBackgroundImage:image forState:UIControlStateNormal];
+					[btn setBackgroundImage:result_image forState:UIControlStateNormal];
 					[btn setFrame:CGRectMake(btn.frame.origin.x, btnY + (offY / 2), imageSize.width, imageSize.height)];
 					[image release];
+					[result_image release];
 					
 					indicator = (UIActivityIndicatorView *)[btn viewWithTag:BOOK_ACTIVITY_INDICATOR];
 					if (indicator) {
