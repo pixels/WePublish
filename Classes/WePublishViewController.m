@@ -170,6 +170,7 @@
 	NSInteger i, page;
 	NSInteger HxW = (_windowMode == MODE_A) ? H_COUNT_A * W_COUNT_A : H_COUNT_B * W_COUNT_B;
 	UIImage *image;
+	UIImage *result_image;
 	NSString *documentDir;
 	NSString *image_path;
 	UIButton* btn;
